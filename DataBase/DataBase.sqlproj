@@ -6,7 +6,7 @@
     <Name>DataBase</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{18f67f85-25a9-42a6-8b43-cace39178ebd}</ProjectGuid>
+    <ProjectGuid>{70dd3da2-bb45-43b8-8d93-d21f13191a39}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
@@ -56,5 +56,26 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Procedures" />
+    <Folder Include="Triggers" />
+    <Folder Include="Tables" />
+    <Folder Include="Tables\Tables many_to_many" />
+    <Folder Include="Scripts" />
+    <Folder Include="Views" />
+    <Folder Include="Fonctions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Classes.sql" />
+    <Build Include="Tables\Students.sql" />
+    <Build Include="Fonctions\PostSalt.sql" />
+    <Build Include="Fonctions\PreSalt.sql" />
+    <Build Include="Tables\Professors.sql" />
+    <Build Include="Tables\Admins.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataBase.publish.xml" />
   </ItemGroup>
 </Project>
