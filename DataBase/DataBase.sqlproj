@@ -59,18 +59,32 @@
     <Folder Include="Procedures" />
     <Folder Include="Triggers" />
     <Folder Include="Tables" />
-    <Folder Include="Tables\Tables many_to_many" />
+    <Folder Include="Tables\Tables MTM" />
     <Folder Include="Scripts" />
     <Folder Include="Views" />
     <Folder Include="Fonctions" />
+    <Folder Include="Procedures\Users" />
+    <Folder Include="Procedures\Login" />
+    <Folder Include="Tables\Actions" />
+    <Folder Include="Procedures\User_Status" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Classes.sql" />
-    <Build Include="Tables\Students.sql" />
     <Build Include="Fonctions\PostSalt.sql" />
     <Build Include="Fonctions\PreSalt.sql" />
-    <Build Include="Tables\Professors.sql" />
-    <Build Include="Tables\Admins.sql" />
+    <Build Include="Procedures\Users\CreateUser.sql" />
+    <Build Include="Procedures\Users\UpdateUser.sql" />
+    <Build Include="Procedures\Users\DeleteUser.sql" />
+    <Build Include="Triggers\DeleteStudentTrigger.sql" />
+    <Build Include="Procedures\Login\Login.sql" />
+    <Build Include="Tables\Actions\AuthorizedActions.sql" />
+    <Build Include="Tables\Users.sql" />
+    <Build Include="Tables\Status.sql" />
+    <Build Include="Tables\Tables MTM\User_Status.sql" />
+    <Build Include="Procedures\User_Status\CreateUserStatus.sql" />
+    <Build Include="Procedures\User_Status\DeleteUserStatus.sql" />
+    <Build Include="Views\ViewUsers.sql" />
+    <Build Include="Tables\Contacts.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />
