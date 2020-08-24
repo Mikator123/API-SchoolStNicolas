@@ -13,7 +13,8 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		EXEC dbo.UpdateSchoolEvent null,@name, @description, @date
+		DECLARE @id int = (SELECT Id FROM SchoolEvents WHERE EventName = @name)
+		EXEC dbo.UpdateSchoolEvent @id,@name, @description, @date
 	END
 END
 	

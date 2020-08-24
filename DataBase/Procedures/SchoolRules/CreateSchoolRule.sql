@@ -12,6 +12,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		EXEC dbo.UpdateSchoolRule null,@name, @description
+		DECLARE @id int = (SELECT Id FROM SchoolRules WHERE RuleName = @name)
+		EXEC dbo.UpdateSchoolRule @id,@name, @description
 	END
 END

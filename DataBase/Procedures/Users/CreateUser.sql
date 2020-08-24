@@ -19,7 +19,16 @@
 
 AS
 BEGIN
-
+	DECLARE @testId INT = (SELECT Id FROM Users WHERE NationalNumber = @nationalNumber and IsActive = 0 and Birthdate = @birthdate)
+	IF (@testId != null)
+	BEGIN
+		UPDATE Users SET
+			IsActive = 1,
+			StartDate = getdate()
+			WHERE Id = @testId
+	END
+	ELSE
+	BEGIN
 	DECLARE @login nvarchar(50) = SUBSTRING(UPPER(@firstName), 1,1)+''+SUBSTRING(UPPER(@lastName), 1,1)+''+SUBSTRING(LOWER(@lastName),2, LEN(@lastName));
 
 	IF NOT EXISTS (SELECT [Login] from Users where [Login] = @login)
@@ -57,4 +66,5 @@ BEGIN
 
 	DECLARE @id int = (SELECT Id FROM Users WHERE NationalNumber = @nationalNumber);
 	RETURN @id
+	END
 END

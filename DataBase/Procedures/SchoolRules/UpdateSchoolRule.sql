@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateSchoolRule]
-	@id int null,
+	@id int,
 	@name nvarchar(50),
 	@descritpion nvarchar(max)
 AS

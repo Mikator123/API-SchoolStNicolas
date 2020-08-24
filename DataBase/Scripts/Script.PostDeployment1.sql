@@ -1,18 +1,20 @@
-﻿/*HARDCODE des status possibles*/
+﻿/*HARDCODE STATUS*/
 INSERT INTO [Status] (StatusName)
-	VALUES
-	('Student'),
-	('Professor'),
-	('Manager'),
-	('Admin');
+	VALUES ('Student'),('Professor'),('Manager'),('Admin');
+
+
+/*HARDCODE des SchoolYearCategories*/
+INSERT INTO SchoolYearCategoryNames
+	VALUES ('Acceuil'),('Maternelle'),('Primaire');
 
 /*INSERT DES CLASSES*/
-INSERT INTO Classes (ClassName, ClassInfos) 
+INSERT INTO Classes (ClassName, ClassDescription, SchoolYear, SchoolYearCategoryId) 
 	VALUES
-	('1A', 'Classe rouge'),
-	('2A', 'Classe jaune'),
-	('3A', 'Classe mauve'),
-	('4A', 'Classe bleue');
+	('3A', 'Classe rouge', 3, 2),
+	('4A', 'Classe jaune', 4, 3),
+	('5A', 'Classe mauve', 5, 3),
+	('5B', 'Classe bleue', 5, 3);
+
 
 /*INSERT PROFESSORS*/
 INSERT INTO Users (NationalNumber, LastName, FirstName, Birthdate, AdCity, AdPostalCode, 
@@ -149,6 +151,97 @@ EXEC dbo.CreateSchoolEvent 'Noel','Chants à l''église','2020-12-25';
 
 EXEC dbo.CreateSchoolRule 'Commandement 6', 'TU NE ­COMMETTRAS PAS D’ADULTÈRE !';
 EXEC dbo.CreateSchoolRule 'Commandement 5', 'TU NE ­TUERAS PAS !';
+
+/*INSERT TRIMESTRIALINFO*/
+
+EXEC dbo.CreateTrimestrialInfo 'il a bien bossé !', 1,7;
+EXEC dbo.CreateTrimestrialInfo 'il a mal bossé !', 1,7;
+EXEC dbo.CreateTrimestrialInfo 'il a mal bossé !', 1,8;
+EXEC dbo.CreateTrimestrialInfo 'il a bien bossé !', 1,8;
+EXEC dbo.CreateTrimestrialInfo 'Elle a bien bossé !', 1,22;
+
+/*INSERT LUNCHES*/
+
+EXEC dbo.CreateLunch 'Boulette sauce tomate','avec son accompagnement de pomme de terre bio !','2020-10-03';
+EXEC dbo.CreateLunch 'Poulet mariné','avec son accompagnement de frites bio !','2020-10-04';
+EXEC dbo.CreateLunch 'Spaggetti bolognaise','Sans accompagnement','2020-10-05';
+EXEC dbo.CreateUserLunch 7,1;
+EXEC dbo.CreateUserLunch 7,2;
+EXEC dbo.CreateUserLunch 7,3;
+EXEC dbo.CreateUserLunch 22,1;
+EXEC dbo.CreateUserLunch 22,2;
+EXEC dbo.CreateUserLunch 22,3;
+EXEC dbo.CreateUserLunch 21,2;
+EXEC dbo.CreateUserLunch 8,3;
+
+/*INSERT CATEGORIES*/
+
+EXEC dbo.CreateCategory 'Français';
+EXEC dbo.CreateCategory 'Anglais';
+EXEC dbo.CreateCategory 'Néerlandais';
+EXEC dbo.CreateCategory 'Mathématique';
+EXEC dbo.CreateCategory 'Géographie';
+EXEC dbo.CreateCategory 'Histoire';
+
+/*INSERT TESTRESULTS*/
+					/*Student 1 / CAT 1*/
+EXEC dbo.CreateTestResult '2020-08-24',12, 'test passé avec succès !', 1, 7;
+EXEC dbo.CreateTestResult '2020-09-24',15, 'test passé avec succès !', 1, 7;
+EXEC dbo.CreateTestResult '2020-10-24',9, 'test passé avec succès !', 1, 7;
+EXEC dbo.CreateTestResult '2020-11-24',4, 'test passé avec succès !', 1, 7;
+EXEC dbo.CreateTestResult '2020-12-24',19, 'test passé avec succès !', 1, 7;
+					/*Student 1 / CAT 2*/
+EXEC dbo.CreateTestResult '2020-08-24',0, 'test passé avec succès !', 2, 7;
+EXEC dbo.CreateTestResult '2020-09-24',5, 'test passé avec succès !', 2, 7;
+EXEC dbo.CreateTestResult '2020-10-24',8, 'test passé avec succès !', 2, 7;
+EXEC dbo.CreateTestResult '2020-11-24',12, 'test passé avec succès !', 2, 7;
+EXEC dbo.CreateTestResult '2020-12-24',15, 'test passé avec succès !', 2, 7;
+					/*Student 1 / CAT 4*/
+EXEC dbo.CreateTestResult '2020-08-24',19, 'test passé avec succès !', 4, 7;
+EXEC dbo.CreateTestResult '2020-09-24',17, 'test passé avec succès !', 4, 7;
+EXEC dbo.CreateTestResult '2020-10-24',13, 'test passé avec succès !', 4, 7;
+EXEC dbo.CreateTestResult '2020-11-24',15, 'test passé avec succès !', 4, 7;
+EXEC dbo.CreateTestResult '2020-12-24',16, 'test passé avec succès !', 4, 7;
+					/*Student 1 / CAT 5*/
+EXEC dbo.CreateTestResult '2020-08-24',4, 'test passé avec succès !', 5, 7;
+EXEC dbo.CreateTestResult '2020-09-24',9, 'test passé avec succès !', 5, 7;
+EXEC dbo.CreateTestResult '2020-10-24',12, 'test passé avec succès !', 5, 7;
+EXEC dbo.CreateTestResult '2020-11-24',9, 'test passé avec succès !', 5, 7;
+EXEC dbo.CreateTestResult '2020-12-24',19, 'test passé avec succès !', 5, 7;
+
+					/*Student 2 / CAT 1*/
+EXEC dbo.CreateTestResult '2020-08-24',0, 'test passé avec succès !', 1, 8;
+EXEC dbo.CreateTestResult '2020-09-24',20, 'test passé avec succès !', 1, 8;
+EXEC dbo.CreateTestResult '2020-10-24',15, 'test passé avec succès !', 1, 8;
+EXEC dbo.CreateTestResult '2020-11-24',12, 'test passé avec succès !', 1, 8;
+EXEC dbo.CreateTestResult '2020-12-24',17, 'test passé avec succès !', 1, 8;
+					/*Student 2 / CAT 2*/
+EXEC dbo.CreateTestResult '2020-08-24',18, 'test passé avec succès !', 2, 8;
+EXEC dbo.CreateTestResult '2020-09-24',15, 'test passé avec succès !', 2, 8;
+EXEC dbo.CreateTestResult '2020-10-24',16, 'test passé avec succès !', 2, 8;
+EXEC dbo.CreateTestResult '2020-11-24',14, 'test passé avec succès !', 2, 8;
+EXEC dbo.CreateTestResult '2020-12-24',17, 'test passé avec succès !', 2, 8;
+					/*Student 2 / CAT 4*/
+EXEC dbo.CreateTestResult '2020-08-24',10, 'test passé avec succès !', 4, 8;
+EXEC dbo.CreateTestResult '2020-09-24',11, 'test passé avec succès !', 4, 8;
+EXEC dbo.CreateTestResult '2020-10-24',13, 'test passé avec succès !', 4, 8;
+EXEC dbo.CreateTestResult '2020-11-24',9, 'test passé avec succès !', 4, 8;
+EXEC dbo.CreateTestResult '2020-12-24',12, 'test passé avec succès !', 4, 8;
+					/*Student 2 / CAT 5*/
+EXEC dbo.CreateTestResult '2020-08-24',12, 'test passé avec succès !', 5, 8;
+EXEC dbo.CreateTestResult '2020-09-24',9, 'test passé avec succès !', 5, 8;
+EXEC dbo.CreateTestResult '2020-10-24',17, 'test passé avec succès !', 5, 8;
+EXEC dbo.CreateTestResult '2020-11-24',11, 'test passé avec succès !', 5, 8;
+EXEC dbo.CreateTestResult '2020-12-24',5, 'test passé avec succès !', 5, 8;
+
+/*INSERT QUESTIONS*/
+/*CAT 4 TRIM 1 SCHOOLYEAR 3eme MAT*/
+EXEC dbo.CreateQuestion 'Que fait 2+2 ?','4','2+2 = 4','2 pommes + 1 pomme = ... + 1 pomme = ... ?','2 pommes + 1 pomme = 3 pommes + 1 pomme = ... ?',3,4,1,2;
+EXEC dbo.CreateQuestion 'Que fait 3-2 ?','1','3-2 = 2','3 poires - 1 poire = ... - 1 poire = ... ?','2 pommes + 1 pomme = 3 pommes + 1 pomme = ... ?',3,4,1,2;
+EXEC dbo.CreateQuestion 'Que fait 1+4 ?','5','1+4 = 4','4 oranges + 1 orange = ...',null,3,4,1,2;
+/*INSERT DOCUMENTS*/
+
+
 
 
 

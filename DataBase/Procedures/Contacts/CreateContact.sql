@@ -14,6 +14,7 @@
 	@personnalNote nvarchar(MAX)
 AS
 BEGIN
+
 	INSERT INTO Contacts 
 		(NationalNumber, LastName, FirstName, Birthdate, AdCity, AdPostalCode, AdStreet, AdNumber, AdBox, MobilePhone,
 		Gender, Email, PersonnalNote)

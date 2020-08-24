@@ -42,4 +42,144 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="NbrOfPersons" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="6841afed-a093-4750-a3bd-c3e21d713522" ChangeDateTime="08/24/2020 12:10:48">
+    <Property Name="ElementName" Value="[dbo].[Classes].[ClassYear]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Classes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ClassYearSub" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8d785f37-1b7b-4d45-9e9d-3b5069feb7db" ChangeDateTime="08/24/2020 12:10:55">
+    <Property Name="ElementName" Value="[dbo].[Classes].[ClassYearSub]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Classes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ClassYear" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b32c8e6f-4009-49a1-a7c9-8823a6a3fb05" ChangeDateTime="08/24/2020 12:44:45">
+    <Property Name="ElementName" Value="[dbo].[Questions].[ClassId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Questions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SchoolYearId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f1c07434-902b-4433-9b15-5a7b65ab61d5" ChangeDateTime="08/24/2020 13:06:46">
+    <Property Name="ElementName" Value="[dbo].[FK_Classes_Classes]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Classes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Classes_SchoolYears]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="60d187be-503a-4f7e-adef-07f282a9895b" ChangeDateTime="08/24/2020 13:18:07">
+    <Property Name="ElementName" Value="[dbo].[SchoolYears].[SchoolYearCategory]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SchoolYears]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SchoolYearCategoryId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="63ac2a86-2b42-4172-812a-06b86e105e72" ChangeDateTime="08/24/2020 13:51:29">
+    <Property Name="ElementName" Value="[dbo].[SchoolYears].[SchoolYearName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SchoolYears]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SchoolYearDescription" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6638a9f8-2b8a-4fc8-a181-c454260a3698" ChangeDateTime="08/24/2020 13:58:37">
+    <Property Name="ElementName" Value="[dbo].[SchoolYears].[TrimesterId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SchoolYears]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="YearId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0d7c9136-6f03-472d-af63-6dce327ca541" ChangeDateTime="08/24/2020 13:59:05">
+    <Property Name="ElementName" Value="[dbo].[FK_SchoolYears_YearTrimester]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[SchoolYears]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_SchoolYears_SchoolYearCategoryYears]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b72b77f0-3aeb-4c2c-8caf-09da75cd01ed" ChangeDateTime="08/24/2020 13:59:13">
+    <Property Name="ElementName" Value="[dbo].[FK_SchoolYears_SchoolYearCategories]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[SchoolYears]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_SchoolYears_SchoolYearCategoryNames]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3a4dc4fe-99df-4cc9-bbb4-da7c27535ec0" ChangeDateTime="08/24/2020 13:59:55">
+    <Property Name="ElementName" Value="[dbo].[SchoolYears].[CategoryId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SchoolYears]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NameId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c0a4b7a7-b81f-43e3-a2b7-556f720ab74e" ChangeDateTime="08/24/2020 14:32:18">
+    <Property Name="ElementName" Value="[dbo].[FK_Documents_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Documents]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Documents_Categories]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="abfe27c0-d266-40d4-946d-9f2be0800e30" ChangeDateTime="08/24/2020 18:10:07">
+    <Property Name="ElementName" Value="[dbo].[WorkingProfileDocuments].[SchoolYearCategoryId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WorkingProfileDocuments]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SchoolYearCategoryNameId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5903bac3-dcb0-4063-9a13-eee3759846c7" ChangeDateTime="08/24/2020 18:10:31">
+    <Property Name="ElementName" Value="[dbo].[WorkingProfileDocuments].[SchoolYearCategoryNameId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WorkingProfileDocuments]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SchoolYearNameId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="09695325-a59b-49c8-9d08-c3536d68f55f" ChangeDateTime="08/24/2020 18:10:58">
+    <Property Name="ElementName" Value="[dbo].[FK_Questions_SchoolYears]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Questions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Questions_SchoolYearsCategoryYears]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bf9a3cc9-6bec-4807-870f-e800259b647a" ChangeDateTime="08/24/2020 18:11:08">
+    <Property Name="ElementName" Value="[dbo].[FK_Questions_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Questions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Questions_SchoolYearCategoryNames]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="66e7a480-6352-4270-ba95-ea79d5dd4198" ChangeDateTime="08/24/2020 18:11:12">
+    <Property Name="ElementName" Value="[dbo].[FK_Questions_SchoolYearsCategoryYears]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Questions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Questions_SchoolYearCategoryYears]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8963eba6-c9bc-4113-a975-d9740d541771" ChangeDateTime="08/24/2020 18:13:40">
+    <Property Name="ElementName" Value="[dbo].[Classes].[SchoolYearId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Classes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SchoolYear" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5560f5a8-a535-42a3-ac1d-caca239dbdb0" ChangeDateTime="08/24/2020 18:13:52">
+    <Property Name="ElementName" Value="[dbo].[Questions].[SchoolYearId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Questions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SchoolYear" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0836aa28-6837-41ce-a4ca-8c54a5921870" ChangeDateTime="08/24/2020 18:14:33">
+    <Property Name="ElementName" Value="[dbo].[WorkingProfileDocuments].[SchoolYearId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WorkingProfileDocuments]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SchoolYear" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6e9e06a8-2fe2-489e-81a4-a20d376d18dc" ChangeDateTime="08/24/2020 18:27:19">
+    <Property Name="ElementName" Value="[dbo].[TrimestrialInfos].[YearQuarter]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TrimestrialInfos]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Trimester" />
+  </Operation>
 </Operations>

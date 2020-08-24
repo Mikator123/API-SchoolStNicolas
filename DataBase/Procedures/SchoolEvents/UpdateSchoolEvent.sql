@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateSchoolEvent]
-	@id int null,
+	@id int,
 	@name nvarchar(50),
 	@descritpion nvarchar(max),
 	@date date
