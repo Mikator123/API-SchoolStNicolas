@@ -1,4 +1,4 @@
-﻿CREATE TRIGGER [dbo].[DeleteStudentTrigger]
+﻿CREATE TRIGGER [dbo].[DeleteUserTrigger]
 ON Users
 INSTEAD OF DELETE
 AS

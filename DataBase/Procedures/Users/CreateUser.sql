@@ -56,5 +56,5 @@ BEGIN
 		END
 
 	DECLARE @id int = (SELECT Id FROM Users WHERE NationalNumber = @nationalNumber);
-	RETURN @id											
+	RETURN @id
 END

@@ -14,4 +14,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Photo" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="9dd69532-3503-47d7-baec-d1f717016601" ChangeDateTime="08/24/2020 08:05:20">
+    <Property Name="ElementName" Value="[dbo].[SchoolRules].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SchoolRules]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RuleName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5b6d4fee-07b7-440a-bddb-a47c2ffaae74" ChangeDateTime="08/24/2020 08:12:03">
+    <Property Name="ElementName" Value="[dbo].[SchoolRules].[IsActiv]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SchoolRules]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsActive" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dca36aa1-11dc-4110-9023-27119c9fd4d9" ChangeDateTime="08/24/2020 08:12:59">
+    <Property Name="ElementName" Value="[dbo].[Trigger_SchoolRules]" />
+    <Property Name="ElementType" Value="SqlDmlTrigger" />
+    <Property Name="ParentElementName" Value="[dbo].[SchoolRules]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[DeleteSchoolRulesTrigger]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="348e1e34-87d4-4ebc-b43a-e7d5e52e1c3f" ChangeDateTime="08/24/2020 08:31:17">
+    <Property Name="ElementName" Value="[dbo].[SchoolEvents].[EventNbrOfPersons]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SchoolEvents]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NbrOfPersons" />
+  </Operation>
 </Operations>

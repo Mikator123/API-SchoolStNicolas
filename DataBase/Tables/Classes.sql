@@ -6,3 +6,4 @@
 
     CONSTRAINT [PK_Classes] PRIMARY KEY ([Id]), 
 )
+

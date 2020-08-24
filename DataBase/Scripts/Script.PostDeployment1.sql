@@ -1,10 +1,12 @@
-﻿INSERT INTO [Status] (StatusName)
+﻿/*HARDCODE des status possibles*/
+INSERT INTO [Status] (StatusName)
 	VALUES
 	('Student'),
 	('Professor'),
 	('Manager'),
 	('Admin');
 
+/*INSERT DES CLASSES*/
 INSERT INTO Classes (ClassName, ClassInfos) 
 	VALUES
 	('1A', 'Classe rouge'),
@@ -105,6 +107,49 @@ EXEC dbo.CreateUserStatus 23,1;
 EXEC dbo.CreateUserStatus 24,1;
 EXEC dbo.CreateUserStatus 25,1;
 EXEC dbo.CreateUserStatus 26,1;
+
+/*INSERT CONTACTS + LIENS AVEC USERS*/
+EXEC dbo.CreateContact '1111','Père1','Papa1','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Pere1@papa.com','un papa !';
+EXEC dbo.CreateUserContact 7,1;
+EXEC dbo.CreateUserContact 8,1;
+EXEC dbo.CreateContact '11112','Père2','Papa2','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Pere2@papa.com','un papa !';
+EXEC dbo.CreateUserContact 9,2;
+EXEC dbo.CreateContact '11113','Père3','Papa3','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Pere3@papa.com','un papa !';
+EXEC dbo.CreateUserContact 10,3;
+
+EXEC dbo.CreateContact '11114','Père4','Papa4','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Pere4@papa.com','un papa !';
+EXEC dbo.CreateUserContact 11,4;
+
+EXEC dbo.CreateContact '11115','Père5','Papa5','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Pere5@papa.com','un papa !';
+EXEC dbo.CreateUserContact 12,5;
+
+EXEC dbo.CreateContact '11116','Mère1','Maman1','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','F','Mere1@maman.com','une maman !';
+EXEC dbo.CreateUserContact 8,6;
+EXEC dbo.CreateUserContact 7,6;
+
+EXEC dbo.CreateContact '11117','Mère2','Maman2','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','F','Mere2@maman.com','une maman !';
+EXEC dbo.CreateUserContact 13,7;
+
+EXEC dbo.CreateContact '11118','Mère3','Maman3','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','F','Mere3@maman.com','une maman !';
+EXEC dbo.CreateUserContact 15,8;
+
+EXEC dbo.CreateContact '11119','Mère4','Maman4','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','F','Mere4@maman.com','une maman !';
+EXEC dbo.CreateUserContact 18,9;
+
+EXEC dbo.CreateContact '111110','Mère5','Maman5','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','F','Mere5@maman.com','une maman !';
+EXEC dbo.CreateUserContact 21,10;
+EXEC dbo.CreateUserContact 21,10;
+
+/*INSERT EVENTS*/
+EXEC dbo.CreateSchoolEvent 'Fancyfair','ça va être fun dis donc !','2021-06-01';
+EXEC dbo.CreateSchoolEvent 'Rentrée scolaire','blablabla','2020-09-02';
+EXEC dbo.CreateSchoolEvent 'Noel','Chants à l''église','2020-12-25';
+
+/*INSERT RULES*/
+
+EXEC dbo.CreateSchoolRule 'Commandement 6', 'TU NE ­COMMETTRAS PAS D’ADULTÈRE !';
+EXEC dbo.CreateSchoolRule 'Commandement 5', 'TU NE ­TUERAS PAS !';
+
 
 
 

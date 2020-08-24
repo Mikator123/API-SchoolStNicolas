@@ -67,6 +67,10 @@
     <Folder Include="Procedures\Login" />
     <Folder Include="Tables\Actions" />
     <Folder Include="Procedures\User_Status" />
+    <Folder Include="Procedures\Contacts" />
+    <Folder Include="Procedures\User_Contact" />
+    <Folder Include="Procedures\SchoolRules" />
+    <Folder Include="Procedures\SchoolEvents" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Classes.sql" />
@@ -75,7 +79,7 @@
     <Build Include="Procedures\Users\CreateUser.sql" />
     <Build Include="Procedures\Users\UpdateUser.sql" />
     <Build Include="Procedures\Users\DeleteUser.sql" />
-    <Build Include="Triggers\DeleteStudentTrigger.sql" />
+    <Build Include="Triggers\DeleteUserTrigger.sql" />
     <Build Include="Procedures\Login\Login.sql" />
     <Build Include="Tables\Actions\AuthorizedActions.sql" />
     <Build Include="Tables\Users.sql" />
@@ -85,11 +89,34 @@
     <Build Include="Procedures\User_Status\DeleteUserStatus.sql" />
     <Build Include="Views\ViewUsers.sql" />
     <Build Include="Tables\Contacts.sql" />
+    <Build Include="Procedures\Contacts\CreateContact.sql" />
+    <Build Include="Procedures\Contacts\UpdateContact.sql" />
+    <Build Include="Procedures\Contacts\DeleteContact.sql" />
+    <Build Include="Triggers\DeleteContactTrigger.sql" />
+    <Build Include="Tables\Tables MTM\User_Contact.sql" />
+    <Build Include="Procedures\User_Contact\CreateUserContact.sql" />
+    <Build Include="Procedures\User_Contact\DeleteUserContact.sql" />
+    <Build Include="Views\ViewContacts.sql" />
+    <Build Include="Tables\SchoolRules.sql" />
+    <Build Include="Procedures\SchoolRules\CreateSchoolRule.sql" />
+    <Build Include="Procedures\SchoolRules\DeleteSchoolRule.sql" />
+    <Build Include="Triggers\DeleteSchoolRulesTrigger.sql" />
+    <Build Include="Tables\SchoolEvents.sql" />
+    <Build Include="Procedures\SchoolRules\UpdateSchoolRule.sql" />
+    <Build Include="Procedures\SchoolEvents\CreateSchoolEvent.sql" />
+    <Build Include="Procedures\SchoolEvents\UpdateSchoolEvent.sql" />
+    <Build Include="Procedures\SchoolEvents\DeleteSchoolEvent.sql" />
+    <Build Include="Triggers\DeleteSchoolEventsTrigger.sql" />
+    <Build Include="Views\ViewSchoolRules.sql" />
+    <Build Include="Views\ViewSchoolEvents.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataBase.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DataBase.refactorlog" />
   </ItemGroup>
 </Project>

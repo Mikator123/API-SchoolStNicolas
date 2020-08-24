@@ -13,6 +13,8 @@
     [MobilePhone] NVARCHAR(50) NULL, 
     [Gender] NVARCHAR(5) NOT NULL, 
     [IsActive] BIT NOT NULL DEFAULT 1, 
+    [Email] nvarchar(320) NULL,
+    [PersonnalNote] nvarchar(MAX) NULL,
     CONSTRAINT [PK_Contacts] PRIMARY KEY ([Id]), 
     CONSTRAINT [CK_Contacts_Gender] CHECK (Gender = 'M' or Gender = 'F' or Gender = 'Both'),  
 
