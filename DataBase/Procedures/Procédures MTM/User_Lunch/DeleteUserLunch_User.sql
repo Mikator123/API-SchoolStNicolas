@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[DeleteUserLunch]
+﻿CREATE PROCEDURE [dbo].[DeleteUserLunch_User]
 	@id int
 AS
 BEGIN

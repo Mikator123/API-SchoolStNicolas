@@ -24,9 +24,6 @@
     [ClassId] INT NULL,
 
     CONSTRAINT [PK_Users] PRIMARY KEY ([Id]), 
-    CONSTRAINT [CK_Users_StartDate_EndDate] CHECK (StartDate < EndDate), 
-    CONSTRAINT [CK_Users_Gender] CHECK (Gender = 'M' or Gender = 'F' or Gender = 'Both'),  
-    CONSTRAINT [CK_Users_Birthdate] CHECK (Birthdate < StartDate), 
     CONSTRAINT [UK_Users_NationalNumber] UNIQUE (NationalNumber), 
     CONSTRAINT [FK_Users_ClassId] FOREIGN KEY (ClassId) REFERENCES Classes(Id)
 )

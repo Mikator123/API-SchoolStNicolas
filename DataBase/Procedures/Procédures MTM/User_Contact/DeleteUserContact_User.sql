@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[DeleteUserContact]
+﻿CREATE PROCEDURE [dbo].[DeleteUserContact_User]
 	@userId int
 AS
 	BEGIN

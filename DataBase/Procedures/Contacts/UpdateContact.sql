@@ -12,7 +12,7 @@
 	@mobilePhone nvarchar(50),
 	@gender nvarchar(5),
 	@email nvarchar(320),
-	@personnalNote nvarchar(MAX)
+	@personalNote nvarchar(MAX)
 AS
 BEGIN
 	UPDATE Contacts SET
@@ -28,6 +28,6 @@ BEGIN
 		MobilePhone = @mobilePhone,
 		Gender = @gender,
 		Email = @email,
-		PersonnalNote = @personnalNote
+		PersonalNote = @personalNote
 		WHERE Id = @id
 END

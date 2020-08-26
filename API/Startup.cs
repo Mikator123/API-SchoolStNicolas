@@ -1,15 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Data.Common;
+using System.Data.SqlClient;
+using API.Utils.RSA;
+using DAL.Services.Repositories;
+using DAL.Services.Repositories.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using ToolBoxDB;
 
 namespace API
 {
@@ -25,7 +24,22 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            IConfigurationSection dbSection = Configuration.GetSection("DbConnectionSettings");
+            DbConnectionSettings dbConnectionSettings = dbSection.Get<DbConnectionSettings>();
+            string connectionString = dbSection.Get<DbConnectionSettings>().ConnectionString;
+
+
             services.AddControllers();
+            services.AddSingleton<KeyGenerator>();
+            services.AddSingleton<DbProviderFactory>(sp => SqlClientFactory.Instance);
+            services.AddSingleton(sp => new ConnectionStringObj(connectionString));
+            services.AddSingleton<Connection>();
+            //REPOSITORIES
+            services.AddSingleton<UserRepository>();
+            services.AddSingleton<ClassRepository>();
+            services.AddSingleton<ContactRepository>();
+            services.AddSingleton<StatusRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

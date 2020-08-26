@@ -11,16 +11,16 @@
 	@mobilePhone nvarchar(50),
 	@gender nvarchar(5),
 	@email nvarchar(320),
-	@personnalNote nvarchar(MAX)
+	@personalNote nvarchar(MAX)
 AS
 BEGIN
 
 	INSERT INTO Contacts 
 		(NationalNumber, LastName, FirstName, Birthdate, AdCity, AdPostalCode, AdStreet, AdNumber, AdBox, MobilePhone,
-		Gender, Email, PersonnalNote)
+		Gender, Email, PersonalNote)
 		VALUES
 			(@nationalNumber, @lastName, @firstName, @birthdate, @adCity, @adPostalCode, @adStreet, @adNumber, @adBox, @mobilePhone,
-			@gender, @email, @personnalNote)
+			@gender, @email, @personalNote)
 END	
 BEGIN
 	DECLARE @id INT = (SELECT Id FROM Contacts WHERE NationalNumber = @nationalNumber)

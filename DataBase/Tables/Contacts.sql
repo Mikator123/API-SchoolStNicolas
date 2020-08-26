@@ -14,8 +14,8 @@
     [Gender] NVARCHAR(5) NOT NULL, 
     [IsActive] BIT NOT NULL DEFAULT 1, 
     [Email] nvarchar(320) NULL,
-    [PersonnalNote] nvarchar(MAX) NULL,
+    [PersonalNote] nvarchar(MAX) NULL,
     CONSTRAINT [PK_Contacts] PRIMARY KEY ([Id]), 
-    CONSTRAINT [CK_Contacts_Gender] CHECK (Gender = 'M' or Gender = 'F' or Gender = 'Both'),  
+    CONSTRAINT [UK_Contacts_NationalNumber] UNIQUE (NationalNumber) 
 
 )

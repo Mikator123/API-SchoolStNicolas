@@ -124,14 +124,14 @@
     <Build Include="Tables\Lunches.sql" />
     <Build Include="Tables\Tables MTM\User_Lunch.sql" />
     <Build Include="Procedures\Procédures MTM\User_Contact\CreateUserContact.sql" />
-    <Build Include="Procedures\Procédures MTM\User_Contact\DeleteUserContact.sql" />
+    <Build Include="Procedures\Procédures MTM\User_Contact\DeleteUserContact_User.sql" />
     <Build Include="Procedures\Procédures MTM\User_Status\CreateUserStatus.sql" />
     <Build Include="Procedures\Procédures MTM\User_Status\DeleteUserStatus.sql" />
     <Build Include="Procedures\Lunches\CreateLunch.sql" />
     <Build Include="Procedures\Lunches\UpdateLunch.sql" />
     <Build Include="Procedures\Lunches\DeleteLunch.sql" />
     <Build Include="Procedures\Procédures MTM\User_Lunch\CreateUserLunch.sql" />
-    <Build Include="Procedures\Procédures MTM\User_Lunch\DeleteUserLunch.sql" />
+    <Build Include="Procedures\Procédures MTM\User_Lunch\DeleteUserLunch_User.sql" />
     <Build Include="Tables\Categories.sql" />
     <Build Include="Procedures\Categories\CreateCategory.sql" />
     <Build Include="Procedures\Categories\UpdateCategory.sql" />
@@ -149,6 +149,12 @@
     <Build Include="Procedures\Documents\WorkingProfileDocuments\CreateWorkingProfileDocument.sql" />
     <Build Include="Procedures\Documents\WorkingProfileDocuments\UpdateWorkingProfileDocument.sql" />
     <Build Include="Procedures\Documents\WorkingProfileDocuments\DeleteWorkingProfileDocument.sql" />
+    <Build Include="Procedures\Procédures MTM\User_Contact\DeleteUserContact_Contact.sql" />
+    <Build Include="Procedures\Procédures MTM\User_Lunch\DeleteUserLunch_Lunch.sql" />
+    <Build Include="Procedures\Procédures MTM\User_Lunch\DeleteUserLunch_OneByOne.sql" />
+    <Build Include="Procedures\Procédures MTM\User_Status\DeleteUserStatus_OneByOne.sql" />
+    <Build Include="Procedures\Procédures MTM\User_Contact\DeleteUserContact_OneByOne.sql" />
+    <Build Include="Fonctions\StatusEnumeration.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />

@@ -14,7 +14,6 @@
 	@photo nvarchar(300),
 	@personalNote nvarchar(MAX),
 	@startDate date,
-	@endDate date,
 	@email nvarchar(320),
 	@classId int,
 	@password nvarchar(50)
@@ -42,7 +41,6 @@ BEGIN
 				Photo = @photo,
 				PersonalNote = @personalNote,
 				StartDate = @startDate,
-				EndDate = @endDate,
 				Email = @email,
 				ClassId = @classId,
 				[Password] = HASHBYTES('SHA2_512',dbo.PreSalt()+@password+dbo.PostSalt())
@@ -69,7 +67,6 @@ BEGIN
 				Photo = @photo,
 				PersonalNote = @personalNote,
 				StartDate = @startDate,
-				EndDate = @endDate,
 				Email = @email,
 				ClassId = @classId,
 				[Password] = HASHBYTES('SHA2_512',dbo.PreSalt()+@password+dbo.PostSalt()),
@@ -102,7 +99,6 @@ BEGIN
 							Photo = @photo,
 							PersonalNote = @personalNote,
 							StartDate = @startDate,
-							EndDate = @endDate,
 							Email = @email,
 							ClassId = @classId,
 							[Password] = HASHBYTES('SHA2_512',dbo.PreSalt()+@password+dbo.PostSalt()),
