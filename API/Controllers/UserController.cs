@@ -61,12 +61,54 @@ namespace API.Controllers
             {
                 case (UserCodes.Success): 
                     return Ok();
-                case (UserCodes.ClassIdDoenstExist):
+                case (UserCodes.ClassId_NotFound):
                     return Problem("A valid ClassId is needed.", statusCode: (int)HttpStatusCode.BadRequest);
-                case (UserCodes.NationalNumberExist):
-                    return Problem("NationalNumber allready exist.", statusCode: (int)HttpStatusCode.BadRequest);
+                case (UserCodes.NationalNumber_Exist):
+                    return Problem("NationalNumber already exist.", statusCode: (int)HttpStatusCode.BadRequest);
+                case (UserCodes.NullExeption):
+                    return Problem("A mandatory field does not support 'null' value or is missing", statusCode: (int)HttpStatusCode.BadRequest);
+                case (UserCodes.StartDate_Birthdate_Error):
+                    return Problem("Birthdate should be lower than StartDate.", statusCode: (int)HttpStatusCode.BadRequest);
                 default:
-                    return Problem("", statusCode: (int)HttpStatusCode.NotFound);
+                    return Problem("?", statusCode: (int)HttpStatusCode.NotFound);
+            }
+        }
+
+        [HttpPut]
+        [Route("Update")]
+        public IActionResult Update(UserDetailed user)
+        {
+            switch(_userRepo.Update(user.ApiToDal()))
+            {
+                case (UserCodes.Success):
+                    return Ok();
+                case (UserCodes.ClassId_NotFound):
+                    return Problem("A valid ClassId is needed.", statusCode: (int)HttpStatusCode.BadRequest);
+                case (UserCodes.NationalNumber_Exist):
+                    return Problem("NationalNumber already exist.", statusCode: (int)HttpStatusCode.BadRequest);
+                case (UserCodes.UserId_NotFound):
+                    return Problem("A valid UserId is needed.", statusCode: (int)HttpStatusCode.BadRequest);
+                case (UserCodes.NullExeption):
+                    return Problem("A mandatory field does not support 'null' value or is missing", statusCode: (int)HttpStatusCode.BadRequest);
+                case (UserCodes.StartDate_Birthdate_Error):
+                    return Problem("Birthdate should be lower than StartDate.", statusCode: (int)HttpStatusCode.BadRequest);
+                default:
+                    return Problem("?", statusCode: (int)HttpStatusCode.NotFound);
+            }
+        }
+
+        [HttpDelete]
+        [Route("Delete/{Id}")]
+        public IActionResult Delete(int Id)
+        {
+            switch(_userRepo.Delete(Id))
+            {
+                case (UserCodes.Success):
+                    return Ok();
+                case (UserCodes.UserId_NotFound):
+                    return Problem("A valid UserId is needed.", statusCode: (int)HttpStatusCode.BadRequest);
+                default:
+                    return Problem("?", statusCode: (int)HttpStatusCode.NotFound);
             }
         }
     }

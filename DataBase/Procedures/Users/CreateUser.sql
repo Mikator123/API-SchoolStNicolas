@@ -24,7 +24,7 @@ BEGIN
 	BEGIN
 		UPDATE Users SET
 			IsActive = 1,
-			StartDate = getdate()
+			StartDate = @startDate
 			WHERE Id = @testId
 	END
 	ELSE

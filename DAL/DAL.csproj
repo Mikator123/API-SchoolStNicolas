@@ -8,4 +8,9 @@
     <ProjectReference Include="..\..\TOOLBOX\ToolBoxDB\ToolBox.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Repositories\Questions\" />
+    <Folder Include="Services\Repositories\Others\" />
+  </ItemGroup>
+
 </Project>

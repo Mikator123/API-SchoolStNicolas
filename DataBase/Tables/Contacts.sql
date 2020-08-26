@@ -16,6 +16,6 @@
     [Email] nvarchar(320) NULL,
     [PersonalNote] nvarchar(MAX) NULL,
     CONSTRAINT [PK_Contacts] PRIMARY KEY ([Id]), 
-    CONSTRAINT [UK_Contacts_NationalNumber] UNIQUE (NationalNumber) 
+    CONSTRAINT [UK_Contacts_NationalNumber] UNIQUE (NationalNumber)
 
 )

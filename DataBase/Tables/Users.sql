@@ -25,5 +25,6 @@
 
     CONSTRAINT [PK_Users] PRIMARY KEY ([Id]), 
     CONSTRAINT [UK_Users_NationalNumber] UNIQUE (NationalNumber), 
-    CONSTRAINT [FK_Users_ClassId] FOREIGN KEY (ClassId) REFERENCES Classes(Id)
+    CONSTRAINT [FK_Users_ClassId] FOREIGN KEY (ClassId) REFERENCES Classes(Id), 
+    CONSTRAINT [CK_Users_StartDate] CHECK (StartDate > Birthdate),
 )

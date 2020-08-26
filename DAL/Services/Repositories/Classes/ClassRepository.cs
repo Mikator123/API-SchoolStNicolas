@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using ToolBoxDB;
 
-namespace DAL.Services.Repositories
+namespace DAL.Services.Repositories.Classes
 {
     public class ClassRepository : ICRUDRepository<Class>
     {

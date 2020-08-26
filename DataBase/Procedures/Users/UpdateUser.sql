@@ -19,12 +19,11 @@
 	@password nvarchar(50)
 AS 
 BEGIN
-	DECLARE @oldLogin nvarchar(50), @oldLastName nvarchar(50), @oldFirstName nvarchar(50);
-	SET @oldLogin= (SELECT [Login] FROM Users WHERE Id = @id);
+	DECLARE @oldLastName nvarchar(50), @oldFirstName nvarchar(50);
 	SET @oldLastName = (SELECT LastName FROM Users WHERE Id = @id);
 	SET @oldFirstName = (SELECT FirstName FROM Users WHERE Id = @id);
 
-	IF (@oldLastName = @lastName AND SUBSTRING(UPPER(@oldFirstName), 1,1) = SUBSTRING(UPPER(@firstName), 1,1))
+	IF (@oldLastName = @lastName AND @oldFirstName = @firstName)
 		BEGIN	
 		UPDATE Users SET 
 				NationalNumber = @nationalNumber,
