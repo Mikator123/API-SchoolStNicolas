@@ -27,7 +27,7 @@ namespace API.Models.Users
         public DateTime StartDate { get; set; }
         public DateTime? FirstLogin { get; set; }
         public string Email { get; set; }
-        public int ClassId { get; set; }
+        public int? ClassId { get; set; }
         public IEnumerable<Contact> Contacts { get; set; }
         public int StatusCode { get; set; }
     }

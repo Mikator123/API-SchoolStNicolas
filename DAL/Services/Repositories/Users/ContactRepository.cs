@@ -1,4 +1,5 @@
-﻿using DAL.Models;
+﻿using DAL.Enumerations;
+using DAL.Models;
 using DAL.Services.IRepositories;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using ToolBoxDB;
 
 namespace DAL.Services.Repositories.Users
 {
-    public class ContactRepository : ICRUDRepository<Contact> , IManyToManyRepository
+    public class ContactRepository : ICRUDRepository<Contact, DBErrors>, IManyToManyRepository<DBErrors>
     {
         private Connection _connection;
 
@@ -18,7 +19,7 @@ namespace DAL.Services.Repositories.Users
             _connection = connection;
         }
 
-        public int Create(Contact entity)
+        public DBErrors Create(Contact entity)
         {
             Command cmd = new Command("CreateContact", true);
             cmd.AddParameter("nationalNumber", entity.NationalNumber);
@@ -34,26 +35,41 @@ namespace DAL.Services.Repositories.Users
             cmd.AddParameter("gender", entity.Gender);
             cmd.AddParameter("email", entity.Email);
             cmd.AddParameter("personalNote", entity.PersonalNote);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch
+            {
 
-                return _connection.ExecuteNonQuery(cmd);
+            }
+            return DBErrors.Success;
 
 
         }
 
-        public int Create(Func<Contact> apitoDal)
+        public DBErrors Create(Func<Contact> apitoDal)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(int Id)
+        public DBErrors Delete(int Id)
         {
             UnlinkEntityFromALL(Id);
             Command cmd = new Command("DeleteContact", true);
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteNonQuery(cmd);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+
+            }
+            return DBErrors.Success;
         }
 
-        public int Update(Contact entity)
+        public DBErrors Update(Contact entity)
         {
             Command cmd = new Command("UpdateContacts", true);
             cmd.AddParameter("id", entity.Id);
@@ -70,11 +86,19 @@ namespace DAL.Services.Repositories.Users
             cmd.AddParameter("gender", entity.Gender);
             cmd.AddParameter("email", entity.Email);
             cmd.AddParameter("personalNote", entity.PersonalNote);
-            return _connection.ExecuteNonQuery(cmd);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+
+            }
+            return DBErrors.Success;
         }
         public IEnumerable<Contact> GetByUserId(int userId)
         {
-            Command cmd = new Command("SELECT * FROM User_Contact WHERE UserId = @userId");
+            Command cmd = new Command("SELECT * FROM User_Contact UC RIGHT JOIN Contacts C ON C.Id = UC.ContactId WHERE UC.UserId = @userId");
             cmd.AddParameter("userId", userId);
             return _connection.ExecuteReader(cmd, r => new Contact()
             {
@@ -141,27 +165,52 @@ namespace DAL.Services.Repositories.Users
             });
         }
 
-        public int LinkEntityWithUser(int entityId, int userId)
+        public DBErrors LinkEntityWithUser(int entityId, int userId)
         {
             Command cmd = new Command("CreateUserContact", true);
             cmd.AddParameter("userId", userId);
             cmd.AddParameter("contactId", entityId);
-            return _connection.ExecuteNonQuery(cmd);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Message.Contains("PK_User_Contact"))
+                    return DBErrors.LinkAlreadyExist;
+            }
+            return DBErrors.Success;
         }
 
-        public int UnlinkEntityFromUser(int entityId, int userId)
+        public DBErrors UnlinkEntityFromUser(int entityId, int userId)
         {
             Command cmd = new Command("DeleteUserContact_OneByOne", true);
             cmd.AddParameter("userId", userId);
             cmd.AddParameter("contactId", entityId);
-            return _connection.ExecuteNonQuery(cmd);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+
+            }
+            return DBErrors.Success;
         }
 
-        public int UnlinkEntityFromALL(int entityId)
+        public DBErrors UnlinkEntityFromALL(int entityId)
         {
             Command cmd = new Command("DeleteUserContact_Contact", true);
             cmd.AddParameter("contactId", entityId);
-            return _connection.ExecuteNonQuery(cmd);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+
+            }
+            return DBErrors.Success;
         }
     }
 }

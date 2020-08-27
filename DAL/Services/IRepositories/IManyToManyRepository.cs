@@ -4,10 +4,10 @@ using System.Text;
 
 namespace DAL.Services.IRepositories
 {
-    public interface IManyToManyRepository
+    public interface IManyToManyRepository<TEnum>
     {
-        int LinkEntityWithUser(int entityId, int userId);
-        int UnlinkEntityFromUser(int entityId, int userId);
-        int UnlinkEntityFromALL(int entityId);
+        TEnum LinkEntityWithUser(int entityId, int userId);
+        TEnum UnlinkEntityFromUser(int entityId, int userId);
+        TEnum UnlinkEntityFromALL(int entityId);
     }
 }

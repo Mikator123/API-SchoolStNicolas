@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using API.Models.Users;
 using System.Net.NetworkInformation;
 using API.Models;
+using System.Runtime.CompilerServices;
 
 namespace API.Mappers
 {
@@ -59,7 +60,7 @@ namespace API.Mappers
                 Photo = user.Photo,
                 PersonalNote = user.PersonalNote,
                 StartDate = user.StartDate,
-                FirstLogin = user.FirstLogin ?? default,
+                FirstLogin = user.FirstLogin,
                 Email = user.Email,
                 ClassId = user.ClassId,
                 StatusCode = user.StatusCode
@@ -76,8 +77,9 @@ namespace API.Mappers
                 Birthdate = user.Birthdate,
                 Login = user.Login,
                 Gender = user.Gender,
-                FirstLogin = user.FirstLogin ?? default,
-                StatusCode = user.StatusCode
+                FirstLogin = user.FirstLogin,
+                StatusCode = user.StatusCode,
+                LoginError = user.LoginError
                 
             };
         }
@@ -119,6 +121,22 @@ namespace API.Mappers
                 Gender = c.Gender,
                 Email = c.Email,
                 PersonalNote = c.PersonalNote
+            };
+        }
+        public static D.Status ApitoDal(this Status s)
+        {
+            return new D.Status()
+            {
+                Id = s.Id,
+                Name = s.Name,
+            };
+        }
+        public static Status DaltoApi(this D.Status s)
+        {
+            return new Status()
+            {
+                Id = s.Id,
+                Name = s.Name,
             };
         }
     }

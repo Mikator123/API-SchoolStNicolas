@@ -26,10 +26,8 @@ namespace DAL.Models
         public DateTime? EndDate { get; set; }
         public DateTime? FirstLogin { get; set; }
         public string Email { get; set; }
-        public int ClassId { get; set; }
+        public int? ClassId { get; set; }
         public int StatusCode { get; set; }
-
-
-
+        public int LoginError { get; set; }
     }
 }

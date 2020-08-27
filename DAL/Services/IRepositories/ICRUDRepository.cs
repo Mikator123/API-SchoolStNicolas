@@ -4,11 +4,11 @@ using System.Text;
 
 namespace DAL.Services.IRepositories
 {
-    public interface ICRUDRepository<Tentity>
+    public interface ICRUDRepository<Tentity, TEnum>
     {
-        int Create(Tentity entity);
-        int Update(Tentity entity);
-        int Delete(int Id);
+        TEnum Create(Tentity entity);
+        TEnum Update(Tentity entity);
+        TEnum Delete(int Id);
         Tentity GetById(int Id);
         IEnumerable<Tentity> GetAll();
     }

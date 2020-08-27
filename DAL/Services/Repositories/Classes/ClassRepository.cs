@@ -1,4 +1,5 @@
-﻿using DAL.Models;
+﻿using DAL.Enumerations;
+using DAL.Models;
 using DAL.Services.IRepositories;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using ToolBoxDB;
 
 namespace DAL.Services.Repositories.Classes
 {
-    public class ClassRepository : ICRUDRepository<Class>
+    public class ClassRepository : ICRUDRepository<Class, DBErrors>
     {
         private Connection _connection;
 
@@ -18,21 +19,37 @@ namespace DAL.Services.Repositories.Classes
             _connection = connection;
         }
 
-        public int Create(Class entity)
+        public DBErrors Create(Class entity)
         {
             Command cmd = new Command("CreateClass", true);
             cmd.AddParameter("name", entity.Name);
             cmd.AddParameter("description", entity.Description);
             cmd.AddParameter("schoolYear", entity.SchoolYear);
             cmd.AddParameter("schoolYearCategoryId", entity.SchoolYearCategoryId);
-            return _connection.ExecuteNonQuery(cmd);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+
+            }
+            return DBErrors.ClassId_NotFound;
         }
 
-        public int Delete(int Id)
+        public DBErrors Delete(int Id)
         {
             Command cmd = new Command("DeleteClass", true);
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteNonQuery(cmd);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+
+            }
+            return DBErrors.ClassId_NotFound;
         }
 
         public IEnumerable<Class> GetAll()
@@ -76,7 +93,7 @@ namespace DAL.Services.Repositories.Classes
             });
         }
 
-        public int Update(Class entity)
+        public DBErrors Update(Class entity)
         {
             Command cmd = new Command("UpdateClass", true);
             cmd.AddParameter("id", entity.Id);
@@ -84,7 +101,15 @@ namespace DAL.Services.Repositories.Classes
             cmd.AddParameter("description", entity.Description);
             cmd.AddParameter("schoolYear", entity.SchoolYear);
             cmd.AddParameter("schoolYearCategoryId", entity.SchoolYearCategoryId);
-            return _connection.ExecuteNonQuery(cmd);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+
+            }
+            return DBErrors.ClassId_NotFound;
         }
 
 

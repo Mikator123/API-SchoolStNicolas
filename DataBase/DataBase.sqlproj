@@ -156,6 +156,10 @@
     <Build Include="Procedures\Procédures MTM\User_Contact\DeleteUserContact_OneByOne.sql" />
     <Build Include="Fonctions\StatusEnumeration.sql" />
     <Build Include="Procedures\Login\UpdatePassword.sql" />
+    <Build Include="Procedures\Users\GetAllUsers.sql" />
+    <Build Include="Procedures\Users\GetUser.sql" />
+    <Build Include="Procedures\Users\GetAllUsersByStatusId.sql" />
+    <Build Include="Procedures\Users\GetALLUsersByClassId.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />

@@ -1,4 +1,5 @@
-﻿using DAL.Models;
+﻿using DAL.Enumerations;
+using DAL.Models;
 using DAL.Services.IRepositories;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using ToolBoxDB;
 
 namespace DAL.Services.Repositories.Users
 {
-    public class StatusRepository : ICRUDRepository<Status> , IManyToManyRepository
+    public class StatusRepository : ICRUDRepository<Status, DBErrors> , IManyToManyRepository<DBErrors>
     {
         private Connection _connection;
         public StatusRepository(Connection connection)
@@ -18,16 +19,16 @@ namespace DAL.Services.Repositories.Users
         }
 
 
-        public int Create(Status entity)
+        public DBErrors Create(Status entity)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(int Id)
+        public DBErrors Delete(int Id)
         {
             throw new NotImplementedException();
         }
-        public int Update(Status entity)
+        public DBErrors Update(Status entity)
         {
             throw new NotImplementedException();
         }
@@ -56,7 +57,7 @@ namespace DAL.Services.Repositories.Users
 
         public IEnumerable<Status> GetByUserId(int Id)
         {
-            Command cmd = new Command("SELECT * FROM User_Status WHERE UserId = @userId");
+            Command cmd = new Command("SELECT * FROM User_Status US JOIN Status S ON US.[StatusId] = S.Id WHERE US.UserId = @userId");
             cmd.AddParameter("userId", Id);
             return _connection.ExecuteReader(cmd, r => new Status()
             {
@@ -65,27 +66,51 @@ namespace DAL.Services.Repositories.Users
             });
         }
 
-        public int LinkEntityWithUser(int entityId, int userId)
+        public DBErrors LinkEntityWithUser(int entityId, int userId)
         {
             Command cmd = new Command("CreateUserStatus", true);
             cmd.AddParameter("id", userId);
             cmd.AddParameter("statusId", entityId);
-            return _connection.ExecuteNonQuery(cmd);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+
+            }
+            return DBErrors.Success;
         }
 
-        public int UnlinkEntityFromALL(int entityId)
+        public DBErrors UnlinkEntityFromALL(int entityId)
         {
             Command cmd = new Command("DeleteUserStatus", true);
             cmd.AddParameter("statusId", entityId);
-            return _connection.ExecuteNonQuery(cmd);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+
+            }
+            return DBErrors.Success;
         }
 
-        public int UnlinkEntityFromUser(int entityId, int userId)
+        public DBErrors UnlinkEntityFromUser(int entityId, int userId)
         {
             Command cmd = new Command("DeleteUserStatus", true);
             cmd.AddParameter("Id", userId);
             cmd.AddParameter("statusId", entityId);
-            return _connection.ExecuteNonQuery(cmd);
+            try
+            {
+                _connection.ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+
+            }
+            return DBErrors.Success;
         }
 
 
