@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace API.Models.Users
 {
@@ -16,6 +13,5 @@ namespace API.Models.Users
         public string Token { get; set; }
         public DateTime? FirstLogin { get; set; }
         public int StatusCode { get; set; }
-        public int LoginError { get; set; }
     }
 }

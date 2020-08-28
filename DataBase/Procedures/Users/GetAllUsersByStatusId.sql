@@ -20,6 +20,6 @@ SELECT
 	StartDate, 
 	Email, 
 	ClassId, 
-	StatusCode = dbo.StatusEnumeration(Id)
+	StatusCode = dbo.StatusCode(Id)
 	FROM User_Status US JOIN ViewUsers U ON U.Id = US.UserId WHERE StatusId = @statusId
 	

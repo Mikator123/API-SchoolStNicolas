@@ -1,8 +1,8 @@
 using System.Data.Common;
 using System.Data.SqlClient;
 using API.Utils.RSA;
-using DAL.Services.Repositories;
 using DAL.Services.Repositories.Classes;
+using DAL.Services.Repositories.Lunches;
 using DAL.Services.Repositories.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,6 +40,7 @@ namespace API
             services.AddSingleton<ClassRepository>();
             services.AddSingleton<ContactRepository>();
             services.AddSingleton<StatusRepository>();
+            services.AddSingleton<LunchRepository>();
 
         }
 

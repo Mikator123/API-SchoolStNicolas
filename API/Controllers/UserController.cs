@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Reflection.Metadata.Ecma335;
 using API.Mappers;
-using API.Models;
 using API.Models.Users;
 using API.Utils;
 using API.Utils.RSA;
@@ -11,8 +9,10 @@ using API.Utils.Token;
 using DAL.Enumerations;
 using D = DAL.Models;
 using DAL.Services.Repositories.Users;
-using DAL.Utils;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using API.Models.Contacts;
+using DAL.Services.Repositories.Lunches;
 
 namespace API.Controllers
 {
@@ -25,32 +25,38 @@ namespace API.Controllers
         private Decrypting _decrypting = new Decrypting();
         private KeyGenerator _key;
         private StatusRepository _statusRepo;
-        public UserController(UserRepository userRepo, ContactRepository contactRepo, KeyGenerator key, StatusRepository statusRepo)
+        private LunchRepository _lunchRepo;
+        public UserController(UserRepository userRepo, ContactRepository contactRepo, KeyGenerator key, StatusRepository statusRepo, LunchRepository lunchRepo)
         {
             _userRepo = userRepo;
             _contactRepo = contactRepo;
             _key = key;
             _statusRepo = statusRepo;
+            _lunchRepo = lunchRepo;
         }
 
         [HttpPost]
-        [Route("login")] // * POSTMAN OK * //
+        [Route("login")] /*POSTMAN OK*/
         public IActionResult Login([FromBody] FormLogin entity)
         {
             //string privateKey = _key.PrivateKey;
             //entity.Password = _decrypting.Decrypt(entity.Password, privateKey);
-            UserSimplified user = _userRepo.Login(entity.Login, entity.Password)?.DalToSimplifiedUserApi();
-            if (user.LoginError == 0)
+            UserSimplified user = new UserSimplified();
+            try
             {
+                user = _userRepo.Login(entity.Login, entity.Password)?.DalToSimplifiedUserApi();
                 user.Token = TokenService.Instance.EncodeToken(user);
-                return Ok(user);
             }
-            else if (user.LoginError == 1)
-                return Problem("Login doesnt exist", statusCode: (int)HttpStatusCode.NotFound);
-            else if (user.LoginError == 2)
-                return Problem("Password doesnt match with the current login", statusCode: (int)HttpStatusCode.NotFound);
-            else
-                return Problem("?", statusCode: (int)HttpStatusCode.NotFound);
+            catch(Exception e)
+            {
+                if (e.Message.Contains("LoginNotFound"))
+                    return Problem("Login doesnt exist", statusCode: (int)HttpStatusCode.NotFound);
+                if (e.Message.Contains("PasswordDoesntMatch"))
+                    return Problem("Password doesnt match with the current login", statusCode: (int)HttpStatusCode.NotFound);
+                else
+                    return Problem("?", statusCode: (int)HttpStatusCode.NotFound);
+            }
+            return Ok(user);
         }
 
         [HttpGet]
@@ -67,7 +73,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("Create")]
+        [Route("Create")] /*POSTMAN OK*/
         public IActionResult Create([FromBody] UserDetailed user)
         {
             switch (_userRepo.Create(user.ApiToDal()))
@@ -77,7 +83,7 @@ namespace API.Controllers
                     user.Id = _userRepo.getIdWithNN(user.NationalNumber);
                     if (!(user.Contacts is null))
                     {
-                        foreach (Contact C in user.Contacts)
+                        foreach (ContactUser C in user.Contacts)
                         {
                             switch (_contactRepo.LinkEntityWithUser(C.Id, user.Id))
                             {
@@ -121,7 +127,7 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        [Route("Update")]
+        [Route("Update")] /*POSTMAN OK*/
         public IActionResult Update([FromBody] UserDetailed user)
         {
             switch (_userRepo.Update(user.ApiToDal()))
@@ -130,7 +136,7 @@ namespace API.Controllers
                     _userRepo.UnlinkUserFromContacts(user.Id);
                     if (!(user.Contacts is null))
                     {
-                        foreach (Contact C in user.Contacts)
+                        foreach (ContactUser C in user.Contacts)
                         {
                             switch (_contactRepo.LinkEntityWithUser(C.Id, user.Id))
                             {
@@ -161,6 +167,7 @@ namespace API.Controllers
                         }
                     }
                     return Ok();
+
                 case (DBErrors.ClassId_NotFound):
                     return Problem("A valid ClassId is needed.", statusCode: (int)HttpStatusCode.BadRequest);
                 case (DBErrors.NationalNumber_Exist):
@@ -177,7 +184,7 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete/{Id}")]  // * POSTMAN OK * //
+        [Route("Delete/{Id}")]  /*POSTMAN OK*/
         public IActionResult Delete(int Id)
         {
             switch (_userRepo.Delete(Id))
@@ -195,7 +202,7 @@ namespace API.Controllers
         }
         [HttpGet]
         [Route("getall")]
-        public IActionResult GetAll()
+        public IActionResult GetAll() /*POSTMAN OK*/
         {
             List<UserDetailed> userList = _userRepo.GetAll().Select(x => x.DalToDetailedUserApi()).ToList();
             if (!(userList is null))
@@ -205,7 +212,9 @@ namespace API.Controllers
                     user.Contacts = _contactRepo.GetByUserId(user.Id).Select(x => x.DalToApi());
                     if (user.Contacts.Count() == 0)
                         user.Contacts = null;
-                    //add les lunchs
+                    user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoApi());
+                    if (user.Lunches.Count() == 0)
+                        user.Lunches = null;
                 }
                 return Ok(userList);
             }
@@ -225,7 +234,9 @@ namespace API.Controllers
                 user.Contacts = _contactRepo.GetByUserId(Id).Select(x => x.DalToApi());
                 if (user.Contacts.Count() == 0)
                     user.Contacts = null;
-                //add les lunchs
+                user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoApi());
+                if (user.Lunches.Count() == 0)
+                    user.Lunches = null;
                 return Ok(user);
             }
             else
@@ -247,7 +258,9 @@ namespace API.Controllers
                     user.Contacts = _contactRepo.GetByUserId(user.Id).Select(x => x.DalToApi());
                     if (user.Contacts.Count() == 0)
                         user.Contacts = null;
-                    //add les lunchs
+                    user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoApi());
+                    if (user.Lunches.Count() == 0)
+                        user.Lunches = null;
                 }
                 return Ok(userList);
             }
@@ -269,7 +282,9 @@ namespace API.Controllers
                     user.Contacts = _contactRepo.GetByUserId(user.Id).Select(x => x.DalToApi());
                     if (user.Contacts.Count() == 0)
                         user.Contacts = null;
-                    //add les lunchs
+                    user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoApi());
+                    if (user.Lunches.Count() == 0)
+                        user.Lunches = null;
                 }
                 return Ok(userList);
             }

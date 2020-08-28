@@ -11,9 +11,11 @@ namespace DAL.Enumerations
         NationalNumber_Exist = 2,
         ClassId_NotFound = 3,
         UserId_NotFound = 4,
-        NotKnowedError = 5,
-        StartDate_Birthdate_Error = 6,
-        NullExeption = 7,
+        LunchId_NotFound = 5,
+        NotKnowedError = 6,
+        StartDate_Birthdate_Error = 7,
+        NullExeption = 8,
+
         
     }
 }

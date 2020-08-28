@@ -187,14 +187,7 @@ namespace DAL.Services.Repositories.Users
             Command cmd = new Command("DeleteUserContact_OneByOne", true);
             cmd.AddParameter("userId", userId);
             cmd.AddParameter("contactId", entityId);
-            try
-            {
-                _connection.ExecuteNonQuery(cmd);
-            }
-            catch
-            {
-
-            }
+            _connection.ExecuteNonQuery(cmd);
             return DBErrors.Success;
         }
 
@@ -202,14 +195,7 @@ namespace DAL.Services.Repositories.Users
         {
             Command cmd = new Command("DeleteUserContact_Contact", true);
             cmd.AddParameter("contactId", entityId);
-            try
-            {
-                _connection.ExecuteNonQuery(cmd);
-            }
-            catch
-            {
-
-            }
+             _connection.ExecuteNonQuery(cmd);
             return DBErrors.Success;
         }
     }

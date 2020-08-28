@@ -19,5 +19,5 @@ SELECT
 	StartDate, 
 	Email, 
 	ClassId, 
-	StatusCode = dbo.StatusEnumeration(Id)
+	StatusCode = dbo.StatusCode(Id)
 	FROM ViewUsers

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using API.Models.Contacts;
+using API.Models.Lunch;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace API.Models.Users
 {
@@ -28,7 +28,10 @@ namespace API.Models.Users
         public DateTime? FirstLogin { get; set; }
         public string Email { get; set; }
         public int? ClassId { get; set; }
-        public IEnumerable<Contact> Contacts { get; set; }
+        public IEnumerable<ContactUser> Contacts { get; set; }
+        public IEnumerable<LunchUser> Lunches { get; set; }
+
         public int StatusCode { get; set; }
+
     }
 }

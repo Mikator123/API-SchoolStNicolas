@@ -46,14 +46,13 @@ namespace DAL.Services.Repositories.Users
                     FirstLogin = (reader["FirstLogin"] is DBNull) ? default : (DateTime)reader["FirstLogin"],
                     StatusCode = (int)reader["StatusCode"],
                 }).SingleOrDefault();
-                user.LoginError = 0;
             }
             catch (SqlException ex)
             {
                 if (ex.Message.Contains("LoginNotFound"))
-                    user.LoginError = 1;
+                    throw new Exception(ex.Message);
                 if (ex.Message.Contains("PasswordDoesntMatch"))
-                    user.LoginError = 2;
+                    throw new Exception(ex.Message);
             }
             return user;
         }
@@ -184,7 +183,6 @@ namespace DAL.Services.Repositories.Users
             cmd.AddParameter("id", Id);
             _connection.ExecuteNonQuery(cmd);
             return DBErrors.Success;
-
         }
 
         public DBErrors UnlinkUserFromContacts(int Id)
@@ -286,7 +284,7 @@ namespace DAL.Services.Repositories.Users
                 StatusCode = (int)r["StatusCode"]
             });
         }
-        
+
     }
 }
 

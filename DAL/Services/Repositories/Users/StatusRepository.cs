@@ -4,6 +4,7 @@ using DAL.Services.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using ToolBoxDB;
@@ -75,9 +76,10 @@ namespace DAL.Services.Repositories.Users
             {
                 _connection.ExecuteNonQuery(cmd);
             }
-            catch
+            catch (SqlException ex)
             {
-
+                if (ex.Message.Contains("PK_User_Status"))
+                    return DBErrors.LinkAlreadyExist;
             }
             return DBErrors.Success;
         }
@@ -86,14 +88,7 @@ namespace DAL.Services.Repositories.Users
         {
             Command cmd = new Command("DeleteUserStatus", true);
             cmd.AddParameter("statusId", entityId);
-            try
-            {
-                _connection.ExecuteNonQuery(cmd);
-            }
-            catch
-            {
-
-            }
+            _connection.ExecuteNonQuery(cmd);
             return DBErrors.Success;
         }
 
@@ -102,14 +97,7 @@ namespace DAL.Services.Repositories.Users
             Command cmd = new Command("DeleteUserStatus", true);
             cmd.AddParameter("Id", userId);
             cmd.AddParameter("statusId", entityId);
-            try
-            {
-                _connection.ExecuteNonQuery(cmd);
-            }
-            catch
-            {
-
-            }
+            _connection.ExecuteNonQuery(cmd);
             return DBErrors.Success;
         }
 

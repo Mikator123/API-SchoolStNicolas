@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <Folder Include="Services\Repositories\Questions\" />
-    <Folder Include="Services\Repositories\Others\" />
   </ItemGroup>
 
 </Project>

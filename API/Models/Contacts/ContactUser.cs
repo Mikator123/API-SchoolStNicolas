@@ -1,12 +1,8 @@
-﻿using API.Models.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace API.Models
+namespace API.Models.Contacts
 {
-    public class Contact
+    public class ContactUser
     {
         public int Id { get; set; }
         public string NationalNumber { get; set; }
@@ -22,6 +18,5 @@ namespace API.Models
         public string Gender { get; set; }
         public string Email { get; set; }
         public string PersonalNote { get; set; }
-        public IEnumerable<UserDetailed> Users { get; set; }
     }
 }

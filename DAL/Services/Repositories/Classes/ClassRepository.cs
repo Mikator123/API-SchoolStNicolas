@@ -79,6 +79,10 @@ namespace DAL.Services.Repositories.Classes
             }).SingleOrDefault();
         }
 
+        public IEnumerable<Class> GetByUserId(int userId)
+        {
+            throw new NotImplementedException();
+        }
         public IEnumerable<Class> GetByCategoryId(int Id)
         {
             Command cmd = new Command("SELECT * FROM Classes WHERE SchoolYearCategoryId = @id");
