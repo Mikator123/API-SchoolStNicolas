@@ -4,6 +4,7 @@ using DAL.Services.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using ToolBoxDB;
@@ -30,26 +31,26 @@ namespace DAL.Services.Repositories.Classes
             {
                 _connection.ExecuteNonQuery(cmd);
             }
-            catch
+            catch(SqlException ex)
             {
-
+                if (ex.Message.Contains("[CK_Classes_ClassName]"))
+                    return DBErrors.ClassName_Exist;
+                if (ex.Message.Contains("[FK_Classes_SchoolYearCategoryNames]"))
+                    return DBErrors.YearCategoryId_NotFound;
+                if (ex.Message.Contains("NULL"))
+                    return DBErrors.NullExeption;
+                else
+                    return DBErrors.NotKnowedError;
             }
-            return DBErrors.ClassId_NotFound;
+            return DBErrors.Success;
         }
 
         public DBErrors Delete(int Id)
         {
             Command cmd = new Command("DeleteClass", true);
             cmd.AddParameter("id", Id);
-            try
-            {
-                _connection.ExecuteNonQuery(cmd);
-            }
-            catch
-            {
-
-            }
-            return DBErrors.ClassId_NotFound;
+            _connection.ExecuteNonQuery(cmd);
+            return DBErrors.Success;
         }
 
         public IEnumerable<Class> GetAll()
@@ -81,7 +82,7 @@ namespace DAL.Services.Repositories.Classes
 
         public IEnumerable<Class> GetByUserId(int userId)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Already in UserRepository");
         }
         public IEnumerable<Class> GetByCategoryId(int Id)
         {
@@ -109,11 +110,18 @@ namespace DAL.Services.Repositories.Classes
             {
                 _connection.ExecuteNonQuery(cmd);
             }
-            catch
+            catch (SqlException ex)
             {
-
+                if (ex.Message.Contains("[CK_Classes_ClassName]"))
+                    return DBErrors.ClassName_Exist;
+                if (ex.Message.Contains("[FK_Classes_SchoolYearCategoryNames]"))
+                    return DBErrors.YearCategoryId_NotFound;
+                if (ex.Message.Contains("NULL"))
+                    return DBErrors.NullExeption;
+                else
+                    return DBErrors.NotKnowedError;
             }
-            return DBErrors.ClassId_NotFound;
+            return DBErrors.Success;
         }
 
 

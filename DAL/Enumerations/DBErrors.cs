@@ -6,16 +6,16 @@ namespace DAL.Enumerations
 {
     public enum DBErrors
     {
-        Success = 0, 
-        LinkAlreadyExist = 1,
-        NationalNumber_Exist = 2,
-        ClassId_NotFound = 3,
-        UserId_NotFound = 4,
-        LunchId_NotFound = 5,
-        NotKnowedError = 6,
-        StartDate_Birthdate_Error = 7,
-        NullExeption = 8,
-
-        
+        Success, 
+        LinkAlreadyExist,
+        ClassName_Exist,
+        NationalNumber_Exist,
+        ClassId_NotFound,
+        YearCategoryId_NotFound,
+        UserId_NotFound,
+        LunchId_NotFound,
+        NotKnowedError,
+        StartDate_Birthdate_Error,
+        NullExeption,
     }
 }

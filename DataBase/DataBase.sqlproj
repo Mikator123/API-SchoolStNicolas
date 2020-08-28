@@ -141,7 +141,6 @@
     <Build Include="Procedures\TestResults\UpdateTestResult.sql" />
     <Build Include="Tables\Questions.sql" />
     <Build Include="Tables\SchoolYearCategoryNames.sql" />
-    <Build Include="Tables\SchoolYearCategoryYears.sql" />
     <Build Include="Procedures\Questions\CreateQuestion.sql" />
     <Build Include="Procedures\Questions\UpdateQuestion.sql" />
     <Build Include="Procedures\Questions\DeleteQuestion.sql" />

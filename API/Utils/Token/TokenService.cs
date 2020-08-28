@@ -59,8 +59,8 @@ namespace API.Utils.Token
                         new Claim("Birthdate", user.Birthdate.ToString()),
                         new Claim("Login", user.Login),
                         new Claim("Gender", user.Gender),
-                        new Claim("FirstLogin", user.FirstLogin.ToString()),          
-                    },
+                        new Claim("StatusCode", user.StatusCode.ToString()),
+    },
                     notBefore: DateTime.Now,
                     expires: DateTime.Now.AddHours(5)
                     )
@@ -91,7 +91,7 @@ namespace API.Utils.Token
                     payload.TryGetValue("Birthdate", out object Birthdate);
                     payload.TryGetValue("Login", out object login);
                     payload.TryGetValue("Gender", out object gender);
-                    payload.TryGetValue("FirstLogin", out object firstLogin);
+                    payload.TryGetValue("StatusCode", out object statusCode);
 
                     user = new UserSimplified()
                     {
@@ -101,7 +101,7 @@ namespace API.Utils.Token
                         Birthdate = (DateTime)Birthdate,
                         Login = (string)login,
                         Gender = (string)gender,
-                        FirstLogin = (DateTime)firstLogin
+                        StatusCode = int.Parse((string)statusCode)
                     };
                 }
             }

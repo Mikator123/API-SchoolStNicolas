@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Utils\Token\TokenService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Utils\Token\zsjtamq0.2wi~" />
   </ItemGroup>
 

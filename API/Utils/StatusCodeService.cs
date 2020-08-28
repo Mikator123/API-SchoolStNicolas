@@ -71,5 +71,35 @@ namespace API.Utils
 
         }
 
+        public static IEnumerable<string> DeserializeToStrings(int statusCode)
+        {
+            List<string> statusList = new List<string>();
+            int Status = statusCode;
+            while (Status > 0)
+            {
+                if (Status >= 8)
+                {
+                    statusList.Add("Admin");
+                    Status -= - 8;
+                }
+                if (Status >= 4)
+                {
+                    statusList.Add("Manager");
+                    Status -= - 4;
+                }
+                if (Status >= 2)
+                {
+                    statusList.Add("Professor");
+                    Status -= - 2;
+                }
+                if (Status == 1)
+                {
+                    statusList.Add("Student");
+                    Status -= - 1;
+                }
+            }
+            return statusList;
+        }
+
     }
 }

@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using API.Models.Contacts;
 using DAL.Services.Repositories.Lunches;
+using API.Attributes;
+using API.Models.Enumerations;
+using ToolBox.SecurityToken;
 
 namespace API.Controllers
 {
@@ -26,13 +29,15 @@ namespace API.Controllers
         private KeyGenerator _key;
         private StatusRepository _statusRepo;
         private LunchRepository _lunchRepo;
-        public UserController(UserRepository userRepo, ContactRepository contactRepo, KeyGenerator key, StatusRepository statusRepo, LunchRepository lunchRepo)
+        private ITokenService _token;
+        public UserController(UserRepository userRepo, ContactRepository contactRepo, KeyGenerator key, StatusRepository statusRepo, LunchRepository lunchRepo, ITokenService token)
         {
             _userRepo = userRepo;
             _contactRepo = contactRepo;
             _key = key;
             _statusRepo = statusRepo;
             _lunchRepo = lunchRepo;
+            _token = token;
         }
 
         [HttpPost]
@@ -45,7 +50,6 @@ namespace API.Controllers
             try
             {
                 user = _userRepo.Login(entity.Login, entity.Password)?.DalToSimplifiedUserApi();
-                user.Token = TokenService.Instance.EncodeToken(user);
             }
             catch(Exception e)
             {
@@ -56,7 +60,20 @@ namespace API.Controllers
                 else
                     return Problem("?", statusCode: (int)HttpStatusCode.NotFound);
             }
-            return Ok(user);
+            if (!(user is null))
+            {
+                user.Token = _token.EncodeToken(user, (u) => u.ToCLaims());
+                if (user.Token == null || user.Token == string.Empty)
+                    return BadRequest(new { message = "Invalid token !" });
+                else
+                {
+                    return Ok(user);
+                }
+            }
+            else
+            {
+                return Problem("User is null", statusCode: (int)HttpStatusCode.NotFound);
+            }
         }
 
         [HttpGet]
@@ -72,6 +89,8 @@ namespace API.Controllers
                 return NotFound();
         }
 
+
+        [AuthRequired(UserStatus.Admin | UserStatus.Management)]
         [HttpPost]
         [Route("Create")] /*POSTMAN OK*/
         public IActionResult Create([FromBody] UserDetailed user)
@@ -126,6 +145,7 @@ namespace API.Controllers
             }
         }
 
+        [AuthRequired(UserStatus.Admin | UserStatus.Management)]
         [HttpPut]
         [Route("Update")] /*POSTMAN OK*/
         public IActionResult Update([FromBody] UserDetailed user)
@@ -183,6 +203,7 @@ namespace API.Controllers
             }
         }
 
+        [AuthRequired (UserStatus.Admin | UserStatus.Management)]
         [HttpDelete]
         [Route("Delete/{Id}")]  /*POSTMAN OK*/
         public IActionResult Delete(int Id)
@@ -200,6 +221,9 @@ namespace API.Controllers
                     return Problem("?", statusCode: (int)HttpStatusCode.NotFound);
             }
         }
+
+
+        [AuthRequired]
         [HttpGet]
         [Route("getall")]
         public IActionResult GetAll() /*POSTMAN OK*/
@@ -224,6 +248,7 @@ namespace API.Controllers
         }
 
 
+        [AuthRequired]
         [HttpGet]
         [Route("getbyId/{Id}")]
         public IActionResult GetById(int Id) /*POSTMAN OK*/
@@ -245,6 +270,7 @@ namespace API.Controllers
         }
 
 
+        [AuthRequired]
         [HttpGet]
         [Route("getByStatusId/{Id}")]
 
@@ -269,6 +295,7 @@ namespace API.Controllers
         }
 
 
+        [AuthRequired]
         [HttpGet]
         [Route("getByClassId/{Id}")]
 
