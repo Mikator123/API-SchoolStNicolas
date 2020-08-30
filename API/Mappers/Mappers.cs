@@ -74,9 +74,29 @@ namespace API.Mappers
                 StatusCode = user.StatusCode
             };
         }
-        public static ContactUser DalToApi(this D.Contact c)
+        public static UserForEntities DalToForEntitiesApi(this D.User user)
         {
-            return new ContactUser()
+            return new UserForEntities()
+            {
+                Id = user.Id,
+                LastName = user.LastName,
+                FirstName = user.FirstName,
+                NationalNumber = user.NationalNumber,
+            };
+        }
+        public static D.User DalToApi(this UserForEntities user)
+        {
+            return new D.User()
+            {
+                Id = user.Id,
+                LastName = user.LastName,
+                FirstName = user.FirstName,
+                NationalNumber = user.NationalNumber,
+            };
+        }
+        public static ContactForUser DalToApi(this D.Contact c)
+        {
+            return new ContactForUser()
             {
                 Id = c.Id,
                 NationalNumber = c.NationalNumber,
@@ -95,7 +115,7 @@ namespace API.Mappers
 
             };
         }
-        public static D.Contact ApitoDal(this ContactUser c)
+        public static D.Contact ApitoDal(this ContactForUser c)
         {
             return new D.Contact()
             {
@@ -132,9 +152,9 @@ namespace API.Mappers
             };
         }
 
-        public static LunchUser DaltoApi (this D.Lunch l)
+        public static LunchDetailed DaltoDetailedApi (this D.Lunch l)
         {
-            return new LunchUser()
+            return new LunchDetailed()
             {
                 Id = l.Id,
                 Name = l.Name,
@@ -142,7 +162,7 @@ namespace API.Mappers
                 Date = l.Date
             };
         }
-        public static D.Lunch DaltoApi(this LunchUser l)
+        public static D.Lunch ApitoDal (this LunchDetailed l)
         {
             return new D.Lunch()
             {
@@ -152,5 +172,27 @@ namespace API.Mappers
                 Date = l.Date
             };
         }
+        public static LunchSimplified DaltoSimplifiedApi(this D.Lunch l)
+        {
+            return new LunchSimplified()
+            {
+                Id = l.Id,
+                Name = l.Name,
+                Description = l.Description,
+                Date = l.Date
+            };
+        }
+        public static D.Lunch ApitoDal(this LunchSimplified l)
+        {
+            return new D.Lunch()
+            {
+                Id = l.Id,
+                Name = l.Name,
+                Description = l.Description,
+                Date = l.Date
+            };
+        }
+
+
     }
 }

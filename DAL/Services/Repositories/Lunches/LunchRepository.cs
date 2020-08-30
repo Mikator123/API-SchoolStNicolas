@@ -1,6 +1,7 @@
 ﻿using DAL.Enumerations;
 using DAL.Models;
 using DAL.Services.IRepositories;
+using DAL.Services.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -69,13 +70,7 @@ namespace DAL.Services.Repositories.Lunches
         public IEnumerable<Lunch> GetAll()
         {
             Command cmd = new Command("Select * FROM Lunches");
-            return _connection.ExecuteReader(cmd, r => new Lunch()
-            {
-                Id = (int)r["Id"],
-                Name = r["LunchName"].ToString(),
-                Description = r["LunchDescription"] is DBNull ? null : r["LunchDescription"].ToString(),
-                Date = (DateTime)r["LunchDate"]
-            });
+            return _connection.ExecuteReader(cmd, r => r.LunchToDal());
 
         }
 
@@ -83,26 +78,15 @@ namespace DAL.Services.Repositories.Lunches
         {
             Command cmd = new Command("SELECT * FROM User_Lunch UL RIGHT JOIN Lunches L ON UL.LunchId = L.Id WHERE UL.UserId = @id");
             cmd.AddParameter("id", userId);
-            return _connection.ExecuteReader(cmd, r => new Lunch()
-            {
-                Id = (int)r["Id"],
-                Name = r["LunchName"].ToString(),
-                Description = r["LunchDescription"] is DBNull ? null : r["LunchDescription"].ToString(),
-                Date = (DateTime)r["LunchDate"]
-            });
+            return _connection.ExecuteReader(cmd, r => r.LunchToDal());
         }
 
         public Lunch GetById(int Id)
         {
             Command cmd = new Command("Select * FROM Lunches WHERE Id = @id");
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteReader(cmd, r => new Lunch()
-            {
-                Id = (int)r["Id"],
-                Name = r["LunchName"].ToString(),
-                Description = r["LunchDescription"] is DBNull ? null : r["LunchDescription"].ToString(),
-                Date = (DateTime)r["LunchDate"]
-            }).SingleOrDefault();
+            return _connection.ExecuteReader(cmd, r => r.LunchToDal()).SingleOrDefault();
+
         }
 
         public DBErrors LinkEntityWithUser(int entityId, int userId)

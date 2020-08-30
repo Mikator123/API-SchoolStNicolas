@@ -1,6 +1,7 @@
 ﻿using DAL.Enumerations;
 using DAL.Models;
 using DAL.Services.IRepositories;
+using DAL.Services.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -86,11 +87,11 @@ namespace DAL.Services.Repositories.Users
             {
                 if (ex.Message.Contains("UK_Users_NationalNumber"))
                     return DBErrors.NationalNumber_Exist;
-                else if (ex.Message.Contains("FK_Users_ClassId"))
+                if (ex.Message.Contains("FK_Users_ClassId"))
                     return DBErrors.ClassId_NotFound;
-                else if (ex.Message.Contains("CK_Users_StartDate"))
+                if (ex.Message.Contains("CK_Users_StartDate"))
                     return DBErrors.StartDate_Birthdate_Error;
-                else if (ex.Message.Contains("NULL"))
+                if (ex.Message.Contains("NULL"))
                     return DBErrors.NullExeption;
                 else
                     return DBErrors.NotKnowedError;
@@ -130,11 +131,11 @@ namespace DAL.Services.Repositories.Users
             {
                 if (ex.Message.Contains("UK_Users_NationalNumber"))
                     return DBErrors.NationalNumber_Exist;
-                else if (ex.Message.Contains("FK_Users_ClassId"))
+                if (ex.Message.Contains("FK_Users_ClassId"))
                     return DBErrors.ClassId_NotFound;
-                else if (ex.Message.Contains("CK_Users_StartDate"))
+                if (ex.Message.Contains("CK_Users_StartDate"))
                     return DBErrors.StartDate_Birthdate_Error;
-                else if (ex.Message.Contains("NULL"))
+                if (ex.Message.Contains("NULL"))
                     return DBErrors.NullExeption;
                 else
                     return DBErrors.NotKnowedError;
@@ -154,28 +155,7 @@ namespace DAL.Services.Repositories.Users
         public IEnumerable<User> GetAll()
         {
             Command cmd = new Command("GetALLUsers", true);
-            return _connection.ExecuteReader(cmd, r => new User()
-            {
-                Id = (int)r["Id"],
-                NationalNumber = r["NationalNumber"].ToString(),
-                LastName = r["LastName"].ToString(),
-                FirstName = r["FirstName"].ToString(),
-                Birthdate = (DateTime)r["Birthdate"],
-                AdCity = r["AdCity"].ToString(),
-                AdPostalCode = (int)r["AdPostalCode"],
-                AdStreet = r["AdStreet"].ToString(),
-                AdNumber = (int)r["AdNumber"],
-                AdBox = r["AdBox"] is DBNull ? null : r["AdBox"].ToString(),
-                MobilePhone = r["MobilePhone"] is DBNull ? null : r["MobilePhone"].ToString(),
-                Login = r["Login"].ToString(),
-                Gender = r["Gender"].ToString(),
-                Photo = r["Photo"] is DBNull ? null : r["Photo"].ToString(),
-                PersonalNote = r["PersonalNote"] is DBNull ? null : r["PersonalNote"].ToString(),
-                Email = r["Email"] is DBNull ? null : r["Email"].ToString(),
-                StartDate = (DateTime)r["StartDate"],
-                ClassId = r["ClassId"] is DBNull ? 0 : (int)r["ClassId"],
-                StatusCode = (int)r["StatusCode"]
-            });
+            return _connection.ExecuteReader(cmd, r => r.UserToDal());
         }
         public DBErrors UnlinkUserFromLunches(int Id)
         {
@@ -205,83 +185,32 @@ namespace DAL.Services.Repositories.Users
         {
             Command cmd = new Command("GetUser", true);
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteReader(cmd, r => new User()
-            {
-                Id = (int)r["Id"],
-                NationalNumber = r["NationalNumber"].ToString(),
-                LastName = r["LastName"].ToString(),
-                FirstName = r["FirstName"].ToString(),
-                Birthdate = (DateTime)r["Birthdate"],
-                AdCity = r["AdCity"].ToString(),
-                AdPostalCode = (int)r["AdPostalCode"],
-                AdStreet = r["AdStreet"].ToString(),
-                AdNumber = (int)r["AdNumber"],
-                AdBox = r["AdBox"] is DBNull ? null : r["AdBox"].ToString(),
-                MobilePhone = r["MobilePhone"] is DBNull ? null : r["MobilePhone"].ToString(),
-                Login = r["Login"].ToString(),
-                Gender = r["Gender"].ToString(),
-                Photo = r["Photo"] is DBNull ? null : r["Photo"].ToString(),
-                PersonalNote = r["PersonalNote"] is DBNull ? null : r["PersonalNote"].ToString(),
-                Email = r["Email"] is DBNull ? null : r["Email"].ToString(),
-                StartDate = (DateTime)r["StartDate"],
-                ClassId = r["ClassId"] is DBNull ? 0 : (int)r["ClassId"],
-                StatusCode = (int)r["StatusCode"]
-            }).SingleOrDefault();
+            return _connection.ExecuteReader(cmd, r => r.UserToDal()).SingleOrDefault();
         }
 
         public IEnumerable<User> GetAllByStatusId(int statusId)
         {
             Command cmd = new Command("GetAllUsersByStatusId", true);
             cmd.AddParameter("statusId", statusId);
-            return _connection.ExecuteReader(cmd, r => new User()
-            {
-                Id = (int)r["Id"],
-                NationalNumber = r["NationalNumber"].ToString(),
-                LastName = r["LastName"].ToString(),
-                FirstName = r["FirstName"].ToString(),
-                Birthdate = (DateTime)r["Birthdate"],
-                AdCity = r["AdCity"].ToString(),
-                AdPostalCode = (int)r["AdPostalCode"],
-                AdStreet = r["AdStreet"].ToString(),
-                AdNumber = (int)r["AdNumber"],
-                AdBox = r["AdBox"] is DBNull ? null : r["AdBox"].ToString(),
-                MobilePhone = r["MobilePhone"] is DBNull ? null : r["MobilePhone"].ToString(),
-                Login = r["Login"].ToString(),
-                Gender = r["Gender"].ToString(),
-                Photo = r["Photo"] is DBNull ? null : r["Photo"].ToString(),
-                PersonalNote = r["PersonalNote"] is DBNull ? null : r["PersonalNote"].ToString(),
-                Email = r["Email"] is DBNull ? null : r["Email"].ToString(),
-                StartDate = (DateTime)r["StartDate"],
-                ClassId = r["ClassId"] is DBNull ? 0 : (int)r["ClassId"],
-                StatusCode = (int)r["StatusCode"]
-            });
+            return _connection.ExecuteReader(cmd, r => r.UserToDal());
         }
 
         public IEnumerable<User> GetAllByClassId(int classId)
         {
             Command cmd = new Command("GetAllUsersByClassId", true);
             cmd.AddParameter("classId", classId);
+            return _connection.ExecuteReader(cmd, r => r.UserToDal());
+        }
+        public IEnumerable<User> GetAllByLunchId(int lunchId)
+        {
+            Command cmd = new Command("SELECT * FROM User_Lunch UL RIGHT JOIN Users U ON U.Id = UL.UserId WHERE LunchId = @lunchId");
+            cmd.AddParameter("lunchId", lunchId);
             return _connection.ExecuteReader(cmd, r => new User()
             {
                 Id = (int)r["Id"],
                 NationalNumber = r["NationalNumber"].ToString(),
                 LastName = r["LastName"].ToString(),
-                FirstName = r["FirstName"].ToString(),
-                Birthdate = (DateTime)r["Birthdate"],
-                AdCity = r["AdCity"].ToString(),
-                AdPostalCode = (int)r["AdPostalCode"],
-                AdStreet = r["AdStreet"].ToString(),
-                AdNumber = (int)r["AdNumber"],
-                AdBox = r["AdBox"] is DBNull ? null : r["AdBox"].ToString(),
-                MobilePhone = r["MobilePhone"] is DBNull ? null : r["MobilePhone"].ToString(),
-                Login = r["Login"].ToString(),
-                Gender = r["Gender"].ToString(),
-                Photo = r["Photo"] is DBNull ? null : r["Photo"].ToString(),
-                PersonalNote = r["PersonalNote"] is DBNull ? null : r["PersonalNote"].ToString(),
-                Email = r["Email"] is DBNull ? null : r["Email"].ToString(),
-                StartDate = (DateTime)r["StartDate"],
-                ClassId = r["ClassId"] is DBNull ? 0 : (int)r["ClassId"],
-                StatusCode = (int)r["StatusCode"]
+                FirstName = r["FirstName"].ToString()
             });
         }
 

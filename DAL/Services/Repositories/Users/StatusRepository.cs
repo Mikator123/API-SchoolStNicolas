@@ -86,10 +86,7 @@ namespace DAL.Services.Repositories.Users
 
         public DBErrors UnlinkEntityFromALL(int entityId)
         {
-            Command cmd = new Command("DeleteUserStatus", true);
-            cmd.AddParameter("statusId", entityId);
-            _connection.ExecuteNonQuery(cmd);
-            return DBErrors.Success;
+            throw new NotImplementedException();
         }
 
         public DBErrors UnlinkEntityFromUser(int entityId, int userId)

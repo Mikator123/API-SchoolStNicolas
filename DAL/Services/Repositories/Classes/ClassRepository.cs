@@ -1,6 +1,7 @@
 ﻿using DAL.Enumerations;
 using DAL.Models;
 using DAL.Services.IRepositories;
+using DAL.Services.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -56,28 +57,14 @@ namespace DAL.Services.Repositories.Classes
         public IEnumerable<Class> GetAll()
         {
             Command cmd = new Command("SELECT * FROM Classes");
-            return _connection.ExecuteReader(cmd, r => new Class()
-            {
-                Id = (int)r["Id"],
-                Name = r["ClassName"].ToString(),
-                Description = r["ClassDescription"].ToString(),
-                SchoolYear = (int)r["SchoolYear"],
-                SchoolYearCategoryId = (int)r["SchoolYearCategoryId"]
-            });
+            return _connection.ExecuteReader(cmd, r => r.ClassToDal());
         }
 
         public Class GetById(int Id)
         {
             Command cmd = new Command("SELECT * FROM Classes WHERE Id = @id");
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteReader(cmd, r => new Class()
-            {
-                Id = (int)r["Id"],
-                Name = r["ClassName"].ToString(),
-                Description = r["ClassDescription"].ToString(),
-                SchoolYear = (int)r["SchoolYear"],
-                SchoolYearCategoryId = (int)r["SchoolYearCategoryId"]
-            }).SingleOrDefault();
+            return _connection.ExecuteReader(cmd, r => r.ClassToDal()).SingleOrDefault();
         }
 
         public IEnumerable<Class> GetByUserId(int userId)
@@ -88,14 +75,7 @@ namespace DAL.Services.Repositories.Classes
         {
             Command cmd = new Command("SELECT * FROM Classes WHERE SchoolYearCategoryId = @id");
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteReader(cmd, r => new Class()
-            {
-                Id = (int)r["Id"],
-                Name = r["ClassName"].ToString(),
-                Description = r["ClassDescription"].ToString(),
-                SchoolYear = (int)r["SchoolYear"],
-                SchoolYearCategoryId = (int)r["SchoolYearCategoryId"]
-            });
+            return _connection.ExecuteReader(cmd, r => r.ClassToDal());
         }
 
         public DBErrors Update(Class entity)

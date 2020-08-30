@@ -1,6 +1,6 @@
 ﻿namespace API.Models.Users
 {
-    public class UserEntities
+    public class UserForEntities
     {
         public int Id { get; set; }
         public string NationalNumber { get; set; }

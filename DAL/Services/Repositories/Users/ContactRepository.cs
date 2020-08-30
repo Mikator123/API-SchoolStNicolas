@@ -1,6 +1,7 @@
 ﻿using DAL.Enumerations;
 using DAL.Models;
 using DAL.Services.IRepositories;
+using DAL.Services.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -39,35 +40,28 @@ namespace DAL.Services.Repositories.Users
             {
                 _connection.ExecuteNonQuery(cmd);
             }
-            catch
+            catch (SqlException ex)
             {
-
+                if (ex.Message.Contains("UK_Users_NationalNumber"))
+                    return DBErrors.NationalNumber_Exist;
+                if (ex.Message.Contains("NULL"))
+                    return DBErrors.NullExeption;
+                else
+                    return DBErrors.NotKnowedError;
             }
             return DBErrors.Success;
-
-
         }
 
-        public DBErrors Create(Func<Contact> apitoDal)
-        {
-            throw new NotImplementedException();
-        }
 
         public DBErrors Delete(int Id)
         {
             UnlinkEntityFromALL(Id);
             Command cmd = new Command("DeleteContact", true);
             cmd.AddParameter("id", Id);
-            try
-            {
-                _connection.ExecuteNonQuery(cmd);
-            }
-            catch
-            {
-
-            }
+            _connection.ExecuteNonQuery(cmd);
             return DBErrors.Success;
         }
+
 
         public DBErrors Update(Contact entity)
         {
@@ -90,33 +84,24 @@ namespace DAL.Services.Repositories.Users
             {
                 _connection.ExecuteNonQuery(cmd);
             }
-            catch
+            catch (SqlException ex)
             {
-
+                if (ex.Message.Contains("UK_Users_NationalNumber"))
+                    return DBErrors.NationalNumber_Exist;
+                if (ex.Message.Contains("NULL"))
+                    return DBErrors.NullExeption;
+                else
+                    return DBErrors.NotKnowedError;
             }
             return DBErrors.Success;
         }
+
+
         public IEnumerable<Contact> GetByUserId(int userId)
         {
             Command cmd = new Command("SELECT * FROM User_Contact UC RIGHT JOIN Contacts C ON C.Id = UC.ContactId WHERE UC.UserId = @userId");
             cmd.AddParameter("userId", userId);
-            return _connection.ExecuteReader(cmd, r => new Contact()
-            {
-                Id = (int)r["Id"],
-                NationalNumber = r["NationalNumber"].ToString(),
-                LastName = r["LastName"].ToString(),
-                FirstName = r["FirstName"].ToString(),
-                BirthDate = (DateTime)r["Birthdate"],
-                AdCity = r["AdCity"].ToString(),
-                AdPostalCode = (int)r["AdPostalCode"],
-                AdStreet = r["AdStreet"].ToString(),
-                AdNumber = (int)r["AdNumber"],
-                AdBox = r["AdBox"] is DBNull ? null : r["AdBox"].ToString(),
-                MobilePhone = r["MobilePhone"] is DBNull ? null : r["MobilePhone"].ToString(),
-                Gender = r["Gender"].ToString(),
-                Email = r["Email"] is DBNull ? null : r["Email"].ToString(),
-                PersonalNote = r["PersonalNote"] is DBNull ? null : r["PersonalNote"].ToString()
-            });
+            return _connection.ExecuteReader(cmd, r => r.ContactToDal());
         }
 
 
@@ -124,45 +109,14 @@ namespace DAL.Services.Repositories.Users
         {
             Command cmd = new Command("SELECT * FROM ViewContacts WHERE Id = @id");
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteReader(cmd, r => new Contact()
-            {
-                Id = (int)r["Id"],
-                NationalNumber = r["NationalNumber"].ToString(),
-                LastName = r["LastName"].ToString(),
-                FirstName = r["FirstName"].ToString(),
-                BirthDate = (DateTime)r["Birthdate"],
-                AdCity = r["AdCity"].ToString(),
-                AdPostalCode = (int)r["AdPostalCode"],
-                AdStreet = r["AdStreet"].ToString(),
-                AdNumber = (int)r["AdNumber"],
-                AdBox = r["AdBox"] is DBNull ? null : r["AdBox"].ToString(),
-                MobilePhone = r["MobilePhone"] is DBNull ? null : r["MobilePhone"].ToString(),
-                Gender = r["Gender"].ToString(),
-                Email = r["Email"] is DBNull ? null : r["Email"].ToString(),
-                PersonalNote = r["PersonalNote"] is DBNull ? null : r["PersonalNote"].ToString()
-            }).SingleOrDefault();
+            return _connection.ExecuteReader(cmd, r => r.ContactToDal()).SingleOrDefault();
+
         }
 
         public IEnumerable<Contact> GetAll()
         {
             Command cmd = new Command("SELECT * FROM ViewContacts");
-            return _connection.ExecuteReader(cmd, r => new Contact()
-            {
-                Id = (int)r["Id"],
-                NationalNumber = r["NationalNumber"].ToString(),
-                LastName = r["LastName"].ToString(),
-                FirstName = r["FirstName"].ToString(),
-                BirthDate = (DateTime)r["Birthdate"],
-                AdCity = r["AdCity"].ToString(),
-                AdPostalCode = (int)r["AdPostalCode"],
-                AdStreet = r["AdStreet"].ToString(),
-                AdNumber = (int)r["AdNumber"],
-                AdBox = r["AdBox"] is DBNull ? null : r["AdBox"].ToString(),
-                MobilePhone = r["MobilePhone"] is DBNull ? null : r["MobilePhone"].ToString(),
-                Gender = r["Gender"].ToString(),
-                Email = r["Email"] is DBNull ? null : r["Email"].ToString(),
-                PersonalNote = r["PersonalNote"] is DBNull ? null : r["PersonalNote"].ToString()
-            });
+            return _connection.ExecuteReader(cmd, r => r.ContactToDal());
         }
 
         public DBErrors LinkEntityWithUser(int entityId, int userId)

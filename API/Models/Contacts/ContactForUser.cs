@@ -2,7 +2,7 @@
 
 namespace API.Models.Contacts
 {
-    public class ContactUser
+    public class ContactForUser
     {
         public int Id { get; set; }
         public string NationalNumber { get; set; }

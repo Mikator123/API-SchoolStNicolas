@@ -1,8 +1,10 @@
-﻿using System;
+﻿using API.Models.Users;
+using System;
 
 namespace API.Models.Lunch
 {
-    public class LunchUser
+    public class LunchSimplified
+
     {
         public int Id { get; set; }
         public string Name { get; set; }

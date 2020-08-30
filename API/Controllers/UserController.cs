@@ -16,6 +16,7 @@ using DAL.Services.Repositories.Lunches;
 using API.Attributes;
 using API.Models.Enumerations;
 using ToolBox.SecurityToken;
+using API.Models.Lunch;
 
 namespace API.Controllers
 {
@@ -62,9 +63,10 @@ namespace API.Controllers
             }
             if (!(user is null))
             {
+                
                 user.Token = _token.EncodeToken(user, (u) => u.ToCLaims());
-                if (user.Token == null || user.Token == string.Empty)
-                    return BadRequest(new { message = "Invalid token !" });
+                if (string.IsNullOrWhiteSpace(user.Token))
+                    return Problem("Invalid token !", statusCode:(int)HttpStatusCode.MethodNotAllowed);
                 else
                 {
                     return Ok(user);
@@ -102,7 +104,7 @@ namespace API.Controllers
                     user.Id = _userRepo.getIdWithNN(user.NationalNumber);
                     if (!(user.Contacts is null))
                     {
-                        foreach (ContactUser C in user.Contacts)
+                        foreach (ContactForUser C in user.Contacts)
                         {
                             switch (_contactRepo.LinkEntityWithUser(C.Id, user.Id))
                             {
@@ -156,7 +158,7 @@ namespace API.Controllers
                     _userRepo.UnlinkUserFromContacts(user.Id);
                     if (!(user.Contacts is null))
                     {
-                        foreach (ContactUser C in user.Contacts)
+                        foreach (ContactForUser C in user.Contacts)
                         {
                             switch (_contactRepo.LinkEntityWithUser(C.Id, user.Id))
                             {
@@ -236,7 +238,7 @@ namespace API.Controllers
                     user.Contacts = _contactRepo.GetByUserId(user.Id).Select(x => x.DalToApi());
                     if (user.Contacts.Count() == 0)
                         user.Contacts = null;
-                    user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoApi());
+                    user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoSimplifiedApi());
                     if (user.Lunches.Count() == 0)
                         user.Lunches = null;
                 }
@@ -259,7 +261,7 @@ namespace API.Controllers
                 user.Contacts = _contactRepo.GetByUserId(Id).Select(x => x.DalToApi());
                 if (user.Contacts.Count() == 0)
                     user.Contacts = null;
-                user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoApi());
+                user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoSimplifiedApi());
                 if (user.Lunches.Count() == 0)
                     user.Lunches = null;
                 return Ok(user);
@@ -284,7 +286,7 @@ namespace API.Controllers
                     user.Contacts = _contactRepo.GetByUserId(user.Id).Select(x => x.DalToApi());
                     if (user.Contacts.Count() == 0)
                         user.Contacts = null;
-                    user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoApi());
+                    user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoSimplifiedApi());
                     if (user.Lunches.Count() == 0)
                         user.Lunches = null;
                 }
@@ -309,7 +311,8 @@ namespace API.Controllers
                     user.Contacts = _contactRepo.GetByUserId(user.Id).Select(x => x.DalToApi());
                     if (user.Contacts.Count() == 0)
                         user.Contacts = null;
-                    user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoApi());
+
+                    user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoSimplifiedApi());
                     if (user.Lunches.Count() == 0)
                         user.Lunches = null;
                 }
