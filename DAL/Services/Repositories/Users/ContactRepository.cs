@@ -65,7 +65,7 @@ namespace DAL.Services.Repositories.Users
 
         public DBErrors Update(Contact entity)
         {
-            Command cmd = new Command("UpdateContacts", true);
+            Command cmd = new Command("UpdateContact", true);
             cmd.AddParameter("id", entity.Id);
             cmd.AddParameter("nationalNumber", entity.NationalNumber);
             cmd.AddParameter("lastName", entity.LastName);

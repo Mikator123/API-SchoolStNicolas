@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.Attributes
+namespace API.Utils.AppSettings
 {
-    public class ManagementRequiredAttribute
+    public class TokenPassPhrase
     {
+        public string PassPhrase { get; set; }
     }
 }

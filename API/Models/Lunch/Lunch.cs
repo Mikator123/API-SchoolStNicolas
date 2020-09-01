@@ -3,7 +3,7 @@ using System;
 
 namespace API.Models.Lunch
 {
-    public class LunchSimplified
+    public class Lunch
 
     {
         public int Id { get; set; }

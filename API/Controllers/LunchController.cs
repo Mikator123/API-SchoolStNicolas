@@ -1,10 +1,10 @@
 ﻿using API.Attributes;
 using API.Mappers;
-using API.Models.Enumerations;
+using API.Models.Commons;
 using API.Models.Lunch;
 using API.Models.Users;
 using DAL.Enumerations;
-using DAL.Models;
+using D = DAL.Models;
 using DAL.Services.Repositories.Lunches;
 using DAL.Services.Repositories.Users;
 using Microsoft.AspNetCore.Http;
@@ -18,25 +18,21 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SchoolController : Controller
+    public class LunchController : Controller
     {
-        private ContactRepository _contactRepo;
         private LunchRepository _lunchRepo;
         private UserRepository _userRepo;
-        /*mettre l'event*/
 
-        public SchoolController(ContactRepository contactRepo, LunchRepository lunchRepo, UserRepository userRepo)
+        public LunchController(LunchRepository lunchRepo, UserRepository userRepo)
         {
-            _contactRepo = contactRepo;
             _lunchRepo = lunchRepo;
             _userRepo = userRepo;
         }
 
 
 
-        [HttpPost]
-        [Route("CreateLunch")]
-        public IActionResult CreateLunch([FromBody] Lunch entity) /*POSTMAN OK*/
+        [HttpPost] /*POSTMAN OK*/
+        public IActionResult Create([FromBody] D.Lunch entity)
         {
             switch (_lunchRepo.Create(entity))
             {
@@ -51,9 +47,8 @@ namespace API.Controllers
 
 
 
-        [HttpPut]
-        [Route("UpdateLunch")] /*POSTMAN OK*/
-        public IActionResult UpdateLunch([FromBody] Lunch entity)
+        [HttpPut] /*POSTMAN OK*/
+        public IActionResult Update([FromBody] D.Lunch entity)
         {
             switch (_lunchRepo.Update(entity))
             {
@@ -67,10 +62,8 @@ namespace API.Controllers
         }
 
 
-
-        [HttpDelete]
-        [Route("DeleteLunch/{Id}")] /*POSTMAN OK*/
-        public IActionResult DeleteLunch(int Id)
+        [HttpDelete("{Id}")] /*POSTMAN OK*/
+        public IActionResult Delete(int Id)
         {
             _lunchRepo.UnlinkEntityFromALL(Id);
             _lunchRepo.Delete(Id);
@@ -79,9 +72,8 @@ namespace API.Controllers
 
 
 
-        [HttpGet]
-        [Route("GetLunches")] /*POSTMAN OK*/
-        public IActionResult GetLunches()
+        [HttpGet] /*POSTMAN OK*/
+        public IActionResult Get()
         {
             List<LunchDetailed> detailedLunches = _lunchRepo.GetAll().Select(x => x.DaltoDetailedApi()).ToList();
             if (!(detailedLunches is null))
@@ -100,24 +92,10 @@ namespace API.Controllers
         }
 
 
-        [HttpGet]
-        [Route("GetLunchesByUserId/{userId}")] /*POSTMAN OK*/
-        public IActionResult GetLunchesByUserId(int userId)
-        {
-            List<LunchSimplified> userLunches = _lunchRepo.GetByUserId(userId).Select(x => x.DaltoSimplifiedApi()).ToList();
-            if (!(userLunches is null))
-            {
-                return Ok(userLunches);
-            }
-            else
-                return NotFound();
-        }
-
-        [HttpGet]
-        [Route("GetLunchById/{lunchId}")] /*POSTMAN OK*/
+        [HttpGet("{lunchId}")] /*POSTMAN OK*/
         public IActionResult GetLunchById(int lunchId)
         {
-            LunchSimplified lunch = _lunchRepo.GetById(lunchId).DaltoSimplifiedApi();
+            Models.Lunch.Lunch lunch = _lunchRepo.GetById(lunchId).DaltoSimplifiedApi();
             if (!(lunch is null))
                 return Ok(lunch);
             else
@@ -125,8 +103,8 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("linkLunchUser")] /*POSTMAN OK*/
-        public IActionResult LinkLunchToUser([FromBody] LinkWithEntity link)
+        [Route("linkToUser")] /*POSTMAN OK*/
+        public IActionResult LinkToUser([FromBody] LinkWithEntity link)
         {
             switch (_lunchRepo.LinkEntityWithUser(link.EntityId, link.UserId))
             {
@@ -141,8 +119,8 @@ namespace API.Controllers
 
 
         [HttpDelete]
-        [Route("unlinkLunchFromUser")] /*POSTMAN OK*/
-        public IActionResult UnlinkLunchFromUser([FromBody] LinkWithEntity link)
+        [Route("unlinkFromUser")] /*POSTMAN OK*/
+        public IActionResult UnlinkFromUser([FromBody] LinkWithEntity link)
         {
             _lunchRepo.UnlinkEntityFromUser(link.EntityId, link.UserId);
             return Ok();

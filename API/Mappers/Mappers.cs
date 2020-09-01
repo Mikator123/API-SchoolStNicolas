@@ -2,6 +2,7 @@
 using API.Models.Users;
 using API.Models.Contacts;
 using API.Models.Lunch;
+using API.Models.Classes;
 
 namespace API.Mappers
 {
@@ -9,6 +10,7 @@ namespace API.Mappers
     {
         public static UserDetailed DalToDetailedUserApi(this D.User user)
         {
+           
             return new UserDetailed()
             {
                 Id = user.Id,
@@ -82,6 +84,7 @@ namespace API.Mappers
                 LastName = user.LastName,
                 FirstName = user.FirstName,
                 NationalNumber = user.NationalNumber,
+                ClassId = (int)user.ClassId
             };
         }
         public static D.User DalToApi(this UserForEntities user)
@@ -94,9 +97,9 @@ namespace API.Mappers
                 NationalNumber = user.NationalNumber,
             };
         }
-        public static ContactForUser DalToApi(this D.Contact c)
+        public static Contact DalToForUserApi(this D.Contact c)
         {
-            return new ContactForUser()
+            return new Contact()
             {
                 Id = c.Id,
                 NationalNumber = c.NationalNumber,
@@ -112,10 +115,29 @@ namespace API.Mappers
                 Gender = c.Gender,
                 Email = c.Email,
                 PersonalNote = c.PersonalNote
-
             };
         }
-        public static D.Contact ApitoDal(this ContactForUser c)
+        public static ContactDetailed DalToDetailedApi(this D.Contact c)
+        {
+            return new ContactDetailed()
+            {
+                Id = c.Id,
+                NationalNumber = c.NationalNumber,
+                LastName = c.LastName,
+                FirstName = c.FirstName,
+                BirthDate = c.BirthDate,
+                AdCity = c.AdCity,
+                AdPostalCode = c.AdPostalCode,
+                AdStreet = c.AdStreet,
+                AdNumber = c.AdNumber,
+                AdBox = c.AdBox,
+                MobilePhone = c.MobilePhone,
+                Gender = c.Gender,
+                Email = c.Email,
+                PersonalNote = c.PersonalNote
+            };
+        }
+        public static D.Contact ApitoDal(this Contact c)
         {
             return new D.Contact()
             {
@@ -133,22 +155,6 @@ namespace API.Mappers
                 Gender = c.Gender,
                 Email = c.Email,
                 PersonalNote = c.PersonalNote
-            };
-        }
-        public static D.Status ApitoDal(this Status s)
-        {
-            return new D.Status()
-            {
-                Id = s.Id,
-                Name = s.Name,
-            };
-        }
-        public static Status DaltoApi(this D.Status s)
-        {
-            return new Status()
-            {
-                Id = s.Id,
-                Name = s.Name,
             };
         }
 
@@ -172,9 +178,9 @@ namespace API.Mappers
                 Date = l.Date
             };
         }
-        public static LunchSimplified DaltoSimplifiedApi(this D.Lunch l)
+        public static Lunch DaltoSimplifiedApi(this D.Lunch l)
         {
-            return new LunchSimplified()
+            return new Lunch()
             {
                 Id = l.Id,
                 Name = l.Name,
@@ -182,7 +188,7 @@ namespace API.Mappers
                 Date = l.Date
             };
         }
-        public static D.Lunch ApitoDal(this LunchSimplified l)
+        public static D.Lunch ApitoDal(this Lunch l)
         {
             return new D.Lunch()
             {
@@ -190,6 +196,41 @@ namespace API.Mappers
                 Name = l.Name,
                 Description = l.Description,
                 Date = l.Date
+            };
+        }
+
+        public static Class DaltoSimplifiedApi(this D.Class c)
+        {
+            return new Class()
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Description = c.Description,
+                SchoolYear = c.SchoolYear,
+                SchoolYearCategoryId = c.SchoolYearCategoryId
+            };
+        }
+        public static ClassDetailed DaltoDetailedApi(this D.Class c)
+        {
+            return new ClassDetailed()
+            {
+
+                Id = c.Id,
+                Name = c.Name,
+                Description = c.Description,
+                SchoolYear = c.SchoolYear,
+                SchoolYearCategoryId = c.SchoolYearCategoryId
+            };
+        }
+        public static D.Class ApiToDal(this Class c)
+        {
+            return new D.Class()
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Description = c.Description,
+                SchoolYear = c.SchoolYear,
+                SchoolYearCategoryId = c.SchoolYearCategoryId
             };
         }
 

@@ -28,8 +28,8 @@ namespace API.Models.Users
         public DateTime? FirstLogin { get; set; }
         public string Email { get; set; }
         public int? ClassId { get; set; }
-        public IEnumerable<ContactForUser> Contacts { get; set; }
-        public IEnumerable<LunchSimplified> Lunches { get; set; }
+        public IEnumerable<Contact> Contacts { get; set; }
+        public IEnumerable<Lunch.Lunch> Lunches { get; set; }
         public int StatusCode { get; set; }
 
     }

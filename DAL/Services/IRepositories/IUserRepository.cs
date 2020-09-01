@@ -19,5 +19,6 @@ namespace DAL.Services.IRepositories
         IEnumerable<Tentity> GetAllByStatusId(int statusId);
         IEnumerable<Tentity> GetAllByClassId(int classId);
         IEnumerable<Tentity> GetAllByLunchId(int lunchId);
+        IEnumerable<Tentity> GetAllByContactId(int contactId);
     }
 }

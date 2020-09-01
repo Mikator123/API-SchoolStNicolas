@@ -1,4 +1,4 @@
-﻿namespace API.Models.Users
+﻿namespace API.Models.Commons
 {
     public class FormLogin
     {

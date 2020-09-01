@@ -1,5 +1,6 @@
 using System.Data.Common;
 using System.Data.SqlClient;
+using API.Utils.AppSettings;
 using API.Utils.RSA;
 using DAL.Services.Repositories.Classes;
 using DAL.Services.Repositories.Lunches;
@@ -30,13 +31,16 @@ namespace API
             DbConnectionSettings dbConnectionSettings = dbSection.Get<DbConnectionSettings>();
             string connectionString = dbSection.Get<DbConnectionSettings>().ConnectionString;
 
+            IConfigurationSection TokenSection = Configuration.GetSection("TokenSettings");
+            TokenPassPhrase tokenPP = TokenSection.Get<TokenPassPhrase>();
+            string PassPhrase = TokenSection.Get<TokenPassPhrase>().PassPhrase;
+
 
             services.AddControllers();
             services.AddSingleton<KeyGenerator>();
             services.AddSingleton<DbProviderFactory>(sp => SqlClientFactory.Instance);
             services.AddSingleton(sp => new ConnectionStringObj(connectionString));
             services.AddSingleton<Connection>();
-            string PassPhrase = @"?*w*92%&+d_pxTU8j3gUMsDDkU*pr@fvva*u5CBMV&Qpju$xsbx2s#UM3uhSrCB^2=pk&53JDB69SYV*48=YaQFjRTcQLPLA#sFVjZjb5ja=mkAuh?Yb*T5!G6mHf_+Zy$e5km@*fjEBBzcK8g!H4QCU*vYrEAE^p9TBUmCfPQSyC!f6tpQyBYKrT!AaMLycJL@94m94-tNmWa6b&Jw@s+2hqF2YB_G_+3k?uZU4L*gT5f5aK2F5_TvnEvtr7vE&";
             services.AddSingleton<ITokenService, TokenService>(token => new TokenService(PassPhrase));
             //REPOSITORIES
             services.AddSingleton<UserRepository>();

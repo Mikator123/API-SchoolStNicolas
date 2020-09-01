@@ -213,6 +213,18 @@ namespace DAL.Services.Repositories.Users
                 FirstName = r["FirstName"].ToString()
             });
         }
+        public IEnumerable<User> GetAllByContactId(int contactId)
+        {
+            Command cmd = new Command("SELECT * FROM User_Contact UC RIGHT JOIN Users U ON U.Id = UC.UserId WHERE ContactId = @contactId");
+            cmd.AddParameter("contactId", contactId);
+            return _connection.ExecuteReader(cmd, r => new User()
+            {
+                Id = (int)r["Id"],
+                NationalNumber = r["NationalNumber"].ToString(),
+                LastName = r["LastName"].ToString(),
+                FirstName = r["FirstName"].ToString()
+            });
+        }
 
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace API.Models.Enumerations
+namespace API.Utils.Enumerations
 {
     [Flags]
     public enum UserStatus

@@ -1,4 +1,4 @@
-﻿namespace API
+﻿namespace API.Utils.AppSettings
 {
     public class DbConnectionSettings
     {
