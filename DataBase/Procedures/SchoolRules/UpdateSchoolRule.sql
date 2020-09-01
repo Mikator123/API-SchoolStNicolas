@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateSchoolRule]
 	@id int,
 	@name nvarchar(50),
-	@descritpion nvarchar(max)
+	@description nvarchar(max)
 AS
 BEGIN
 	UPDATE SchoolRules SET
 		RuleName = @name,
-		RuleDescription = @descritpion
+		RuleDescription = @description
 	WHERE Id = @id
 END

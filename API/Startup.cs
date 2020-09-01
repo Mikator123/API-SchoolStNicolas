@@ -4,6 +4,7 @@ using API.Utils.AppSettings;
 using API.Utils.RSA;
 using DAL.Services.Repositories.Classes;
 using DAL.Services.Repositories.Lunches;
+using DAL.Services.Repositories.SchoolInfos;
 using DAL.Services.Repositories.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -49,6 +50,8 @@ namespace API
             services.AddSingleton<StatusRepository>();
             services.AddSingleton<LunchRepository>();
             services.AddSingleton<TrimestrialInfoRepository>();
+            services.AddSingleton<SchoolRuleRepository>();
+            services.AddSingleton<SchoolEventRepository>();
 
         }
 

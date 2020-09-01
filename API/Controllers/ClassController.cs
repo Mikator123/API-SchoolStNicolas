@@ -32,7 +32,7 @@ namespace API.Controllers
             {
                 case DBErrors.Success:
                     return Ok();
-                case DBErrors.ClassName_Exist:
+                case DBErrors.Name_Exist:
                     return Problem("This name already exist.", statusCode: (int)HttpStatusCode.BadRequest);
                 case DBErrors.YearCategoryId_NotFound:
                     return Problem("A valid CategoryId is needed.", statusCode: (int)HttpStatusCode.NotFound);
@@ -50,7 +50,7 @@ namespace API.Controllers
             {
                 case DBErrors.Success:
                     return Ok();
-                case DBErrors.ClassName_Exist:
+                case DBErrors.Name_Exist:
                     return Problem("This name already exist.", statusCode: (int)HttpStatusCode.BadRequest);
                 case DBErrors.YearCategoryId_NotFound:
                     return Problem("A valid CategoryId is needed.", statusCode: (int)HttpStatusCode.NotFound);

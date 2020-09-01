@@ -35,7 +35,7 @@ namespace DAL.Services.Repositories.Classes
             catch(SqlException ex)
             {
                 if (ex.Message.Contains("[CK_Classes_ClassName]"))
-                    return DBErrors.ClassName_Exist;
+                    return DBErrors.Name_Exist;
                 if (ex.Message.Contains("[FK_Classes_SchoolYearCategoryNames]"))
                     return DBErrors.YearCategoryId_NotFound;
                 if (ex.Message.Contains("NULL"))
@@ -93,7 +93,7 @@ namespace DAL.Services.Repositories.Classes
             catch (SqlException ex)
             {
                 if (ex.Message.Contains("[CK_Classes_ClassName]"))
-                    return DBErrors.ClassName_Exist;
+                    return DBErrors.Name_Exist;
                 if (ex.Message.Contains("[FK_Classes_SchoolYearCategoryNames]"))
                     return DBErrors.YearCategoryId_NotFound;
                 if (ex.Message.Contains("NULL"))

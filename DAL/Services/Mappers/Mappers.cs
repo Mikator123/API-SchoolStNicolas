@@ -94,5 +94,26 @@ namespace DAL.Services.Mappers
                 
             };
         }
+
+        public static SchoolRule ReaderToDalRule(this IDataReader r)
+        {
+            return new SchoolRule()
+            {
+                Id = (int)r["Id"],
+                Name = r["RuleName"].ToString(),
+                Description = r["RuleDescription"].ToString()
+            };
+        }
+        public static SchoolEvent ReaderToDalEvent (this IDataReader r)
+        {
+            return new SchoolEvent()
+            {
+                Id = (int)r["Id"],
+                Name = r["EventName"].ToString(),
+                Description = r["EventDescription"] is DBNull ? null : r["EventDescription"].ToString(),
+                Date = r["EventDate"] is DBNull ? default : (DateTime)r["EventDate"],
+                NbrOfPersons = r["NbrOfPersons"] is DBNull ? 0 : (int)r["NbrOfPersons"]
+            };
+        }
     }
 }

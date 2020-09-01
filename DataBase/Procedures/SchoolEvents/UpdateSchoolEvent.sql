@@ -1,13 +1,13 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateSchoolEvent]
 	@id int,
 	@name nvarchar(50),
-	@descritpion nvarchar(max),
+	@description nvarchar(max),
 	@date date
 AS
 BEGIN
 	UPDATE SchoolEvents SET
 		EventName = @name,
-		EventDescription = @descritpion,
+		EventDescription = @description,
 		EventDate = @date
 	WHERE Id = @id
 END

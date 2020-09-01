@@ -8,7 +8,7 @@ namespace DAL.Enumerations
     {
         Success, 
         LinkAlreadyExist,
-        ClassName_Exist,
+        Name_Exist,
         NationalNumber_Exist,
         ClassId_NotFound,
         YearCategoryId_NotFound,

@@ -6,5 +6,6 @@
     [EventDate] DATE NULL,
     [NbrOfPersons] int NULL,
     [IsActive] BIT NOT NULL DEFAULT 1,
-    CONSTRAINT [PK_SchoolEvents] PRIMARY KEY ([Id]) 
+    CONSTRAINT [PK_SchoolEvents] PRIMARY KEY ([Id]),
+    CONSTRAINT [UK_SchoolEvents_EventName] UNIQUE ([EventName])
 )
