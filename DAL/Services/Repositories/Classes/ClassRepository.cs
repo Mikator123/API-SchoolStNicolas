@@ -57,14 +57,14 @@ namespace DAL.Services.Repositories.Classes
         public IEnumerable<Class> GetAll()
         {
             Command cmd = new Command("SELECT * FROM Classes");
-            return _connection.ExecuteReader(cmd, r => r.ClassToDal());
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalClass());
         }
 
         public Class GetById(int Id)
         {
             Command cmd = new Command("SELECT * FROM Classes WHERE Id = @id");
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteReader(cmd, r => r.ClassToDal()).SingleOrDefault();
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalClass()).SingleOrDefault();
         }
 
         public IEnumerable<Class> GetByUserId(int userId)
@@ -75,7 +75,7 @@ namespace DAL.Services.Repositories.Classes
         {
             Command cmd = new Command("SELECT * FROM Classes WHERE SchoolYearCategoryId = @id");
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteReader(cmd, r => r.ClassToDal());
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalClass());
         }
 
         public DBErrors Update(Class entity)

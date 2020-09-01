@@ -1,12 +1,12 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateTrimestrialInfo]
 	@id int,
-	@descrition nvarchar(MAX),
+	@description nvarchar(MAX),
 	@trimester int,
 	@userId int
 AS
 BEGIN
 	UPDATE TrimestrialInfos SET
-		InfoDescription = @descrition,
+		InfoDescription = @description,
 		Trimester = @trimester,
 		UpdateInfoDate = getdate(),
 		UserId = @userId,

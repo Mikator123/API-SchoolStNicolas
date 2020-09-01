@@ -155,7 +155,7 @@ namespace DAL.Services.Repositories.Users
         public IEnumerable<User> GetAll()
         {
             Command cmd = new Command("GetALLUsers", true);
-            return _connection.ExecuteReader(cmd, r => r.UserToDal());
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalUser());
         }
         public DBErrors UnlinkUserFromLunches(int Id)
         {
@@ -185,21 +185,21 @@ namespace DAL.Services.Repositories.Users
         {
             Command cmd = new Command("GetUser", true);
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteReader(cmd, r => r.UserToDal()).SingleOrDefault();
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalUser()).SingleOrDefault();
         }
 
         public IEnumerable<User> GetAllByStatusId(int statusId)
         {
             Command cmd = new Command("GetAllUsersByStatusId", true);
             cmd.AddParameter("statusId", statusId);
-            return _connection.ExecuteReader(cmd, r => r.UserToDal());
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalUser());
         }
 
         public IEnumerable<User> GetAllByClassId(int classId)
         {
             Command cmd = new Command("GetAllUsersByClassId", true);
             cmd.AddParameter("classId", classId);
-            return _connection.ExecuteReader(cmd, r => r.UserToDal());
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalUser());
         }
         public IEnumerable<User> GetAllByLunchId(int lunchId)
         {

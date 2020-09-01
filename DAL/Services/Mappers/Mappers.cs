@@ -11,7 +11,7 @@ namespace DAL.Services.Mappers
 {
     public static class Mappers
     {
-        public static Lunch LunchToDal(this IDataReader r)
+        public static Lunch ReaderToDalLunch(this IDataReader r)
         {
             return new Lunch()
             {
@@ -22,7 +22,7 @@ namespace DAL.Services.Mappers
             };
         }
 
-        public static Contact ContactToDal(this IDataReader r)
+        public static Contact ReaderToDalContact(this IDataReader r)
         {
             return new Contact()
             {
@@ -43,7 +43,7 @@ namespace DAL.Services.Mappers
             };
         }
 
-        public static Class ClassToDal(this IDataReader r)
+        public static Class ReaderToDalClass(this IDataReader r)
         {
             return new Class()
             {
@@ -54,7 +54,7 @@ namespace DAL.Services.Mappers
                 SchoolYearCategoryId = (int)r["SchoolYearCategoryId"]
             };
         }
-        public static User UserToDal(this IDataReader r)
+        public static User ReaderToDalUser(this IDataReader r)
         {
             return new User()
             {
@@ -77,6 +77,21 @@ namespace DAL.Services.Mappers
                 StartDate = (DateTime)r["StartDate"],
                 ClassId = r["ClassId"] is DBNull ? 0 : (int)r["ClassId"],
                 StatusCode = (int)r["StatusCode"]
+            };
+        }
+
+        public static TrimestrialInfo ReaderToDalTrim(this IDataReader r)
+        {
+            return new TrimestrialInfo()
+            {
+                Id = (int)r["Id"],
+                UserId = (int)r["UserId"],
+                Description = r["InfoDescription"].ToString(),
+                CreateInfoDate = (DateTime)r["CreateInfoDate"],
+                UpdateInfoDate = r["UpdateInfoDate"] is DBNull ? default : (DateTime)r["UpdateInfoDate"],
+                ClassName = r["ClassName"].ToString(),
+                Trimester = (int)r["Trimester"]
+                
             };
         }
     }

@@ -101,7 +101,7 @@ namespace DAL.Services.Repositories.Users
         {
             Command cmd = new Command("SELECT * FROM User_Contact UC RIGHT JOIN Contacts C ON C.Id = UC.ContactId WHERE UC.UserId = @userId");
             cmd.AddParameter("userId", userId);
-            return _connection.ExecuteReader(cmd, r => r.ContactToDal());
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalContact());
         }
 
 
@@ -109,14 +109,14 @@ namespace DAL.Services.Repositories.Users
         {
             Command cmd = new Command("SELECT * FROM ViewContacts WHERE Id = @id");
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteReader(cmd, r => r.ContactToDal()).SingleOrDefault();
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalContact()).SingleOrDefault();
 
         }
 
         public IEnumerable<Contact> GetAll()
         {
             Command cmd = new Command("SELECT * FROM ViewContacts");
-            return _connection.ExecuteReader(cmd, r => r.ContactToDal());
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalContact());
         }
 
         public DBErrors LinkEntityWithUser(int entityId, int userId)

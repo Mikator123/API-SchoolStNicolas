@@ -70,7 +70,7 @@ namespace DAL.Services.Repositories.Lunches
         public IEnumerable<Lunch> GetAll()
         {
             Command cmd = new Command("Select * FROM Lunches");
-            return _connection.ExecuteReader(cmd, r => r.LunchToDal());
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalLunch());
 
         }
 
@@ -78,14 +78,14 @@ namespace DAL.Services.Repositories.Lunches
         {
             Command cmd = new Command("SELECT * FROM User_Lunch UL RIGHT JOIN Lunches L ON UL.LunchId = L.Id WHERE UL.UserId = @id");
             cmd.AddParameter("id", userId);
-            return _connection.ExecuteReader(cmd, r => r.LunchToDal());
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalLunch());
         }
 
         public Lunch GetById(int Id)
         {
             Command cmd = new Command("Select * FROM Lunches WHERE Id = @id");
             cmd.AddParameter("id", Id);
-            return _connection.ExecuteReader(cmd, r => r.LunchToDal()).SingleOrDefault();
+            return _connection.ExecuteReader(cmd, r => r.ReaderToDalLunch()).SingleOrDefault();
 
         }
 

@@ -16,6 +16,7 @@ using DAL.Services.Repositories.Lunches;
 using API.Attributes;
 using ToolBox.SecurityToken;
 using API.Models.Lunch;
+using DAL.Services.Repositories.Classes;
 
 namespace API.Controllers
 {
@@ -27,12 +28,14 @@ namespace API.Controllers
         private ContactRepository _contactRepo;
         private StatusRepository _statusRepo;
         private LunchRepository _lunchRepo;
-        public UserController(UserRepository userRepo, ContactRepository contactRepo, StatusRepository statusRepo, LunchRepository lunchRepo, ITokenService token)
+        private TrimestrialInfoRepository _trimestrialRepo;
+        public UserController( TrimestrialInfoRepository trimestrialRepo, UserRepository userRepo, ContactRepository contactRepo, StatusRepository statusRepo, LunchRepository lunchRepo, ITokenService token)
         {
             _userRepo = userRepo;
             _contactRepo = contactRepo;
             _statusRepo = statusRepo;
             _lunchRepo = lunchRepo;
+            _trimestrialRepo = trimestrialRepo;
         }
 
 
@@ -150,6 +153,7 @@ namespace API.Controllers
         [HttpDelete("{Id}")]  /*POSTMAN OK*/
         public IActionResult Delete(int Id)
         {
+            
             _userRepo.UnlinkUserFromContacts(Id);
             _userRepo.UnlinkUserFromLunches(Id);
             _userRepo.UnlinkUserFromStatus(Id);

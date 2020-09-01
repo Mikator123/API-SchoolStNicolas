@@ -17,5 +17,6 @@ namespace DAL.Enumerations
         NotKnowedError,
         StartDate_Birthdate_Error,
         NullExeption,
+        YearQuarter_NotFound,
     }
 }

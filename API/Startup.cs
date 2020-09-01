@@ -48,6 +48,7 @@ namespace API
             services.AddSingleton<ContactRepository>();
             services.AddSingleton<StatusRepository>();
             services.AddSingleton<LunchRepository>();
+            services.AddSingleton<TrimestrialInfoRepository>();
 
         }
 
