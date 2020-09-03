@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Repositories\Questions\" />
+    <Folder Include="Services\Repositories\Results\" />
   </ItemGroup>
 
 </Project>

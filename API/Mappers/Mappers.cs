@@ -1,14 +1,17 @@
-﻿using D = DAL.Models;
+﻿
 using API.Models.Users;
 using API.Models.Contacts;
 using API.Models.Lunch;
 using API.Models.Classes;
+using DalUser = DAL.Models.RelativeToUser;
+using DalClass = DAL.Models.RelativeToClass;
+using DalSchool = DAL.Models.RelativeToSchool;
 
 namespace API.Mappers
 {
     public static class Mappers
     {
-        public static UserDetailed DalToDetailedUserApi(this D.User user)
+        public static UserDetailed DalToDetailedUserApi(this DalUser.User user)
         {
            
             return new UserDetailed()
@@ -35,9 +38,9 @@ namespace API.Mappers
                 StatusCode = user.StatusCode
             };
         }
-        public static D.User ApiToDal(this UserDetailed user)
+        public static DalUser.User ApiToDal(this UserDetailed user)
         {
-            return new D.User()
+            return new DalUser.User()
             {
                 Id = user.Id,
                 NationalNumber = user.NationalNumber,
@@ -62,7 +65,7 @@ namespace API.Mappers
                 StatusCode = user.StatusCode
             };
         }
-        public static UserSimplified DalToSimplifiedUserApi(this D.User user)
+        public static UserSimplified DalToSimplifiedUserApi(this DalUser.User user)
         {
             return new UserSimplified()
             {
@@ -76,7 +79,7 @@ namespace API.Mappers
                 StatusCode = user.StatusCode
             };
         }
-        public static UserForEntities DalToForEntitiesApi(this D.User user)
+        public static UserForEntities DalToForEntitiesApi(this DalUser.User user)
         {
             return new UserForEntities()
             {
@@ -84,12 +87,12 @@ namespace API.Mappers
                 LastName = user.LastName,
                 FirstName = user.FirstName,
                 NationalNumber = user.NationalNumber,
-                ClassId = (int)user.ClassId
+                ClassId = user.ClassId
             };
         }
-        public static D.User DalToApi(this UserForEntities user)
+        public static DalUser.User DalToApi(this UserForEntities user)
         {
-            return new D.User()
+            return new DalUser.User()
             {
                 Id = user.Id,
                 LastName = user.LastName,
@@ -97,7 +100,7 @@ namespace API.Mappers
                 NationalNumber = user.NationalNumber,
             };
         }
-        public static Contact DalToForUserApi(this D.Contact c)
+        public static Contact DalToForUserApi(this DalUser.Contact c)
         {
             return new Contact()
             {
@@ -117,7 +120,7 @@ namespace API.Mappers
                 PersonalNote = c.PersonalNote
             };
         }
-        public static ContactDetailed DalToDetailedApi(this D.Contact c)
+        public static ContactDetailed DalToDetailedApi(this DalUser.Contact c)
         {
             return new ContactDetailed()
             {
@@ -137,9 +140,9 @@ namespace API.Mappers
                 PersonalNote = c.PersonalNote
             };
         }
-        public static D.Contact ApitoDal(this Contact c)
+        public static DalUser.Contact ApitoDal(this Contact c)
         {
-            return new D.Contact()
+            return new DalUser.Contact()
             {
                 Id = c.Id,
                 NationalNumber = c.NationalNumber,
@@ -158,7 +161,7 @@ namespace API.Mappers
             };
         }
 
-        public static LunchDetailed DaltoDetailedApi (this D.Lunch l)
+        public static LunchDetailed DaltoDetailedApi (this DalSchool.Lunch l)
         {
             return new LunchDetailed()
             {
@@ -168,9 +171,9 @@ namespace API.Mappers
                 Date = l.Date
             };
         }
-        public static D.Lunch ApitoDal (this LunchDetailed l)
+        public static DalSchool.Lunch ApitoDal (this LunchDetailed l)
         {
-            return new D.Lunch()
+            return new DalSchool.Lunch()
             {
                 Id = l.Id,
                 Name = l.Name,
@@ -178,7 +181,7 @@ namespace API.Mappers
                 Date = l.Date
             };
         }
-        public static Lunch DaltoSimplifiedApi(this D.Lunch l)
+        public static Lunch DaltoSimplifiedApi(this DalSchool.Lunch l)
         {
             return new Lunch()
             {
@@ -188,9 +191,9 @@ namespace API.Mappers
                 Date = l.Date
             };
         }
-        public static D.Lunch ApitoDal(this Lunch l)
+        public static DalSchool.Lunch ApitoDal(this Lunch l)
         {
-            return new D.Lunch()
+            return new DalSchool.Lunch()
             {
                 Id = l.Id,
                 Name = l.Name,
@@ -199,7 +202,7 @@ namespace API.Mappers
             };
         }
 
-        public static Class DaltoSimplifiedApi(this D.Class c)
+        public static Class DaltoSimplifiedApi(this DalClass.Class c)
         {
             return new Class()
             {
@@ -210,7 +213,7 @@ namespace API.Mappers
                 SchoolYearCategoryId = c.SchoolYearCategoryId
             };
         }
-        public static ClassDetailed DaltoDetailedApi(this D.Class c)
+        public static ClassDetailed DaltoDetailedApi(this DalClass.Class c)
         {
             return new ClassDetailed()
             {
@@ -222,9 +225,9 @@ namespace API.Mappers
                 SchoolYearCategoryId = c.SchoolYearCategoryId
             };
         }
-        public static D.Class ApiToDal(this Class c)
+        public static DalClass.Class ApiToDal(this Class c)
         {
-            return new D.Class()
+            return new DalClass.Class()
             {
                 Id = c.Id,
                 Name = c.Name,

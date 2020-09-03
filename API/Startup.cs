@@ -2,10 +2,9 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using API.Utils.AppSettings;
 using API.Utils.RSA;
-using DAL.Services.Repositories.Classes;
-using DAL.Services.Repositories.Lunches;
-using DAL.Services.Repositories.SchoolInfos;
-using DAL.Services.Repositories.Users;
+using DAL.Services.Repositories.RelativeToClass;
+using DAL.Services.Repositories.RelativeToSchool;
+using DAL.Services.Repositories.RelativeToUser;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -52,6 +51,8 @@ namespace API
             services.AddSingleton<TrimestrialInfoRepository>();
             services.AddSingleton<SchoolRuleRepository>();
             services.AddSingleton<SchoolEventRepository>();
+            services.AddSingleton<SchoolYearCategoryRepository>();
+            services.AddSingleton<TeachingCategoryRepository>();
 
         }
 

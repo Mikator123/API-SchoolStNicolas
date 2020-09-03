@@ -1,11 +1,8 @@
-﻿using DAL.Models;
+﻿using DAL.Models.RelativeToClass;
+using DAL.Models.RelativeToSchool;
+using DAL.Models.RelativeToUser;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Xml.Linq;
 
 namespace DAL.Services.Mappers
 {
@@ -113,6 +110,24 @@ namespace DAL.Services.Mappers
                 Description = r["EventDescription"] is DBNull ? null : r["EventDescription"].ToString(),
                 Date = r["EventDate"] is DBNull ? default : (DateTime)r["EventDate"],
                 NbrOfPersons = r["NbrOfPersons"] is DBNull ? 0 : (int)r["NbrOfPersons"]
+            };
+        }
+
+        public static SchoolYearCategory ReaderToDalYearCategory (this IDataReader r)
+        {
+            return new SchoolYearCategory()
+            {
+                Id = (int)r["Id"],
+                Name = r["CategoryName"].ToString()
+            };
+        }
+
+        public static TeachingCategory ReaderToDalTeachCategory (this IDataReader r)
+        {
+            return new TeachingCategory()
+            {
+                Id = (int)r["Id"],
+                Name = r["CategoryName"].ToString(),
             };
         }
     }

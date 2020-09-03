@@ -6,6 +6,6 @@
         public string NationalNumber { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
-        public int ClassId { get; set; }
+        public int? ClassId { get; set; }
     }
 }

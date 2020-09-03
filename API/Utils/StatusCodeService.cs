@@ -1,4 +1,4 @@
-﻿using D = DAL.Models;
+﻿using D = DAL.Models.RelativeToUser;
 using System.Collections.Generic;
 
 namespace API.Utils

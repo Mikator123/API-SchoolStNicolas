@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace API.Models.Contacts
+namespace DAL.Models.RelativeToUser
 {
     public class Contact
     {
@@ -18,6 +20,5 @@ namespace API.Models.Contacts
         public string Gender { get; set; }
         public string Email { get; set; }
         public string PersonalNote { get; set; }
-
     }
 }

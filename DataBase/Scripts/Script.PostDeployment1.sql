@@ -5,11 +5,12 @@ INSERT INTO [Status] (StatusName)
 
 /*HARDCODE des SchoolYearCategories*/
 INSERT INTO SchoolYearCategoryNames
-	VALUES ('Acceuil'),('Maternelle'),('Primaire');
+	VALUES ('Acceuil'),('Maternelle'),('Primaire'),('Aucune');
 
 /*INSERT DES CLASSES*/
 INSERT INTO Classes (ClassName, ClassDescription, SchoolYear, SchoolYearCategoryId) 
 	VALUES
+	('0','Classe tempon',0,4),
 	('3A', 'Classe rouge', 3, 2),
 	('4A', 'Classe jaune', 4, 3),
 	('5A', 'Classe mauve', 5, 3),
@@ -25,12 +26,12 @@ INSERT INTO Users (NationalNumber, LastName, FirstName, Birthdate, AdCity, AdPos
 	'Rue du Try', 20,'D','+32477469214', 'EClarke',HASHBYTES('SHA2_512',dbo.PreSalt()+'test1234='+dbo.PostSalt()), 'F', 
 	'https://media.virginradio.fr/article-3808966-head-f10/emilia-clarke-photoshoot.jpg', 
 	'Très bon Feedback de la part des élèves.', '2015-09-01', null, 
-	'EmiliaClark@daenerysTargaryen.com', DEFAULT, 1),
+	'EmiliaClark@daenerysTargaryen.com', DEFAULT, 2),
 
 	('592-3925660-24', 'Swann', 'Elisabeth', '1985-03-26', 'Marbais', 1495,
 	'Rue du Black Pearl', 1, null, '+32485421546', 'ESwann', HASHBYTES('SHA2_512',dbo.PreSalt()+'test1234='+dbo.PostSalt()), 'F',
 	'https://vignette.wikia.nocookie.net/lemondededisney/images/8/85/Elizabeth_Swann_Headshot.jpg/revision/latest?cb=20161220132134&path-prefix=fr',
-	null, '2016-09-01', null, 'ElisabethSwann@blackpearl.com', DEFAULT, 2),
+	null, '2016-09-01', null, 'ElisabethSwann@blackpearl.com', DEFAULT, 3),
 
 	('592-3424660-24', 'Miller', 'John', '1967-10-12', 'Villers-La-Ville', 1495,
 	'Route d''Omaha Beach', 47, 'C', '+32496547845', 'JMiller', HASHBYTES('SHA2_512',dbo.PreSalt()+'test1234='+dbo.PostSalt()), 'M',
@@ -42,12 +43,12 @@ INSERT INTO Users (NationalNumber, LastName, FirstName, Birthdate, AdCity, AdPos
 	'Chemin du District', 12, null, '+32465521489', 'KEverdeen',HASHBYTES('SHA2_512',dbo.PreSalt()+'test1234='+dbo.PostSalt()), 'F',
 	'https://vignette.wikia.nocookie.net/hungergamesfrance/images/4/42/Jennifer-lawrence-interprete-katniss-everdeen.jpg/revision/latest?cb=20150830195605&path-prefix=fr',
 	'Sait unir les élèves dans une cours de récréation', '2018-09-01', null,
-	'KatnissEverdeen@mokingJay.com', DEFAULT, 3),
+	'KatnissEverdeen@mokingJay.com', DEFAULT, 4),
 
 	('592-21457845-24', 'Proudmoore','Jaina', '1975-04-01', 'Dalaran', 4541, 
 	'Port de Theramore', 427, null,	'+64451223568', 'JProudmoore', HASHBYTES('SHA2_512',dbo.PreSalt()+'test1234='+dbo.PostSalt()), 'F',
 	'https://cogconnected.com/wp-content/uploads/2020/03/JainaProudmooreWOW.2-1024x680.jpg',
-	null, '2010-09-01', null, 'JainaProudmoore@Azeroth.com',DEFAULT, 4);
+	null, '2010-09-01', null, 'JainaProudmoore@Azeroth.com',DEFAULT, 5);
 
 /*INSERT ADMIN*/
 INSERT INTO Users(NationalNumber, LastName, FirstName, Birthdate, AdCity, AdPostalCode, 
@@ -66,44 +67,44 @@ INSERT INTO User_Status(UserId, StatusId)
 
 /*INSERT STUDENTS*/
 /*CLASS 1*/
-EXEC dbo.CreateUser '1234','Lefou','Arnold','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 1;
-EXEC dbo.CreateUser '1235','Jamine','Pierrot','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 1;
-EXEC dbo.CreateUser '1236','Pourtouf','Jean-Marc','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 1;
-EXEC dbo.CreateUser '1237','Lafouri','Karim','1986-09-27','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 1;
-EXEC dbo.CreateUser '1238','Charlier','Luc','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 1;
+EXEC dbo.CreateUser '1234','Lefou','Arnold','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
+EXEC dbo.CreateUser '1235','Jamine','Pierrot','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
+EXEC dbo.CreateUser '1236','Pourtouf','Jean-Marc','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
+EXEC dbo.CreateUser '1237','Lafouri','Karim','1986-09-27','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
+EXEC dbo.CreateUser '1238','Charlier','Luc','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
 EXEC dbo.CreateUserStatus 7,1;
 EXEC dbo.CreateUserStatus 8,1;
 EXEC dbo.CreateUserStatus 9,1;
 EXEC dbo.CreateUserStatus 10,1;
 EXEC dbo.CreateUserStatus 11,1;
 /*CLASS 2*/
-EXEC dbo.CreateUser '12341','Bourdon','Laurent','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
-EXEC dbo.CreateUser '12342','Fernandez','Daniel','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
-EXEC dbo.CreateUser '12343','Lafouri','Karim','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
-EXEC dbo.CreateUser '12344','Charlier','Luc','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
-EXEC dbo.CreateUser '12345','Lefou','Pierrot','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
+EXEC dbo.CreateUser '12341','Bourdon','Laurent','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 3;
+EXEC dbo.CreateUser '12342','Fernandez','Daniel','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 3;
+EXEC dbo.CreateUser '12343','Lafouri','Karim','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 3;
+EXEC dbo.CreateUser '12344','Charlier','Luc','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 3;
+EXEC dbo.CreateUser '12345','Lefou','Pierrot','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 3;
 EXEC dbo.CreateUserStatus 12,1;
 EXEC dbo.CreateUserStatus 13,1;
 EXEC dbo.CreateUserStatus 14,1;
 EXEC dbo.CreateUserStatus 15,1;
 EXEC dbo.CreateUserStatus 16,1;
 /*CLASS 3*/
-EXEC dbo.CreateUser '123411','Livin','Caroline','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 3;
-EXEC dbo.CreateUser '123422','Fernandez','Daniela','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 3;
-EXEC dbo.CreateUser '123433','Vanderlinden','Laura','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 3;
-EXEC dbo.CreateUser '123444','Foullon','Sarah','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 3;
-EXEC dbo.CreateUser '123455','Bultreys','Nancy','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 3;
+EXEC dbo.CreateUser '123411','Livin','Caroline','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 4;
+EXEC dbo.CreateUser '123422','Fernandez','Daniela','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 4;
+EXEC dbo.CreateUser '123433','Vanderlinden','Laura','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 4;
+EXEC dbo.CreateUser '123444','Foullon','Sarah','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 4;
+EXEC dbo.CreateUser '123455','Bultreys','Nancy','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 4;
 EXEC dbo.CreateUserStatus 17,1;
 EXEC dbo.CreateUserStatus 18,1;
 EXEC dbo.CreateUserStatus 19,1;
 EXEC dbo.CreateUserStatus 20,1;
 EXEC dbo.CreateUserStatus 21,1;
 /*CLASS 4*/
-EXEC dbo.CreateUser '1234111','Star','Stacy','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 4;
-EXEC dbo.CreateUser '1234222','Neury','Valery','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 4;
-EXEC dbo.CreateUser '1234333','Matthys','Clea','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 4;
-EXEC dbo.CreateUser '1234444','Vandersteen','Steve','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 4;
-EXEC dbo.CreateUser '1234555','Bultreys','Pascaline','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 4;
+EXEC dbo.CreateUser '1234111','Star','Stacy','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 5;
+EXEC dbo.CreateUser '1234222','Neury','Valery','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 5;
+EXEC dbo.CreateUser '1234333','Matthys','Clea','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 5;
+EXEC dbo.CreateUser '1234444','Vandersteen','Steve','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 5;
+EXEC dbo.CreateUser '1234555','Bultreys','Pascaline','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F',null,null,'2020-08-21',null,'test1234=', 5;
 EXEC dbo.CreateUserStatus 22,1;
 EXEC dbo.CreateUserStatus 23,1;
 EXEC dbo.CreateUserStatus 24,1;
