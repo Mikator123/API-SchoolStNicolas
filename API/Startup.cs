@@ -5,6 +5,7 @@ using API.Utils.RSA;
 using DAL.Services.Repositories.RelativeToClass;
 using DAL.Services.Repositories.RelativeToSchool;
 using DAL.Services.Repositories.RelativeToUser;
+using DAL.Services.Repositories.RelativeToWorkingProfile;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -46,13 +47,17 @@ namespace API
             services.AddSingleton<UserRepository>();
             services.AddSingleton<ClassRepository>();
             services.AddSingleton<ContactRepository>();
-            services.AddSingleton<StatusRepository>();
+            services.AddSingleton<UserStatusRepository>();
             services.AddSingleton<LunchRepository>();
             services.AddSingleton<TrimestrialInfoRepository>();
             services.AddSingleton<SchoolRuleRepository>();
             services.AddSingleton<SchoolEventRepository>();
             services.AddSingleton<SchoolYearCategoryRepository>();
             services.AddSingleton<TeachingCategoryRepository>();
+            services.AddSingleton<TestResultRepository>();
+            services.AddSingleton<WorkingProfileQuestionRepository>();
+            services.AddSingleton<WorkingProfileDocumentRepository>();
+            services.AddSingleton<AuthRepository>();
 
         }
 

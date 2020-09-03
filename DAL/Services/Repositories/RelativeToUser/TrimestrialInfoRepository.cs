@@ -11,7 +11,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using ToolBoxDB;
 
-namespace DAL.Services.Repositories.RelativeToClass
+namespace DAL.Services.Repositories.RelativeToUser
 {
     public class TrimestrialInfoRepository : ICRUDRepository<TrimestrialInfo, DBErrors>
     {

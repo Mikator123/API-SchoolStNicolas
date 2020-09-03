@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DAL.Services.Repositories.RelativeToClass;
-using Microsoft.AspNetCore.Http;
-using D = DAL.Models.RelativeToClass;
 using Microsoft.AspNetCore.Mvc;
 using DAL.Enumerations;
 using System.Net;
+using DAL.Models.RelativeToClass;
 
 namespace API.Controllers.RelativeToClass
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TeachingCategory : ControllerBase
+    public class TeachingCategoryController : ControllerBase
     {
         private TeachingCategoryRepository _categoryRepo;
-        public TeachingCategory(TeachingCategoryRepository categoryRepo)
+        public TeachingCategoryController(TeachingCategoryRepository categoryRepo)
         {
             _categoryRepo = categoryRepo;
         }
 
         [HttpPost]/*POSTMAN OK*/
-        public IActionResult Create([FromBody] D.TeachingCategory cat)
+        public IActionResult Create([FromBody] TeachingCategory cat)
         {
             switch(_categoryRepo.Create(cat))
             {
@@ -38,7 +34,7 @@ namespace API.Controllers.RelativeToClass
         }
 
         [HttpPut]/*POSTMAN OK*/
-        public IActionResult Update([FromBody] D.TeachingCategory cat)
+        public IActionResult Update([FromBody] TeachingCategory cat)
         {
             switch (_categoryRepo.Update(cat))
             {
@@ -63,7 +59,7 @@ namespace API.Controllers.RelativeToClass
         [HttpGet]/*POSTMAN OK*/
         public IActionResult Get()
         {
-            IEnumerable<D.TeachingCategory> list = _categoryRepo.GetAll();
+            IEnumerable<TeachingCategory> list = _categoryRepo.GetAll();
             if (!(list is null))
                 return Ok(list);
             else
@@ -74,7 +70,7 @@ namespace API.Controllers.RelativeToClass
         [HttpGet("{Id}")]/*POSTMAN OK*/
         public IActionResult GetById(int Id)
         {
-            D.TeachingCategory cat = _categoryRepo.GetById(Id);
+            TeachingCategory cat = _categoryRepo.GetById(Id);
             if (!(cat is null))
                 return Ok(cat);
             else

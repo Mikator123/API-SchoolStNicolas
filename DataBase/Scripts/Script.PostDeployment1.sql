@@ -1,4 +1,5 @@
-﻿/*HARDCODE STATUS*/
+﻿
+/*HARDCODE STATUS*/
 INSERT INTO [Status] (StatusName)
 	VALUES ('Student'),('Professor'),('Manager'),('Admin');
 

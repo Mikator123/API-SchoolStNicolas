@@ -10,5 +10,6 @@
     [SchoolYearNameId] INT NOT NULL, 
     CONSTRAINT [PK_WorkingProfileDocuments] PRIMARY KEY ([Id]), 
     CONSTRAINT [FK_WorkingProfileDocuments_Categories] FOREIGN KEY (CategoryId) REFERENCES Categories(Id) ON DELETE SET NULL, 
-    CONSTRAINT [FK_WorkingProfileDocuments_SchoolYearCategoryNames] FOREIGN KEY ([SchoolYearNameId]) REFERENCES SchoolYearCategoryNames(Id) 
+    CONSTRAINT [FK_WorkingProfileDocuments_SchoolYearCategoryNames] FOREIGN KEY ([SchoolYearNameId]) REFERENCES SchoolYearCategoryNames(Id),
+        CONSTRAINT [CK_WorkingProfileDocument_Trimester] CHECK (Trimester BETWEEN 1 AND 3), 
 )

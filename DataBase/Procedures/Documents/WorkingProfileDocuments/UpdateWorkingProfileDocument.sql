@@ -5,7 +5,8 @@
 	@name nvarchar(50),
 	@categoryId int,
 	@schoolYear int,
-	@trimester int
+	@trimester int,
+	@schoolyearNameId int
 AS
 BEGIN
 	UPDATE WorkingProfileDocuments SET
@@ -14,6 +15,7 @@ BEGIN
 		DocumentName = @name,
 		CategoryId = @categoryId,
 		SchoolYear = @schoolYear,
-		Trimester = @trimester
+		Trimester = @trimester,
+		SchoolYearNameId = @schoolyearNameId
 		WHERE Id = @Id
 END

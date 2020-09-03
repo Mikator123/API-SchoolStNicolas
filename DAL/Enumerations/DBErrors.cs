@@ -18,5 +18,7 @@ namespace DAL.Enumerations
         StartDate_Birthdate_Error,
         NullExeption,
         YearQuarter_NotFound,
+        TeachingCategoryId_NotFound,
+        IncorrectNumber,
     }
 }

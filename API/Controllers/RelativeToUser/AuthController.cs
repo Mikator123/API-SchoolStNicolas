@@ -18,13 +18,13 @@ namespace API.Controllers.RelativeToUser
         private ITokenService _token;
         private Decrypting _decrypting = new Decrypting();
         private KeyGenerator _key;
-        private UserRepository _userRepo;
+        private AuthRepository _authRepo;
 
-        public AuthController(ITokenService token, KeyGenerator key, UserRepository userRepo )
+        public AuthController(ITokenService token, KeyGenerator key, AuthRepository authRepo)
         {
             _token = token;
             _key = key;
-            _userRepo = userRepo;
+            _authRepo = authRepo;
         }
 
         [HttpPost]
@@ -36,7 +36,7 @@ namespace API.Controllers.RelativeToUser
             UserSimplified user = new UserSimplified();
             try
             {
-                user = _userRepo.Login(entity.Login, entity.Password)?.DalToSimplifiedUserApi();
+                user = _authRepo.Login(entity.Login, entity.Password)?.DalToSimplifiedUserApi();
             }
             catch (Exception e)
             {

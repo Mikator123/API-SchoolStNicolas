@@ -1,6 +1,7 @@
 ﻿using DAL.Models.RelativeToClass;
 using DAL.Models.RelativeToSchool;
 using DAL.Models.RelativeToUser;
+using DAL.Models.RelativeToWorkingProfile;
 using System;
 using System.Data;
 
@@ -46,7 +47,7 @@ namespace DAL.Services.Mappers
             {
                 Id = (int)r["Id"],
                 Name = r["ClassName"].ToString(),
-                Description = r["ClassDescription"].ToString(),
+                Description = r["ClassDescription"] is DBNull ? null : r["ClassDescription"].ToString(),
                 SchoolYear = (int)r["SchoolYear"],
                 SchoolYearCategoryId = (int)r["SchoolYearCategoryId"]
             };
@@ -72,7 +73,7 @@ namespace DAL.Services.Mappers
                 PersonalNote = r["PersonalNote"] is DBNull ? null : r["PersonalNote"].ToString(),
                 Email = r["Email"] is DBNull ? null : r["Email"].ToString(),
                 StartDate = (DateTime)r["StartDate"],
-                ClassId = r["ClassId"] is DBNull ? 0 : (int)r["ClassId"],
+                ClassId = r["ClassId"] is DBNull ? null : (int?)r["ClassId"],
                 StatusCode = (int)r["StatusCode"]
             };
         }
@@ -85,7 +86,7 @@ namespace DAL.Services.Mappers
                 UserId = (int)r["UserId"],
                 Description = r["InfoDescription"].ToString(),
                 CreateInfoDate = (DateTime)r["CreateInfoDate"],
-                UpdateInfoDate = r["UpdateInfoDate"] is DBNull ? default : (DateTime)r["UpdateInfoDate"],
+                UpdateInfoDate = r["UpdateInfoDate"] is DBNull ? null : (DateTime?)r["UpdateInfoDate"],
                 ClassName = r["ClassName"].ToString(),
                 Trimester = (int)r["Trimester"]
                 
@@ -108,8 +109,8 @@ namespace DAL.Services.Mappers
                 Id = (int)r["Id"],
                 Name = r["EventName"].ToString(),
                 Description = r["EventDescription"] is DBNull ? null : r["EventDescription"].ToString(),
-                Date = r["EventDate"] is DBNull ? default : (DateTime)r["EventDate"],
-                NbrOfPersons = r["NbrOfPersons"] is DBNull ? 0 : (int)r["NbrOfPersons"]
+                Date = r["EventDate"] is DBNull ? null : (DateTime?)r["EventDate"],
+                NbrOfPersons = r["NbrOfPersons"] is DBNull ? null : (int?)r["NbrOfPersons"]
             };
         }
 
@@ -128,6 +129,51 @@ namespace DAL.Services.Mappers
             {
                 Id = (int)r["Id"],
                 Name = r["CategoryName"].ToString(),
+            };
+        }
+        public static TestResult ReaderToDalTestResult (this IDataReader r)
+        {
+            return new TestResult()
+            {
+                Id = (int)r["Id"],
+                Result = (double)r["Result"],
+                Date = (DateTime)r["TestDate"],
+                Description = r["TestDescription"] is DBNull ? null : r["TestDescription"].ToString(),
+                CategoryId = r["CategoryId"] is DBNull ? null : (int?)r["CategoryId"],
+                ClassId = r["ClassId"] is DBNull ? null : (int?)r["ClassId"],
+                StudentId = (int)r["UserId"]
+            };
+        }
+
+        public static WorkingProfileQuestion ReaderToDalDistTest (this IDataReader r)
+        {
+            return new WorkingProfileQuestion()
+            {
+                Id = (int)r["Id"],
+                Question = r["Question"].ToString(),
+                Correction = r["Correction"].ToString(),
+                Explanation = r["Explanation"].ToString(),
+                FirstHint = r["FirstHint"].ToString(),
+                SecondHint = r["SecondHint"] is DBNull ? null : r["SecondHint"].ToString(),
+                CategoryId = r["CategoryId"] is DBNull ? null : (int?)r["CategoryId"],
+                SchoolYear = (int)r["SchoolYear"],
+                Trimester = (int)r["Trimester"],
+                SchoolYearCategoryId = (int)r["SchoolYearCategoryId"]
+            };
+        }
+
+        public static WorkingProfileDocument ReaderToDalWorkDoc (this IDataReader r)
+        {
+            return new WorkingProfileDocument()
+            {
+                Id = (int)r["Id"],
+                Description = r["DocumentDescription"].ToString(),
+                Link = r["DocumentLink"].ToString(),
+                Name = r["DocumentName"].ToString(),
+                CategoryId = r["CategoryId"] is DBNull ? null : (int?)r["CategoryId"],
+                SchoolYear = (int)r["SchoolYear"],
+                Trimester = (int)r["Trimester"],
+                SchoolYearCategoryId = (int)r["SchoolyearNameId"]
             };
         }
     }

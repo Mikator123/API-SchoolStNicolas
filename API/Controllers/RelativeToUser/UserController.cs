@@ -22,10 +22,10 @@ namespace API.Controllers.RelativeToUser
     {
         private UserRepository _userRepo;
         private ContactRepository _contactRepo;
-        private StatusRepository _statusRepo;
+        private UserStatusRepository _statusRepo;
         private LunchRepository _lunchRepo;
         private TrimestrialInfoRepository _trimestrialRepo;
-        public UserController( TrimestrialInfoRepository trimestrialRepo, UserRepository userRepo, ContactRepository contactRepo, StatusRepository statusRepo, LunchRepository lunchRepo, ITokenService token)
+        public UserController( TrimestrialInfoRepository trimestrialRepo, UserRepository userRepo, ContactRepository contactRepo, UserStatusRepository statusRepo, LunchRepository lunchRepo, ITokenService token)
         {
             _userRepo = userRepo;
             _contactRepo = contactRepo;

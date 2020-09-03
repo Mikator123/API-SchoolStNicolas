@@ -7,7 +7,6 @@ namespace DAL.Services.IRepositories
 {
     public interface IUserRepository<Tentity>
     {
-        Tentity Login(string login, string password);
         DBErrors Create(Tentity entity);
         DBErrors Update(Tentity entity);
         DBErrors Delete(int Id);

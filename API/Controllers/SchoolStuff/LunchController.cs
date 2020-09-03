@@ -91,7 +91,7 @@ namespace API.Controllers.SchoolStuff
         [HttpGet("{lunchId}")] /*POSTMAN OK*/
         public IActionResult GetLunchById(int lunchId)
         {
-            Models.Lunch.Lunch lunch = _lunchRepo.GetById(lunchId).DaltoSimplifiedApi();
+            Lunch lunch = _lunchRepo.GetById(lunchId).DaltoSimplifiedApi();
             if (!(lunch is null))
                 return Ok(lunch);
             else

@@ -10,8 +10,8 @@ namespace API.Controllers.RelativeToUser
     [ApiController]
     public class StatusController : ControllerBase
     {
-        private StatusRepository _statusRepo;
-        public StatusController(StatusRepository statusRepo)
+        private UserStatusRepository _statusRepo;
+        public StatusController(UserStatusRepository statusRepo)
         {
             _statusRepo = statusRepo;
         }

@@ -6,6 +6,9 @@ using API.Models.Classes;
 using DalUser = DAL.Models.RelativeToUser;
 using DalClass = DAL.Models.RelativeToClass;
 using DalSchool = DAL.Models.RelativeToSchool;
+using DalWProfile = DAL.Models.RelativeToWorkingProfile;
+using API.Models.DistancialTest;
+using API.Models.WorkingProfile;
 
 namespace API.Mappers
 {
@@ -236,6 +239,69 @@ namespace API.Mappers
                 SchoolYearCategoryId = c.SchoolYearCategoryId
             };
         }
+
+        public static WorkingProfileQuestion DalToAPI(this DalWProfile.WorkingProfileQuestion t )
+        {
+            return new WorkingProfileQuestion()
+            {
+                Id = t.Id,
+                Question = t.Question,
+                Correction = t.Correction,
+                Explanation = t.Explanation,
+                FirstHint = t.FirstHint,
+                SecondHint = t.SecondHint,
+                CategoryId = t.CategoryId,
+                SchoolYear = t.SchoolYear,
+                Trimester = t.Trimester,
+                SchoolYearCategoryId = t.SchoolYear
+            };
+        }
+        public static DalWProfile.WorkingProfileQuestion ApiToDal(this WorkingProfileQuestion t)
+        {
+            return new DalWProfile.WorkingProfileQuestion()
+            {
+                Id = t.Id,
+                Question = t.Question,
+                Correction = t.Correction,
+                Explanation = t.Explanation,
+                FirstHint = t.FirstHint,
+                SecondHint = t.SecondHint,
+                CategoryId = t.CategoryId,
+                SchoolYear = t.SchoolYear,
+                Trimester = t.Trimester,
+                SchoolYearCategoryId = t.SchoolYear
+            };
+        }
+        public static WorkingProfileDocument DalToApi(this DalWProfile.WorkingProfileDocument d)
+        {
+            return new WorkingProfileDocument()
+            {
+                Id = d.Id,
+                Description = d.Description,
+                Link = d.Link,
+                Name = d.Name,
+                CategoryId = d.CategoryId,
+                SchoolYear = d.SchoolYear,
+                Trimester = d.Trimester,
+                SchoolYearCategoryId = d.SchoolYearCategoryId
+
+            };
+        }
+        public static DalWProfile.WorkingProfileDocument ApiToDal(this WorkingProfileDocument d)
+        {
+            return new DalWProfile.WorkingProfileDocument()
+            {
+                Id = d.Id,
+                Description = d.Description,
+                Link = d.Link,
+                Name = d.Name,
+                CategoryId = d.CategoryId,
+                SchoolYear = d.SchoolYear,
+                Trimester = d.Trimester,
+                SchoolYearCategoryId = d.SchoolYearCategoryId
+            };
+        }
+
 
 
     }

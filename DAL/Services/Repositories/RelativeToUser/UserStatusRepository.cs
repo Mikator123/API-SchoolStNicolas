@@ -11,14 +11,13 @@ using ToolBoxDB;
 
 namespace DAL.Services.Repositories.RelativeToUser
 {
-    public class StatusRepository : ICRUDRepository<Status, DBErrors> , IManyToManyRepository<DBErrors>
+    public class UserStatusRepository : ICRUDRepository<Status, DBErrors> , IManyToManyRepository<DBErrors>
     {
         private Connection _connection;
-        public StatusRepository(Connection connection)
+        public UserStatusRepository(Connection connection)
         {
             _connection = connection;
         }
-
 
         public DBErrors Create(Status entity)
         {

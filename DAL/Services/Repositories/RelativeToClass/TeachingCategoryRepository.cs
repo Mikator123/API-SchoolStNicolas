@@ -30,10 +30,12 @@ namespace DAL.Services.Repositories.RelativeToClass
             }
             catch(SqlException ex)
             {
-                if (ex.Message.Contains("[CK_Classes_ClassName]"))
+                if (ex.Message.Contains("[UK_SchoolYearCategoryNames_CategoryName]"))
                     return DBErrors.Name_Exist;
                 if (ex.Message.Contains("NULL"))
                     return DBErrors.NullExeption;
+                else
+                    return DBErrors.NotKnowedError;
             }
             return DBErrors.Success;
                 
@@ -81,6 +83,8 @@ namespace DAL.Services.Repositories.RelativeToClass
                     return DBErrors.Name_Exist;
                 if (ex.Message.Contains("NULL"))
                     return DBErrors.NullExeption;
+                else
+                    return DBErrors.NotKnowedError;
             }
             return DBErrors.Success;
         }

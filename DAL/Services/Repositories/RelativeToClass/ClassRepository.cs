@@ -97,6 +97,8 @@ namespace DAL.Services.Repositories.RelativeToClass
                     return DBErrors.Name_Exist;
                 if (ex.Message.Contains("[FK_Classes_SchoolYearCategoryNames]"))
                     return DBErrors.YearCategoryId_NotFound;
+                if (ex.Message.Contains("[CK_Questions_Trimester]"))
+                    return DBErrors.IncorrectNumber;
                 if (ex.Message.Contains("NULL"))
                     return DBErrors.NullExeption;
                 else

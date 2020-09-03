@@ -159,6 +159,7 @@
     <Build Include="Procedures\Users\GetUser.sql" />
     <Build Include="Procedures\Users\GetAllUsersByStatusId.sql" />
     <Build Include="Procedures\Users\GetALLUsersByClassId.sql" />
+    <Build Include="Procedures\TestResults\DeleteTestResult.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />
