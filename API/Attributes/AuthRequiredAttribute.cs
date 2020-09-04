@@ -1,5 +1,7 @@
 ﻿
+using API.Utils;
 using API.Utils.Enumerations;
+using DAL.Models.RelativeToUser;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Primitives;
@@ -19,18 +21,17 @@ namespace API.Attributes
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthRequiredAttribute : TypeFilterAttribute
     {
-        public AuthRequiredAttribute(UserStatus status = UserStatus.Undefined) : base(typeof(AuthRequiredFilter))
+        public AuthRequiredAttribute(string status) : base(typeof(AuthRequiredFilter))
         {
-            Arguments = new object[] { status };
+            Arguments =  new object[] { status };
         }
     }
 
     public class AuthRequiredFilter : IAuthorizationFilter
     {
-        private UserStatus RequiredStatus { get; set; }
-        private UserStatus UserStatus { get; set; }
+        private string RequiredStatus { get; set; }
 
-        public AuthRequiredFilter(UserStatus status = UserStatus.Undefined)
+        public AuthRequiredFilter(string status)
         {
             RequiredStatus = status;
         }
@@ -47,19 +48,37 @@ namespace API.Attributes
                 context.Result = new StatusCodeResult((int)HttpStatusCode.Unauthorized);
             else
             {
-                IEnumerable<string> properties = new List<string>() { "Id", "LastName", "FirstName", "Birthdate", "Login", "Gender", "StatusCode", "FirstLogin"};
+                IEnumerable<string> properties = new List<string>() { "Id", "LastName", "FirstName", "Birthdate", "Login", "Gender", "StatusCode", "FirstLogin" };
                 IDictionary<string, string> user = _tokenService.DecodeToken(token, properties);
 
                 if (user is null)
                     context.Result = new StatusCodeResult((int)HttpStatusCode.Unauthorized);
                 else
                 {
-                    UserStatus = (UserStatus)int.Parse(user["StatusCode"]);
+                    string[] requiredStatus = RequiredStatus.Replace(" ", "").Split("|");
+                    IEnumerable<Status> status = StatusCodeService.Deserialize(int.Parse(user["StatusCode"]));
 
-                    if (!UserStatus.HasFlag(RequiredStatus))
+                    //userStatus = (UserStatus)int.Parse(user["StatusCode"]);
+                    int nbr = 0;
+
+                    foreach (Status item in status)
+                    {
+                        if (nbr > 0)
+                            break;
+                        foreach (string RS in requiredStatus)
+                        {
+                            if (RS == item.Name)
+                            {
+                                nbr += 1;
+                                break;
+                            }
+                        }
+                    }
+                    if (nbr == 0)
                         context.Result = new StatusCodeResult((int)HttpStatusCode.Unauthorized);
                     else
                         context.RouteData.Values.Add("UserId", user["Id"]);
+
                 }
             }
 

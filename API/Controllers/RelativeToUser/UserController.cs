@@ -13,11 +13,17 @@ using DAL.Services.Repositories.RelativeToUser;
 using DAL.Services.Repositories.RelativeToSchool;
 using DAL.Services.Repositories.RelativeToClass;
 using DAL.Models.RelativeToUser;
+using API.Attributes;
+using API.Utils.Enumerations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers.RelativeToUser
 {
+
     [Route("api/[controller]")]
     [ApiController]
+    //[AuthRequired("Admin || Manager || Professor")]
+    [AuthRequired("Admin | Professor")]
     public class UserController : Controller
     {
         private UserRepository _userRepo;
@@ -158,7 +164,7 @@ namespace API.Controllers.RelativeToUser
         }
 
 
-
+        
         [HttpGet]
         public IActionResult Get() /*POSTMAN OK*/
         {
@@ -178,8 +184,9 @@ namespace API.Controllers.RelativeToUser
             }
             else
                 return NotFound();
-
         }
+
+        
 
 
         [HttpGet("{Id}")]
