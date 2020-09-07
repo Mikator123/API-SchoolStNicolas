@@ -1,16 +1,19 @@
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Text;
 using API.Utils.AppSettings;
 using API.Utils.RSA;
 using DAL.Services.Repositories.RelativeToClass;
 using DAL.Services.Repositories.RelativeToSchool;
 using DAL.Services.Repositories.RelativeToUser;
 using DAL.Services.Repositories.RelativeToWorkingProfile;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using ToolBox.SecurityToken;
 using ToolBoxDB;
 
@@ -28,6 +31,8 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
             IConfigurationSection dbSection = Configuration.GetSection("DbConnectionSettings");
             DbConnectionSettings dbConnectionSettings = dbSection.Get<DbConnectionSettings>();
             string connectionString = dbSection.Get<DbConnectionSettings>().ConnectionString;
@@ -35,6 +40,29 @@ namespace API
             IConfigurationSection TokenSection = Configuration.GetSection("TokenSettings");
             TokenPassPhrase tokenPP = TokenSection.Get<TokenPassPhrase>();
             string PassPhrase = TokenSection.Get<TokenPassPhrase>().PassPhrase;
+
+            //Authorization en ASP CORE
+            //services.Configure<TokenPassPhrase>(TokenSection);
+            //byte[] key = Encoding.ASCII.GetBytes(PassPhrase);
+            //services.AddAuthentication(x =>
+            //{
+            //    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
+            //.AddJwtBearer(x =>
+            //{
+            //    x.RequireHttpsMetadata = false;
+            //    x.SaveToken = true;
+            //    x.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuerSigningKey = true,
+            //        IssuerSigningKey = new SymmetricSecurityKey(key),
+            //        ValidateIssuer = false,
+            //        ValidateAudience = false
+            //    };
+            //});
+
+
 
 
             services.AddControllers();
@@ -72,6 +100,8 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            //app.UseAuthentication();
 
             app.UseAuthorization();
 

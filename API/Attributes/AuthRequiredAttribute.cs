@@ -1,6 +1,5 @@
 ﻿
 using API.Utils;
-using API.Utils.Enumerations;
 using DAL.Models.RelativeToUser;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -58,7 +57,6 @@ namespace API.Attributes
                     string[] requiredStatus = RequiredStatus.Replace(" ", "").Split("|");
                     IEnumerable<Status> status = StatusCodeService.Deserialize(int.Parse(user["StatusCode"]));
 
-                    //userStatus = (UserStatus)int.Parse(user["StatusCode"]);
                     int nbr = 0;
 
                     foreach (Status item in status)

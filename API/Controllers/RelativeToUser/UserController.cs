@@ -14,16 +14,15 @@ using DAL.Services.Repositories.RelativeToSchool;
 using DAL.Services.Repositories.RelativeToClass;
 using DAL.Models.RelativeToUser;
 using API.Attributes;
-using API.Utils.Enumerations;
 using Microsoft.AspNetCore.Authorization;
+using API.Utils.Token.Roles;
 
 namespace API.Controllers.RelativeToUser
 {
 
     [Route("api/[controller]")]
     [ApiController]
-    //[AuthRequired("Admin || Manager || Professor")]
-    [AuthRequired("Admin | Professor")]
+    [AuthRequired(RoleName.Admin + "|" + RoleName.Professor)]
     public class UserController : Controller
     {
         private UserRepository _userRepo;
@@ -39,7 +38,6 @@ namespace API.Controllers.RelativeToUser
             _lunchRepo = lunchRepo;
             _trimestrialRepo = trimestrialRepo;
         }
-
 
 
         [HttpPost] /*POSTMAN OK*/
