@@ -103,5 +103,16 @@ namespace API.Controllers.RelativeToClass
             else
                 return NotFound();
         }
+
+        [HttpGet]
+        [Route("byClassId/{Id}")]
+        public IActionResult GetByClassId(int Id)
+        {
+            IEnumerable<TestResult> tests = _testRepo.GetByClassId(Id);
+            if (!(tests is null))
+                return Ok(tests);
+            else
+                return NotFound();
+        }
     }
 }

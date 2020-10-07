@@ -7,6 +7,7 @@
     [CategoryId] INT NULL, 
     [UserId] INT NOT NULL, 
     [ClassId] INT NULL, 
+    [Document] NVARCHAR(MAX) NULL,
     CONSTRAINT [PK_TestResults] PRIMARY KEY ([Id]), 
     CONSTRAINT [FK_TestResults_Users] FOREIGN KEY (UserId) REFERENCES Users(Id), 
     CONSTRAINT [FK_TestResults_Classes] FOREIGN KEY (ClassId) REFERENCES Classes(Id) ON DELETE SET NULL, 

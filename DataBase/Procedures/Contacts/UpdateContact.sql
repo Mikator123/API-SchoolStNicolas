@@ -15,6 +15,14 @@
 	@personalNote nvarchar(MAX)
 AS
 BEGIN
+	if(@mobilePhone is null)
+		BEGIN
+			SET @mobilePhone = 'N/A'
+		END
+	if(@email is null)
+		BEGIN
+			SET @email = 'N/A'
+		END
 	UPDATE Contacts SET
 		NationalNumber = @nationalNumber,
 		LastName = @lastName,

@@ -19,6 +19,25 @@
 
 AS
 BEGIN
+	if(@mobilePhone is null)
+		BEGIN
+			SET @mobilePhone = 'N/A'
+		END
+	if(@email is null)
+		BEGIN
+			SET @email = 'N/A'
+		END
+	IF (@photo is null)
+		BEGIN
+			IF(@gender = 'M')
+				BEGIN
+					SET @photo = 'http://www.haneffebasket.be/wp-content/uploads/2017/04/avatar-vide.jpeg';
+				END
+			ELSE
+				BEGIN
+					SET @photo = 'http://www.tmf-operating.com/wp-content/uploads/2015/12/avatar-femme-300x176.jpg';
+				END
+		END
 	DECLARE @testId INT = (SELECT Id FROM Users WHERE NationalNumber = @nationalNumber and IsActive = 0 and Birthdate = @birthdate)
 	IF (@testId != null)
 	BEGIN

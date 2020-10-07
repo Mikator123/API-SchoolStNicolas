@@ -141,7 +141,8 @@ namespace DAL.Services.Mappers
                 Description = r["TestDescription"] is DBNull ? null : r["TestDescription"].ToString(),
                 CategoryId = r["CategoryId"] is DBNull ? null : (int?)r["CategoryId"],
                 ClassId = r["ClassId"] is DBNull ? null : (int?)r["ClassId"],
-                StudentId = (int)r["UserId"]
+                StudentId = (int)r["UserId"],
+                Document = r["Document"] is DBNull ? null: r["Document"].ToString()
             };
         }
 

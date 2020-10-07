@@ -35,12 +35,24 @@ namespace API.Mappers
                 Photo = user.Photo,
                 PersonalNote = user.PersonalNote,
                 StartDate = user.StartDate,
-                FirstLogin = user.FirstLogin,
+                lastResetPwd = user.FirstLogin,
                 Email = user.Email,
                 ClassId = user.ClassId,
                 StatusCode = user.StatusCode
             };
         }
+
+        public static UserForEmails DalToForEmailsUserApi(this DalUser.User user)
+        {
+            return new UserForEmails()
+            {
+                Id = user.Id,
+                FullName = user.LastName + ' ' + user.FirstName,
+                StatusCode = user.StatusCode,
+                Gender= user.Gender,
+            };
+        }
+
         public static DalUser.User ApiToDal(this UserDetailed user)
         {
             return new DalUser.User()
@@ -62,7 +74,7 @@ namespace API.Mappers
                 Photo = user.Photo,
                 PersonalNote = user.PersonalNote,
                 StartDate = user.StartDate,
-                FirstLogin = user.FirstLogin,
+                FirstLogin = user.lastResetPwd,
                 Email = user.Email,
                 ClassId = user.ClassId,
                 StatusCode = user.StatusCode
@@ -78,8 +90,10 @@ namespace API.Mappers
                 Birthdate = user.Birthdate,
                 Login = user.Login,
                 Gender = user.Gender,
-                FirstLogin = user.FirstLogin,
-                StatusCode = user.StatusCode
+                lastResetPwd = user.FirstLogin,
+                StatusCode = user.StatusCode,
+                ClassId = user.ClassId,
+                
             };
         }
         public static UserForEntities DalToForEntitiesApi(this DalUser.User user)
@@ -90,7 +104,9 @@ namespace API.Mappers
                 LastName = user.LastName,
                 FirstName = user.FirstName,
                 NationalNumber = user.NationalNumber,
-                ClassId = user.ClassId
+                ClassId = user.ClassId,
+                StatusCode = user.StatusCode,
+                Email = user.Email
             };
         }
         public static DalUser.User DalToApi(this UserForEntities user)
@@ -101,6 +117,9 @@ namespace API.Mappers
                 LastName = user.LastName,
                 FirstName = user.FirstName,
                 NationalNumber = user.NationalNumber,
+                StatusCode = user.StatusCode,
+                Email = user.Email
+
             };
         }
         public static Contact DalToForUserApi(this DalUser.Contact c)
@@ -121,6 +140,17 @@ namespace API.Mappers
                 Gender = c.Gender,
                 Email = c.Email,
                 PersonalNote = c.PersonalNote
+            };
+        }
+
+        public static ContactEmail DalToForEmailUserApi(this DalUser.Contact c)
+        {
+            return new ContactEmail()
+            {
+                Id = c.Id,
+                FullName = c.LastName + ' ' + c.FirstName,
+                Email = c.Email,
+
             };
         }
         public static ContactDetailed DalToDetailedApi(this DalUser.Contact c)

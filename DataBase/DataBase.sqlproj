@@ -160,6 +160,7 @@
     <Build Include="Procedures\Users\GetAllUsersByStatusId.sql" />
     <Build Include="Procedures\Users\GetALLUsersByClassId.sql" />
     <Build Include="Procedures\TestResults\DeleteTestResult.sql" />
+    <Build Include="Procedures\Users\ResetPwdUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />

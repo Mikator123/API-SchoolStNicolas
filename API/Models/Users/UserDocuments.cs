@@ -12,7 +12,7 @@ namespace API.Models.Users
         public int Id { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
-        IEnumerable<WorkingProfileDocument> Documents { get; set; }
+        public IEnumerable<WorkingProfileDocument> Documents { get; set; }
 
     }
 }

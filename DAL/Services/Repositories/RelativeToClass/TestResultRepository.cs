@@ -28,6 +28,7 @@ namespace DAL.Services.Repositories.RelativeToClass
             cmd.AddParameter("description", entity.Description);
             cmd.AddParameter("categoryId", entity.CategoryId);
             cmd.AddParameter("userId", entity.StudentId);
+            cmd.AddParameter("document", entity.Document);
             try
             {
                 _connection.ExecuteNonQuery(cmd);
@@ -93,6 +94,7 @@ namespace DAL.Services.Repositories.RelativeToClass
             cmd.AddParameter("description", entity.Description);
             cmd.AddParameter("categoryId", entity.CategoryId);
             cmd.AddParameter("userId", entity.StudentId);
+            cmd.AddParameter("document", entity.Document);
             try
             {
                 _connection.ExecuteNonQuery(cmd);
@@ -111,6 +113,13 @@ namespace DAL.Services.Repositories.RelativeToClass
                     return DBErrors.NotKnowedError;
             }
             return DBErrors.Success;
+        }
+
+        public IEnumerable<TestResult> GetByClassId(int classId)
+        {
+            Command cmd = new Command("SELECT * FROM TestResults WHERE ClassId = @id");
+            cmd.AddParameter("id", classId);
+            return _connection.ExecuteReader(cmd, x => x.ReaderToDalTestResult());
         }
     }
 }

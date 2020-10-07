@@ -25,7 +25,7 @@ namespace API.Models.Users
         public string PersonalNote { get; set; }
         public string Token { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime? FirstLogin { get; set; }
+        public DateTime? lastResetPwd { get; set; }
         public string Email { get; set; }
         public int? ClassId { get; set; }
         public IEnumerable<Contact> Contacts { get; set; }

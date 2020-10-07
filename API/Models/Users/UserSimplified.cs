@@ -11,7 +11,8 @@ namespace API.Models.Users
         public string Login { get; set; }
         public string Gender { get; set; }
         public string Token { get; set; }
-        public DateTime? FirstLogin { get; set; }
+        public DateTime? lastResetPwd { get; set; }
         public int StatusCode { get; set; }
+        public int? ClassId { get; set; }
     }
 }

@@ -21,6 +21,7 @@ BEGIN
 			[Login],
 			Gender,
 			FirstLogin,
+			ClassId,
 			StatusCode = dbo.StatusCode(Id)
 			FROM ViewUsers WHERE [Login] = @login AND [Password] = HASHBYTES('SHA2_512',dbo.PreSalt()+@password+dbo.PostSalt())
 	END

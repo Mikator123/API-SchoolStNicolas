@@ -13,5 +13,6 @@ namespace DAL.Models.RelativeToClass
         public int? CategoryId { get; set; }
         public int? ClassId { get; set; }
         public int StudentId { get; set; }
+        public string Document { get; set; }
     }
 }

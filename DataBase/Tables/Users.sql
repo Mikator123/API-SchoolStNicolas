@@ -13,7 +13,7 @@
     [MobilePhone] NVARCHAR(50) NULL, 
     [Login] NVARCHAR(320) UNIQUE NOT NULL, 
     [Password] BINARY(64) NOT NULL, 
-    [Gender] NCHAR(5) NOT NULL, 
+    [Gender] NVARCHAR(5) NOT NULL, 
     [Photo] NVARCHAR(MAX) NULL, 
     [PersonalNote] NVARCHAR(MAX) NULL, 
     [StartDate] DATE NOT NULL, 

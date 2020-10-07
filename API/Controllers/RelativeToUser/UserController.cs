@@ -22,7 +22,7 @@ namespace API.Controllers.RelativeToUser
 
     [Route("api/[controller]")]
     [ApiController]
-    [AuthRequired(RoleName.Admin + "|" + RoleName.Professor)]
+    //[AuthRequired(RoleName.Admin + "|" + RoleName.Professor)]
     public class UserController : Controller
     {
         private UserRepository _userRepo;
@@ -248,6 +248,27 @@ namespace API.Controllers.RelativeToUser
                     user.Lunches = _lunchRepo.GetByUserId(user.Id).Select(x => x.DaltoSimplifiedApi());
                     if (user.Lunches.Count() == 0)
                         user.Lunches = null;
+                }
+                return Ok(userList);
+            }
+            else
+                return NotFound();
+        }
+
+        [HttpGet]
+        [Route("getMails/{classId}")] /*POSTMAN OK*/
+
+        public IActionResult GetMails(int classId) 
+        {
+            List<UserForEmails> userList = _userRepo.GetAllByClassId(classId).Select(x => x.DalToForEmailsUserApi()).Where(x => x.StatusCode == 1).ToList();
+            if (!(userList is null))
+            {
+                foreach (UserForEmails user in userList)
+                {
+                    user.Contacts = _contactRepo.GetByUserId(user.Id).Select(x => x.DalToForEmailUserApi());
+                    if (user.Contacts.Count() == 0)
+                        user.Contacts = null;
+
                 }
                 return Ok(userList);
             }

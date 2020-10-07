@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using API.Mappers;
 using API.Models.Commons;
@@ -28,7 +29,7 @@ namespace API.Controllers.RelativeToUser
         }
 
         [HttpPost]
-         /*POSTMAN OK*/
+        /*POSTMAN OK*/
         public IActionResult Login([FromBody] FormLogin entity)
         {
             //string privateKey = _key.PrivateKey;
@@ -62,6 +63,13 @@ namespace API.Controllers.RelativeToUser
             {
                 return Problem("User is null", statusCode: (int)HttpStatusCode.NotFound);
             }
+        }
+
+        [HttpPut]
+        public IActionResult ResetPwd([FromBody] RestePwd RP)
+        {
+            _authRepo.ResetPwd(RP.Password, RP.Id, RP.lastResetPwd);
+            return Ok();
         }
 
         [HttpGet]

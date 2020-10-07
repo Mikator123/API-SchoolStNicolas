@@ -155,11 +155,16 @@ EXEC dbo.CreateSchoolRule 'Commandement 5', 'TU NE ­TUERAS PAS !';
 
 /*INSERT TRIMESTRIALINFO*/
 
-EXEC dbo.CreateTrimestrialInfo 'il a bien bossé !', 1,7;
-EXEC dbo.CreateTrimestrialInfo 'il a mal bossé !', 1,7;
-EXEC dbo.CreateTrimestrialInfo 'il a mal bossé !', 1,8;
-EXEC dbo.CreateTrimestrialInfo 'il a bien bossé !', 1,8;
-EXEC dbo.CreateTrimestrialInfo 'Elle a bien bossé !', 1,22;
+EXEC dbo.CreateTrimestrialInfo 'D''où vient-il? Contrairement à une opinion répandue, le Lorem Ipsum n''est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s''est intéressé à un des mots latins les plus obscurs, consectetur, extrait d''un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l''éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
+L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 1,7;
+EXEC dbo.CreateTrimestrialInfo 'D''où vient-il? Contrairement à une opinion répandue, le Lorem Ipsum n''est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s''est intéressé à un des mots latins les plus obscurs, consectetur, extrait d''un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l''éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
+L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 1,7;
+EXEC dbo.CreateTrimestrialInfo 'D''où vient-il? Contrairement à une opinion répandue, le Lorem Ipsum n''est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s''est intéressé à un des mots latins les plus obscurs, consectetur, extrait d''un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l''éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
+L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 1,8;
+EXEC dbo.CreateTrimestrialInfo 'D''où vient-il? Contrairement à une opinion répandue, le Lorem Ipsum n''est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s''est intéressé à un des mots latins les plus obscurs, consectetur, extrait d''un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l''éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
+L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 1,8;
+EXEC dbo.CreateTrimestrialInfo 'D''où vient-il? Contrairement à une opinion répandue, le Lorem Ipsum n''est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s''est intéressé à un des mots latins les plus obscurs, consectetur, extrait d''un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l''éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
+L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 1,22;
 
 /*INSERT LUNCHES*/
 
@@ -186,54 +191,54 @@ EXEC dbo.CreateCategory 'Histoire';
 
 /*INSERT TESTRESULTS*/
 					/*Student 1 / CAT 1*/
-EXEC dbo.CreateTestResult '2020-08-24',12, 'test passé avec succès !', 1, 7;
-EXEC dbo.CreateTestResult '2020-09-24',15, 'test passé avec succès !', 1, 7;
-EXEC dbo.CreateTestResult '2020-10-24',9, 'test passé avec succès !', 1, 7;
-EXEC dbo.CreateTestResult '2020-11-24',4, 'test passé avec succès !', 1, 7;
-EXEC dbo.CreateTestResult '2020-12-24',19, 'test passé avec succès !', 1, 7;
+EXEC dbo.CreateTestResult '2020-08-24',12, 'test passé avec succès !', 1, 7,null;
+EXEC dbo.CreateTestResult '2020-09-24',15, 'test passé avec succès !', 1, 7, null;
+EXEC dbo.CreateTestResult '2020-10-24',9, 'test passé avec succès !', 1, 7, null;
+EXEC dbo.CreateTestResult '2020-11-24',4, 'test passé avec succès !', 1, 7, null;
+EXEC dbo.CreateTestResult '2020-12-24',19, 'test passé avec succès !', 1, 7, null;
 					/*Student 1 / CAT 2*/
-EXEC dbo.CreateTestResult '2020-08-24',0, 'test passé avec succès !', 2, 7;
-EXEC dbo.CreateTestResult '2020-09-24',5, 'test passé avec succès !', 2, 7;
-EXEC dbo.CreateTestResult '2020-10-24',8, 'test passé avec succès !', 2, 7;
-EXEC dbo.CreateTestResult '2020-11-24',12, 'test passé avec succès !', 2, 7;
-EXEC dbo.CreateTestResult '2020-12-24',15, 'test passé avec succès !', 2, 7;
+EXEC dbo.CreateTestResult '2020-08-24',0, 'test passé avec succès !', 2, 7, null;
+EXEC dbo.CreateTestResult '2020-09-24',5, 'test passé avec succès !', 2, 7, null;
+EXEC dbo.CreateTestResult '2020-10-24',8, 'test passé avec succès !', 2, 7, null;
+EXEC dbo.CreateTestResult '2020-11-24',12, 'test passé avec succès !', 2, 7, null;
+EXEC dbo.CreateTestResult '2020-12-24',15, 'test passé avec succès !', 2, 7, null;
 					/*Student 1 / CAT 4*/
-EXEC dbo.CreateTestResult '2020-08-24',19, 'test passé avec succès !', 4, 7;
-EXEC dbo.CreateTestResult '2020-09-24',17, 'test passé avec succès !', 4, 7;
-EXEC dbo.CreateTestResult '2020-10-24',13, 'test passé avec succès !', 4, 7;
-EXEC dbo.CreateTestResult '2020-11-24',15, 'test passé avec succès !', 4, 7;
-EXEC dbo.CreateTestResult '2020-12-24',16, 'test passé avec succès !', 4, 7;
+EXEC dbo.CreateTestResult '2020-08-24',19, 'test passé avec succès !', 4, 7, null;
+EXEC dbo.CreateTestResult '2020-09-24',17, 'test passé avec succès !', 4, 7, null;
+EXEC dbo.CreateTestResult '2020-10-24',13, 'test passé avec succès !', 4, 7, null;
+EXEC dbo.CreateTestResult '2020-11-24',15, 'test passé avec succès !', 4, 7, null;
+EXEC dbo.CreateTestResult '2020-12-24',16, 'test passé avec succès !', 4, 7, null;
 					/*Student 1 / CAT 5*/
-EXEC dbo.CreateTestResult '2020-08-24',4, 'test passé avec succès !', 5, 7;
-EXEC dbo.CreateTestResult '2020-09-24',9, 'test passé avec succès !', 5, 7;
-EXEC dbo.CreateTestResult '2020-10-24',12, 'test passé avec succès !', 5, 7;
-EXEC dbo.CreateTestResult '2020-11-24',9, 'test passé avec succès !', 5, 7;
-EXEC dbo.CreateTestResult '2020-12-24',19, 'test passé avec succès !', 5, 7;
+EXEC dbo.CreateTestResult '2020-08-24',4, 'test passé avec succès !', 5, 7, null;
+EXEC dbo.CreateTestResult '2020-09-24',9, 'test passé avec succès !', 5, 7, null;
+EXEC dbo.CreateTestResult '2020-10-24',12, 'test passé avec succès !', 5, 7, null;
+EXEC dbo.CreateTestResult '2020-11-24',9, 'test passé avec succès !', 5, 7, null;
+EXEC dbo.CreateTestResult '2020-12-24',19, 'test passé avec succès !', 5, 7, null;
 
 					/*Student 2 / CAT 1*/
-EXEC dbo.CreateTestResult '2020-08-24',0, 'test passé avec succès !', 1, 8;
-EXEC dbo.CreateTestResult '2020-09-24',20, 'test passé avec succès !', 1, 8;
-EXEC dbo.CreateTestResult '2020-10-24',15, 'test passé avec succès !', 1, 8;
-EXEC dbo.CreateTestResult '2020-11-24',12, 'test passé avec succès !', 1, 8;
-EXEC dbo.CreateTestResult '2020-12-24',17, 'test passé avec succès !', 1, 8;
+EXEC dbo.CreateTestResult '2020-08-24',0, 'test passé avec succès !', 1, 8, null;
+EXEC dbo.CreateTestResult '2020-09-24',20, 'test passé avec succès !', 1, 8, null;
+EXEC dbo.CreateTestResult '2020-10-24',15, 'test passé avec succès !', 1, 8, null;
+EXEC dbo.CreateTestResult '2020-11-24',12, 'test passé avec succès !', 1, 8, null;
+EXEC dbo.CreateTestResult '2020-12-24',17, 'test passé avec succès !', 1, 8, null
 					/*Student 2 / CAT 2*/
-EXEC dbo.CreateTestResult '2020-08-24',18, 'test passé avec succès !', 2, 8;
-EXEC dbo.CreateTestResult '2020-09-24',15, 'test passé avec succès !', 2, 8;
-EXEC dbo.CreateTestResult '2020-10-24',16, 'test passé avec succès !', 2, 8;
-EXEC dbo.CreateTestResult '2020-11-24',14, 'test passé avec succès !', 2, 8;
-EXEC dbo.CreateTestResult '2020-12-24',17, 'test passé avec succès !', 2, 8;
+EXEC dbo.CreateTestResult '2020-08-24',18, 'test passé avec succès !', 2, 8, null;
+EXEC dbo.CreateTestResult '2020-09-24',15, 'test passé avec succès !', 2, 8, null;
+EXEC dbo.CreateTestResult '2020-10-24',16, 'test passé avec succès !', 2, 8, null;
+EXEC dbo.CreateTestResult '2020-11-24',14, 'test passé avec succès !', 2, 8, null;
+EXEC dbo.CreateTestResult '2020-12-24',17, 'test passé avec succès !', 2, 8, null;
 					/*Student 2 / CAT 4*/
-EXEC dbo.CreateTestResult '2020-08-24',10, 'test passé avec succès !', 4, 8;
-EXEC dbo.CreateTestResult '2020-09-24',11, 'test passé avec succès !', 4, 8;
-EXEC dbo.CreateTestResult '2020-10-24',13, 'test passé avec succès !', 4, 8;
-EXEC dbo.CreateTestResult '2020-11-24',9, 'test passé avec succès !', 4, 8;
-EXEC dbo.CreateTestResult '2020-12-24',12, 'test passé avec succès !', 4, 8;
+EXEC dbo.CreateTestResult '2020-08-24',10, 'test passé avec succès !', 4, 8, null;
+EXEC dbo.CreateTestResult '2020-09-24',11, 'test passé avec succès !', 4, 8, null;
+EXEC dbo.CreateTestResult '2020-10-24',13, 'test passé avec succès !', 4, 8, null;
+EXEC dbo.CreateTestResult '2020-11-24',9, 'test passé avec succès !', 4, 8, null;
+EXEC dbo.CreateTestResult '2020-12-24',12, 'test passé avec succès !', 4, 8, null;
 					/*Student 2 / CAT 5*/
-EXEC dbo.CreateTestResult '2020-08-24',12, 'test passé avec succès !', 5, 8;
-EXEC dbo.CreateTestResult '2020-09-24',9, 'test passé avec succès !', 5, 8;
-EXEC dbo.CreateTestResult '2020-10-24',17, 'test passé avec succès !', 5, 8;
-EXEC dbo.CreateTestResult '2020-11-24',11, 'test passé avec succès !', 5, 8;
-EXEC dbo.CreateTestResult '2020-12-24',5, 'test passé avec succès !', 5, 8;
+EXEC dbo.CreateTestResult '2020-08-24',12, 'test passé avec succès !', 5, 8, null;
+EXEC dbo.CreateTestResult '2020-09-24',9, 'test passé avec succès !', 5, 8, null;
+EXEC dbo.CreateTestResult '2020-10-24',17, 'test passé avec succès !', 5, 8, null;
+EXEC dbo.CreateTestResult '2020-11-24',11, 'test passé avec succès !', 5, 8, null;
+EXEC dbo.CreateTestResult '2020-12-24',5, 'test passé avec succès !', 5, 8, null;
 
 /*INSERT QUESTIONS*/
 /*CAT 4 TRIM 1 SCHOOLYEAR 3eme MAT*/

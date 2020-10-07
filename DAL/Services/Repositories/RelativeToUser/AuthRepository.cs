@@ -1,4 +1,5 @@
-﻿using DAL.Models.RelativeToUser;
+﻿using DAL.Enumerations;
+using DAL.Models.RelativeToUser;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -34,6 +35,7 @@ namespace DAL.Services.Repositories.RelativeToUser
                     Gender = reader["Gender"].ToString(),
                     FirstLogin = (reader["FirstLogin"] is DBNull) ? default : (DateTime)reader["FirstLogin"],
                     StatusCode = (int)reader["StatusCode"],
+                    ClassId = reader["ClassId"] is DBNull ? null : (int?)reader["ClassId"]
                 }).SingleOrDefault();
             }
             catch (SqlException ex)
@@ -44,6 +46,16 @@ namespace DAL.Services.Repositories.RelativeToUser
                     throw new Exception(ex.Message);
             }
             return user;
+        }
+
+        public DBErrors ResetPwd(string password, int Id, DateTime lastResetPwd)
+        {
+            Command cmd = new Command("ResetPwdUser", true);
+            cmd.AddParameter("id", Id);
+            cmd.AddParameter("password", password);
+            cmd.AddParameter("resetPwd", lastResetPwd);
+            _connection.ExecuteNonQuery(cmd);
+            return DBErrors.Success;
         }
     }
 }

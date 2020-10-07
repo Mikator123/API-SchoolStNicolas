@@ -61,8 +61,13 @@ namespace API
             //        ValidateAudience = false
             //    };
             //});
-
-
+            services.AddCors(options => {
+                options.AddPolicy(name: "AccessGranted",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
 
 
             services.AddControllers();
@@ -100,6 +105,8 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AccessGranted");
 
             //app.UseAuthentication();
 

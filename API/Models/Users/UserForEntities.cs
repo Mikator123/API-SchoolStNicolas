@@ -7,5 +7,7 @@
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public int? ClassId { get; set; }
+        public int StatusCode { get; set; }
+        public string Email { get; set; }
     }
 }

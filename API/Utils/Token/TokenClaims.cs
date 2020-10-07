@@ -21,7 +21,7 @@ namespace API.Utils.Token
             yield return new Claim("Gender", user.Gender);
             yield return new Claim("StatusCode", user.StatusCode.ToString());
             //yield return new Claim(ClaimTypes.Role, user.StatusName.ToString());
-            yield return new Claim("FirstLogin", user.FirstLogin.ToString());
+            yield return new Claim("lastResetPwd", user.lastResetPwd.ToString());
         }
 
         //private static string Roles(int statusCode)

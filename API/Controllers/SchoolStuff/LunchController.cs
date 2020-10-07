@@ -33,7 +33,7 @@ namespace API.Controllers.SchoolStuff
             switch (_lunchRepo.Create(entity))
             {
                 case (DBErrors.Success):
-                    return Ok();
+                  return Ok();
                 case (DBErrors.NullExeption):
                     return Problem("A mandatory field does not support 'null' value or is missing", statusCode: (int)HttpStatusCode.BadRequest);
                 default:
