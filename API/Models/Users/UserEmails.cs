@@ -12,6 +12,7 @@ namespace API.Models.Users
         public string FullName { get; set; }
         public int StatusCode { get; set; }
         public string Gender { get; set; }
+        public string Photo { get; set; }
 
         public IEnumerable<ContactEmail> Contacts { get; set; }
 

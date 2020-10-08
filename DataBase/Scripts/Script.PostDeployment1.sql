@@ -68,11 +68,11 @@ INSERT INTO User_Status(UserId, StatusId)
 
 /*INSERT STUDENTS*/
 /*CLASS 1*/
-EXEC dbo.CreateUser '1234','Lefou','Arnold','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
-EXEC dbo.CreateUser '1235','Jamine','Pierrot','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
-EXEC dbo.CreateUser '1236','Pourtouf','Jean-Marc','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
-EXEC dbo.CreateUser '1237','Lafouri','Karim','1986-09-27','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
-EXEC dbo.CreateUser '1238','Charlier','Luc','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M',null,null,'2020-08-21',null,'test1234=', 2;
+EXEC dbo.CreateUser '1234','Frozen','Elsa','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F','https://lumiere-a.akamaihd.net/v1/images/ct_frozen_elsa_18466_22a50822.jpeg?region=0,0,600,600',null,'2020-08-21',null,'test1234=', 2;
+EXEC dbo.CreateUser '1235','Frozen','Anna','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'F','https://lumiere-a.akamaihd.net/v1/images/ct_frozen_anna_18466_6775584b.jpeg?region=0,0,600,600&width=480',null,'2020-08-21',null,'test1234=', 2;
+EXEC dbo.CreateUser '1236','Son','Goku','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M','https://www.wallpapertip.com/wmimgs/75-755237_dragon-ball-z-goku-kid.jpg',null,'2020-08-21',null,'test1234=', 2;
+EXEC dbo.CreateUser '1237','Lightyear','Buzz','1986-09-27','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M','https://vignette.wikia.nocookie.net/disney/images/7/74/Profile_-_Buzz_Lightyear.jpeg/revision/latest/top-crop/width/360/height/360?cb=20190623020017',null,'2020-08-21',null,'test1234=', 2;
+EXEC dbo.CreateUser '1238','Rivera','Miguel','1985-07-02','Sart-Dames-Avelines',1495,'Rue du Try',20, null,null,'M','https://vignette.wikia.nocookie.net/disney/images/0/00/Profile_-_Miguel_Rivera.jpg/revision/latest?cb=20190315012208',null,'2020-08-21',null,'test1234=', 2;
 EXEC dbo.CreateUserStatus 7,1;
 EXEC dbo.CreateUserStatus 8,1;
 EXEC dbo.CreateUserStatus 9,1;
@@ -150,8 +150,16 @@ EXEC dbo.CreateSchoolEvent 'Noel','Chants à l''église','2020-12-25';
 
 /*INSERT RULES*/
 
-EXEC dbo.CreateSchoolRule 'Commandement 6', 'TU NE ­COMMETTRAS PAS D’ADULTÈRE !';
-EXEC dbo.CreateSchoolRule 'Commandement 5', 'TU NE ­TUERAS PAS !';
+EXEC dbo.CreateSchoolRule 'Commandement 1', 'JE SUIS LE ­SEIGNEUR, Blabla ! TU N’AURAS PAS ­D’AUTRES DIEUX À CÔTÉ DE MOI (que toto)!';
+EXEC dbo.CreateSchoolRule 'Commandement 2', 'TU N’ABUSERAS PAS DU NOM DU SEIGNEUR (donc de moi), TON DIEU !';
+EXEC dbo.CreateSchoolRule 'Commandement 3', 'TU ­SANCTIFIERAS LE JOUR DU REPOS ! (en gros tu bosseras tous les jours)';
+EXEC dbo.CreateSchoolRule 'Commandement 4', 'TU ­HONORERAS PÈRE ET MÈRE (c''est important un papa et une maman effectivement !)!';
+EXEC dbo.CreateSchoolRule 'Commandement 5', 'TU NE ­TUERAS PAS (c''est mal !!)!';
+EXEC dbo.CreateSchoolRule 'Commandement 6', 'TU NE ­COMMETTRAS PAS D’ADULTÈRE (ha ben non)!';
+EXEC dbo.CreateSchoolRule 'Commandement 7', 'TU NE ­VOLERAS PAS (sauf pour moi)!';
+EXEC dbo.CreateSchoolRule 'Commandement 8', 'TU NE ­PORTERAS PAS DE FAUX ­TÉMOIGNAGE ­CONTRE TON PRO­CHAIN (sauf il est républicain) !!';
+EXEC dbo.CreateSchoolRule 'Commandement 9', 'TU NE ­CONVOITERAS PAS LA FEMME DE TON PRO­CHAIN (c''est pas parcequ''on regarde la carte que ... bon ok j''arrête)!';
+EXEC dbo.CreateSchoolRule 'Commandement 10', 'TU NE CONVOITERAS PAS LA MAISON DE TON PROCHAIN, NI SON DOMAINE, NI SON BÉTAIL, NI RIEN QUI LUI APPARTIENNE (non mais ça dépend vraiment de la superficie, de la dernière rénovation et surtout si il a une piscine) ! ';
 
 /*INSERT TRIMESTRIALINFO*/
 

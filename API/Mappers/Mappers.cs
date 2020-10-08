@@ -50,6 +50,7 @@ namespace API.Mappers
                 FullName = user.LastName + ' ' + user.FirstName,
                 StatusCode = user.StatusCode,
                 Gender= user.Gender,
+                Photo = user.Photo,
             };
         }
 
