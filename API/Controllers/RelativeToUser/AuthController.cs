@@ -72,6 +72,25 @@ namespace API.Controllers.RelativeToUser
             return Ok();
         }
 
+        [HttpPost]
+        [Route("userVerification")]
+        public IActionResult VerifyUser([FromBody] UserVerification user)
+        {
+            int Id = 0;
+            try
+            {
+                Id = _authRepo.userVerification(user.Login, user.UserNationalNumber, user.ContactNationalNumber);
+            }
+            catch(Exception e)
+            {
+                return Problem(e.Message, statusCode: (int)HttpStatusCode.NotFound);
+            }
+            if (Id != 0)
+                return Ok(Id);
+            else
+                return Problem("?", statusCode: (int)HttpStatusCode.NotFound);
+        }
+
         [HttpGet]
         public IActionResult GetPublicKey()
         {
@@ -83,5 +102,8 @@ namespace API.Controllers.RelativeToUser
             else
                 return NotFound();
         }
+
+
+
     }
 }

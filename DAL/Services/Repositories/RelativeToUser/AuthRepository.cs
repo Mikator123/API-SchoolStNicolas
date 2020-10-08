@@ -57,5 +57,22 @@ namespace DAL.Services.Repositories.RelativeToUser
             _connection.ExecuteNonQuery(cmd);
             return DBErrors.Success;
         }
+
+        public int userVerification(string login, string userNN, string contactNN)
+        {
+            Command cmd = new Command("userVerification", true);
+            cmd.AddParameter("login", login);
+            cmd.AddParameter("userNationalNumber", userNN);
+            cmd.AddParameter("contactNationalNumber", contactNN);
+            try
+            {
+                return (int)_connection.ExecuteScalar(cmd);
+            }
+            catch(SqlException e)
+            {
+                throw new Exception(e.Message);
+            }
+
+        }
     }
 }
