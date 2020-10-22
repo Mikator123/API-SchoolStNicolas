@@ -113,21 +113,21 @@ EXEC dbo.CreateUserStatus 25,1;
 EXEC dbo.CreateUserStatus 26,1;
 
 /*INSERT CONTACTS + LIENS AVEC USERS*/
-EXEC dbo.CreateContact '1111','Père1','Papa1','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Pere1@papa.com','un papa !';
+EXEC dbo.CreateContact '1111','Père1','Papa1','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Frozen@papa.com','un papa !';
 EXEC dbo.CreateUserContact 7,1;
 EXEC dbo.CreateUserContact 8,1;
-EXEC dbo.CreateContact '11112','Père2','Papa2','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Pere2@papa.com','un papa !';
+EXEC dbo.CreateContact '11112','Père2','Papa2','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','SaïanGod@papa.com','un papa !';
 EXEC dbo.CreateUserContact 9,2;
-EXEC dbo.CreateContact '11113','Père3','Papa3','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Pere3@papa.com','un papa !';
+EXEC dbo.CreateContact '11113','Père3','Papa3','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','ToyStory@papa.com','un papa !';
 EXEC dbo.CreateUserContact 10,3;
 
-EXEC dbo.CreateContact '11114','Père4','Papa4','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Pere4@papa.com','un papa !';
+EXEC dbo.CreateContact '11114','Père4','Papa4','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Coco@papa.com','un papa !';
 EXEC dbo.CreateUserContact 11,4;
 
 EXEC dbo.CreateContact '11115','Père5','Papa5','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','M','Pere5@papa.com','un papa !';
 EXEC dbo.CreateUserContact 12,5;
 
-EXEC dbo.CreateContact '11116','Mère1','Maman1','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','F','Mere1@maman.com','une maman !';
+EXEC dbo.CreateContact '11116','Mère1','Maman1','1985-07-02', 'Sart-Dames-Avelines',1495,'Rue du Try',20, null, '0477/493214','F','Frozen@maman.com','une maman !';
 EXEC dbo.CreateUserContact 8,6;
 EXEC dbo.CreateUserContact 7,6;
 
@@ -166,27 +166,35 @@ EXEC dbo.CreateSchoolRule 'Commandement 10', 'TU NE CONVOITERAS PAS LA MAISON DE
 EXEC dbo.CreateTrimestrialInfo 'D''où vient-il? Contrairement à une opinion répandue, le Lorem Ipsum n''est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s''est intéressé à un des mots latins les plus obscurs, consectetur, extrait d''un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l''éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
 L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 1,7;
 EXEC dbo.CreateTrimestrialInfo 'D''où vient-il? Contrairement à une opinion répandue, le Lorem Ipsum n''est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s''est intéressé à un des mots latins les plus obscurs, consectetur, extrait d''un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l''éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
-L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 1,7;
+L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 2,7;
 EXEC dbo.CreateTrimestrialInfo 'D''où vient-il? Contrairement à une opinion répandue, le Lorem Ipsum n''est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s''est intéressé à un des mots latins les plus obscurs, consectetur, extrait d''un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l''éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
 L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 1,8;
 EXEC dbo.CreateTrimestrialInfo 'D''où vient-il? Contrairement à une opinion répandue, le Lorem Ipsum n''est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s''est intéressé à un des mots latins les plus obscurs, consectetur, extrait d''un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l''éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
-L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 1,8;
+L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 2,8;
 EXEC dbo.CreateTrimestrialInfo 'D''où vient-il? Contrairement à une opinion répandue, le Lorem Ipsum n''est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s''est intéressé à un des mots latins les plus obscurs, consectetur, extrait d''un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l''éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
-L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 1,22;
+L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 1,9;
+EXEC dbo.CreateTrimestrialInfo 'D''où vient-il? Contrairement à une opinion répandue, le Lorem Ipsum n''est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s''est intéressé à un des mots latins les plus obscurs, consectetur, extrait d''un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l''éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
+L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).', 2,9;
 
 /*INSERT LUNCHES*/
 
-EXEC dbo.CreateLunch 'Boulette sauce tomate','avec son accompagnement de pomme de terre bio !','2020-10-03';
-EXEC dbo.CreateLunch 'Poulet mariné','avec son accompagnement de frites bio !','2020-10-04';
-EXEC dbo.CreateLunch 'Spaggetti bolognaise','Sans accompagnement','2020-10-05';
+
+EXEC dbo.CreateLunch 'CHoux','avec son accompagnement de pomme de terre bio !','2020-10-19';
+EXEC dbo.CreateLunch 'Boulette sauce tomate','avec son accompagnement de pomme de terre bio !','2020-10-20';
+EXEC dbo.CreateLunch 'Poulet mariné','avec son accompagnement de frites bio !','2020-10-22';
+EXEC dbo.CreateLunch 'Spaggetti bolognaise','Sans accompagnement','2020-10-23';
 EXEC dbo.CreateUserLunch 7,1;
 EXEC dbo.CreateUserLunch 7,2;
 EXEC dbo.CreateUserLunch 7,3;
-EXEC dbo.CreateUserLunch 22,1;
-EXEC dbo.CreateUserLunch 22,2;
-EXEC dbo.CreateUserLunch 22,3;
-EXEC dbo.CreateUserLunch 21,2;
+EXEC dbo.CreateUserLunch 7,4;
+EXEC dbo.CreateUserLunch 8,1;
+EXEC dbo.CreateUserLunch 8,2;
 EXEC dbo.CreateUserLunch 8,3;
+EXEC dbo.CreateUserLunch 8,4;
+EXEC dbo.CreateUserLunch 9,1;
+EXEC dbo.CreateUserLunch 9,2;
+EXEC dbo.CreateUserLunch 9,3;
+EXEC dbo.CreateUserLunch 9,4;
 
 /*INSERT CATEGORIES*/
 
@@ -198,6 +206,7 @@ EXEC dbo.CreateCategory 'Géographie';
 EXEC dbo.CreateCategory 'Histoire';
 
 /*INSERT TESTRESULTS*/
+						/*STUDENT 1*/
 					/*Student 1 / CAT 1*/
 EXEC dbo.CreateTestResult '2020-08-24',12, 'test passé avec succès !', 1, 7,null;
 EXEC dbo.CreateTestResult '2020-09-24',15, 'test passé avec succès !', 1, 7, null;
@@ -210,6 +219,12 @@ EXEC dbo.CreateTestResult '2020-09-24',5, 'test passé avec succès !', 2, 7, nu
 EXEC dbo.CreateTestResult '2020-10-24',8, 'test passé avec succès !', 2, 7, null;
 EXEC dbo.CreateTestResult '2020-11-24',12, 'test passé avec succès !', 2, 7, null;
 EXEC dbo.CreateTestResult '2020-12-24',15, 'test passé avec succès !', 2, 7, null;
+					/*Student 1 / CAT 3*/
+EXEC dbo.CreateTestResult '2020-08-24',20, 'test passé avec succès !', 3, 7, null;
+EXEC dbo.CreateTestResult '2020-09-24',16, 'test passé avec succès !', 3, 7, null;
+EXEC dbo.CreateTestResult '2020-10-24',14, 'test passé avec succès !', 3, 7, null;
+EXEC dbo.CreateTestResult '2020-11-24',12, 'test passé avec succès !', 3, 7, null;
+EXEC dbo.CreateTestResult '2020-12-24',15, 'test passé avec succès !', 3, 7, null;
 					/*Student 1 / CAT 4*/
 EXEC dbo.CreateTestResult '2020-08-24',19, 'test passé avec succès !', 4, 7, null;
 EXEC dbo.CreateTestResult '2020-09-24',17, 'test passé avec succès !', 4, 7, null;
@@ -222,7 +237,14 @@ EXEC dbo.CreateTestResult '2020-09-24',9, 'test passé avec succès !', 5, 7, nu
 EXEC dbo.CreateTestResult '2020-10-24',12, 'test passé avec succès !', 5, 7, null;
 EXEC dbo.CreateTestResult '2020-11-24',9, 'test passé avec succès !', 5, 7, null;
 EXEC dbo.CreateTestResult '2020-12-24',19, 'test passé avec succès !', 5, 7, null;
+					/*Student 1 / CAT 6*/
+EXEC dbo.CreateTestResult '2020-08-24',0, 'test passé avec succès !', 6, 7, null;
+EXEC dbo.CreateTestResult '2020-09-24',5, 'test passé avec succès !', 6, 7, null;
+EXEC dbo.CreateTestResult '2020-10-24',8, 'test passé avec succès !', 6, 7, null;
+EXEC dbo.CreateTestResult '2020-11-24',9, 'test passé avec succès !', 6, 7, null;
+EXEC dbo.CreateTestResult '2020-12-24',4, 'test passé avec succès !', 6, 7, null;
 
+						/*STUDENT 2*/
 					/*Student 2 / CAT 1*/
 EXEC dbo.CreateTestResult '2020-08-24',0, 'test passé avec succès !', 1, 8, null;
 EXEC dbo.CreateTestResult '2020-09-24',20, 'test passé avec succès !', 1, 8, null;
@@ -235,6 +257,12 @@ EXEC dbo.CreateTestResult '2020-09-24',15, 'test passé avec succès !', 2, 8, n
 EXEC dbo.CreateTestResult '2020-10-24',16, 'test passé avec succès !', 2, 8, null;
 EXEC dbo.CreateTestResult '2020-11-24',14, 'test passé avec succès !', 2, 8, null;
 EXEC dbo.CreateTestResult '2020-12-24',17, 'test passé avec succès !', 2, 8, null;
+					/*Student 1 / CAT 3*/
+EXEC dbo.CreateTestResult '2020-08-24',12, 'test passé avec succès !', 3, 8, null;
+EXEC dbo.CreateTestResult '2020-09-24',13, 'test passé avec succès !', 3, 8, null;
+EXEC dbo.CreateTestResult '2020-10-24',14, 'test passé avec succès !', 3, 8, null;
+EXEC dbo.CreateTestResult '2020-11-24',15, 'test passé avec succès !', 3, 8, null;
+EXEC dbo.CreateTestResult '2020-12-24',18, 'test passé avec succès !', 3, 8, null;
 					/*Student 2 / CAT 4*/
 EXEC dbo.CreateTestResult '2020-08-24',10, 'test passé avec succès !', 4, 8, null;
 EXEC dbo.CreateTestResult '2020-09-24',11, 'test passé avec succès !', 4, 8, null;
@@ -247,13 +275,73 @@ EXEC dbo.CreateTestResult '2020-09-24',9, 'test passé avec succès !', 5, 8, nu
 EXEC dbo.CreateTestResult '2020-10-24',17, 'test passé avec succès !', 5, 8, null;
 EXEC dbo.CreateTestResult '2020-11-24',11, 'test passé avec succès !', 5, 8, null;
 EXEC dbo.CreateTestResult '2020-12-24',5, 'test passé avec succès !', 5, 8, null;
+					/*Student 2 / CAT 6*/
+EXEC dbo.CreateTestResult '2020-08-24',0, 'test passé avec succès !', 6, 8, null;
+EXEC dbo.CreateTestResult '2020-09-24',5, 'test passé avec succès !', 6, 8, null;
+EXEC dbo.CreateTestResult '2020-10-24',8, 'test passé avec succès !', 6, 8, null;
+EXEC dbo.CreateTestResult '2020-11-24',9, 'test passé avec succès !', 6, 8, null;
+EXEC dbo.CreateTestResult '2020-12-24',4, 'test passé avec succès !', 6, 8, null;
+
+						/*STUDENT 3*/
+					/*Student 2 / CAT 1*/
+EXEC dbo.CreateTestResult '2020-08-24',8, 'test passé avec succès !', 1, 9, null;
+EXEC dbo.CreateTestResult '2020-09-24',4, 'test passé avec succès !', 1, 9, null;
+EXEC dbo.CreateTestResult '2020-10-24',12, 'test passé avec succès !', 1, 9, null;
+EXEC dbo.CreateTestResult '2020-11-24',19, 'test passé avec succès !', 1, 9, null;
+EXEC dbo.CreateTestResult '2020-12-24',9, 'test passé avec succès !', 1, 9, null;
+					/*Student 2 / CAT 2*/
+EXEC dbo.CreateTestResult '2020-08-24',3, 'test passé avec succès !', 2, 9, null;
+EXEC dbo.CreateTestResult '2020-09-24',7, 'test passé avec succès !', 2, 9, null;
+EXEC dbo.CreateTestResult '2020-10-24',1, 'test passé avec succès !', 2, 9, null;
+EXEC dbo.CreateTestResult '2020-11-24',19, 'test passé avec succès !', 2, 9, null;
+EXEC dbo.CreateTestResult '2020-12-24',16, 'test passé avec succès !', 2, 9, null;
+					/*Student 1 / CAT 3*/
+EXEC dbo.CreateTestResult '2020-08-24',9, 'test passé avec succès !', 3, 9, null;
+EXEC dbo.CreateTestResult '2020-09-24',20, 'test passé avec succès !', 3, 9, null;
+EXEC dbo.CreateTestResult '2020-10-24',16, 'test passé avec succès !', 3, 9, null;
+EXEC dbo.CreateTestResult '2020-11-24',12, 'test passé avec succès !', 3, 9, null;
+EXEC dbo.CreateTestResult '2020-12-24',15, 'test passé avec succès !', 3, 9, null;
+					/*Student 2 / CAT 4*/
+EXEC dbo.CreateTestResult '2020-08-24',10, 'test passé avec succès !', 4, 9, null;
+EXEC dbo.CreateTestResult '2020-09-24',11, 'test passé avec succès !', 4, 9, null;
+EXEC dbo.CreateTestResult '2020-10-24',13, 'test passé avec succès !', 4, 9, null;
+EXEC dbo.CreateTestResult '2020-11-24',9, 'test passé avec succès !', 4, 9, null;
+EXEC dbo.CreateTestResult '2020-12-24',12, 'test passé avec succès !', 4, 9, null;
+					/*Student 2 / CAT 5*/
+EXEC dbo.CreateTestResult '2020-08-24',7, 'test passé avec succès !', 5, 9, null;
+EXEC dbo.CreateTestResult '2020-09-24',10, 'test passé avec succès !', 5, 9, null;
+EXEC dbo.CreateTestResult '2020-10-24',13, 'test passé avec succès !', 5, 9, null;
+EXEC dbo.CreateTestResult '2020-11-24',17, 'test passé avec succès !', 5, 9, null;
+EXEC dbo.CreateTestResult '2020-12-24',20, 'test passé avec succès !', 5, 9, null;
+					/*Student 2 / CAT 6*/
+EXEC dbo.CreateTestResult '2020-08-24',2, 'test passé avec succès !', 6, 9, null;
+EXEC dbo.CreateTestResult '2020-09-24',7, 'test passé avec succès !', 6, 9, null;
+EXEC dbo.CreateTestResult '2020-10-24',12, 'test passé avec succès !', 6, 9, null;
+EXEC dbo.CreateTestResult '2020-11-24',11, 'test passé avec succès !', 6, 9, null;
+EXEC dbo.CreateTestResult '2020-12-24',9, 'test passé avec succès !', 6, 9, null;
 
 /*INSERT QUESTIONS*/
 /*CAT 4 TRIM 1 SCHOOLYEAR 3eme MAT*/
-EXEC dbo.CreateQuestion 'Que fait 2+2 ?','4','2+2 = 4','2 pommes + 1 pomme = ... + 1 pomme = ... ?','2 pommes + 1 pomme = 3 pommes + 1 pomme = ... ?',3,4,1,2;
-EXEC dbo.CreateQuestion 'Que fait 3-2 ?','1','3-2 = 2','3 poires - 1 poire = ... - 1 poire = ... ?','2 pommes + 1 pomme = 3 pommes + 1 pomme = ... ?',3,4,1,2;
-EXEC dbo.CreateQuestion 'Que fait 1+4 ?','5','1+4 = 4','4 oranges + 1 orange = ...',null,3,4,1,2;
+EXEC dbo.CreateQuestion 'Que fait 2+2 ?','4','2+2 = 4','2 pommes + 1 pomme = ... + 1 pomme = ... ?',null,3,4,1,3, 'Addition';
+EXEC dbo.CreateQuestion 'Que fait 3-2 ?','1','3-2 = 1','3 poires - 1 poire = ... - 1 poire = ... ?','3 poires - 1 poire = 2 poires - 1 poire = ... ?',3,4,1,3, 'Soustraction';
+EXEC dbo.CreateQuestion 'Quel est la capitale de la Belgique ?','Bruxelles','Bxl','c''est comme les choux de ...',null,3,5,1,3, 'Les Capitales';
+EXEC dbo.CreateQuestion 'Quel est la capitale de la France','Paris','Paris','l''endroit où l''on trouve la tour Eifel','leurs supporters disent "... c''est magique"',3,5,1,3, 'Les Capitales';
+EXEC dbo.CreateQuestion 'Que fait 7+4 ?','11','7+3 = 10 + 1 = 11','7+4 = ... + 1 = ...','7 + 4 = 10+1 = ...',3,4,1,3, 'Addition';
+EXEC dbo.CreateQuestion 'Que fait 12+9 ?','21','12+9 = (12+8) + (9-8) = 21','12+9 = ... + (9-8) = ...','12+9 = 20 + (9-1) = ...',3,4,1,3, 'Addition';
+EXEC dbo.CreateQuestion 'Que fait 10-4 ?','6','10-4 = 6','10-4 = (10-2) - ... =  ...',null,3,4,1,3, 'Soustraction';
+EXEC dbo.CreateQuestion 'Que fait 47+38 ?','85','47+38 = (40 + 30) + (7 + 8) = 85','47+38 = (40 + ...) + (... + 8) = ... ','47+38 = (40 + 30 + (... + 8) = ... ',3,4,2,3, 'Addition';
+EXEC dbo.CreateQuestion 'Quel est la capitale de l''Inde ?','New Delhi','Why not ?','Good Luck:-)','Google can be your best friend',3,5,2,3, 'Les Capitales';
+EXEC dbo.CreateQuestion 'Quel est la capite de l''Italie ?','Rome','Rome (en italien : Roma) est la capitale de l''Italie. Située au centre-ouest de la péninsule italienne.','La où pleins de gladiateurs ont combattus dans l''arène','La où vivait les Romains ...',3,5,2,3, 'Les Capitales';
+EXEC dbo.CreateQuestion 'Que fait 29+41 ?','70','29+41 = (29+1) + 40 = 70','29+41 = (29+...) + ... = ...','29+41 = (29+1) + ... = ...',3,4,2,3, 'Addition';
+EXEC dbo.CreateQuestion 'Que fait 49-11 ?','38','49-11 = (49-10) - 1 = 38','49-11 = (49-...) - ... = ...','49-11 = (49-10-) - ... =',3,4,2,3, 'Soustraction';
+EXEC dbo.CreateQuestion 'Quel est la capitale des USA ?','Washington D.C.','Washington, D.C. est la capitale fédérale des États-Unis depuis 1800.','L''endroit où se trouve la maison blanche !','Le président Americain réside dans la maison blanche',3,5,3,3, 'Les Capitales';
+EXEC dbo.CreateQuestion 'Quel est la capitale du Canada ?','Ottawa','Why not ?','Good luck','Google can be your best friend',3,5,3,3, 'Les Capitales';
+EXEC dbo.CreateQuestion 'Que fait 127+42 ?','169','127+42 = (100+20+40) + (7+2) = 169','127+42 = (100+...+...) + (...+2) = ...','127+42 = (100+...+40) + (...+2) = ...',3,4,3,3, 'Addition';
+EXEC dbo.CreateQuestion 'Que fait 143-14 ?','129','143-14 = (143-10) - 4 = 129','143-14 = (143-...) - ... = ...','143-14 = (143-...) - 4 = ...',3,4,3,3, 'Soustraction';
+
 /*INSERT DOCUMENTS*/
+
+
 
 
 

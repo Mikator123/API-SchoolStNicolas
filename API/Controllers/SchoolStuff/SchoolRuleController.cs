@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net;
+using API.Attributes;
+using API.Utils.Token.Roles;
 using DAL.Enumerations;
 using DAL.Models.RelativeToSchool;
 using DAL.Services.Repositories.RelativeToSchool;
@@ -17,6 +19,8 @@ namespace API.Controllers.SchoolStuff
             _ruleRepo = ruleRepo;
         }
 
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPost] /*POSTMAN OK*/
         public IActionResult Create([FromBody] SchoolRule rule)
         {
@@ -33,6 +37,8 @@ namespace API.Controllers.SchoolStuff
             }
         }
 
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPut] /*POSTMAN OK*/
         public IActionResult Update([FromBody] SchoolRule rule)
         {
@@ -49,6 +55,8 @@ namespace API.Controllers.SchoolStuff
             }
         }
 
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpDelete("{Id}")] /*POSTMAN OK*/
         public IActionResult Delete(int Id)
         {
@@ -56,6 +64,8 @@ namespace API.Controllers.SchoolStuff
             return Ok();
         }
 
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet] /*POSTMAN OK*/
         public IActionResult Get()
         {
@@ -66,6 +76,7 @@ namespace API.Controllers.SchoolStuff
                 return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet("{Id}")] /*POSTMAN OK*/
         public IActionResult GetById(int Id)
         {

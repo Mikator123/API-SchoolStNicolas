@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using DAL.Enumerations;
 using System.Net;
 using DAL.Models.RelativeToClass;
+using API.Utils.Token.Roles;
+using API.Attributes;
 
 namespace API.Controllers.RelativeToClass
 {
@@ -17,6 +19,7 @@ namespace API.Controllers.RelativeToClass
             _testRepo = testRepo;
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor)]
         [HttpPost]
         public IActionResult Create([FromBody] TestResult test)
         {
@@ -36,6 +39,8 @@ namespace API.Controllers.RelativeToClass
                     return Problem("?", statusCode: (int)HttpStatusCode.NotFound);
             }
         }
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor)]
         [HttpPut]
         public IActionResult Update([FromBody] TestResult test)
         {
@@ -56,6 +61,7 @@ namespace API.Controllers.RelativeToClass
             }
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor)]
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {
@@ -63,6 +69,7 @@ namespace API.Controllers.RelativeToClass
             return Ok();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpGet]
         public IActionResult Get()
         {
@@ -73,6 +80,7 @@ namespace API.Controllers.RelativeToClass
                 return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
@@ -82,6 +90,7 @@ namespace API.Controllers.RelativeToClass
             else return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet]
         [Route("byStudentId/{Id}")]
         public IActionResult GetByUserId(int Id)
@@ -93,6 +102,7 @@ namespace API.Controllers.RelativeToClass
                 return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet]
         [Route("byCategoryId/{Id}")]
         public IActionResult GetByCategoryId(int Id)
@@ -104,6 +114,7 @@ namespace API.Controllers.RelativeToClass
                 return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet]
         [Route("byClassId/{Id}")]
         public IActionResult GetByClassId(int Id)

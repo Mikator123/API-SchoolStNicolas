@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using DAL.Enumerations;
 using System.Net;
 using DAL.Models.RelativeToClass;
+using API.Utils.Token.Roles;
+using API.Attributes;
 
 namespace API.Controllers.RelativeToClass
 {
@@ -17,6 +19,7 @@ namespace API.Controllers.RelativeToClass
             _categoryRepo = categoryRepo;
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPost]/*POSTMAN OK*/
         public IActionResult Create([FromBody] TeachingCategory cat)
         {
@@ -33,6 +36,7 @@ namespace API.Controllers.RelativeToClass
             }
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPut]/*POSTMAN OK*/
         public IActionResult Update([FromBody] TeachingCategory cat)
         {
@@ -49,6 +53,7 @@ namespace API.Controllers.RelativeToClass
             }
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpDelete("{Id}")]/*POSTMAN OK*/
         public IActionResult Delete(int Id)
         {
@@ -56,6 +61,8 @@ namespace API.Controllers.RelativeToClass
             return Ok();
         }
 
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet]/*POSTMAN OK*/
         public IActionResult Get()
         {
@@ -67,6 +74,7 @@ namespace API.Controllers.RelativeToClass
               
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet("{Id}")]/*POSTMAN OK*/
         public IActionResult GetById(int Id)
         {

@@ -8,6 +8,8 @@ namespace API.Models.DistancialTest
     public class WorkingProfileQuestion
     {
         public int Id { get; set; }
+        public string Subject { get; set; }
+        public DateTime LastUpdate { get; set; }
         public string Question { get; set; }
         public string Correction { get; set; }
         public string Explanation { get; set; }

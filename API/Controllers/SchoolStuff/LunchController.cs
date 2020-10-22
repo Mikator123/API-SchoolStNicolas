@@ -9,6 +9,8 @@ using System.Linq;
 using System.Net;
 using DAL.Services.Repositories.RelativeToSchool;
 using DAL.Services.Repositories.RelativeToUser;
+using API.Utils.Token.Roles;
+using API.Attributes;
 
 namespace API.Controllers.SchoolStuff
 {
@@ -26,7 +28,7 @@ namespace API.Controllers.SchoolStuff
         }
 
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPost] /*POSTMAN OK*/
         public IActionResult Create([FromBody] D.Lunch entity)
         {
@@ -42,7 +44,7 @@ namespace API.Controllers.SchoolStuff
         }
 
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPut] /*POSTMAN OK*/
         public IActionResult Update([FromBody] D.Lunch entity)
         {
@@ -57,7 +59,7 @@ namespace API.Controllers.SchoolStuff
             }
         }
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpDelete("{Id}")] /*POSTMAN OK*/
         public IActionResult Delete(int Id)
         {
@@ -67,7 +69,7 @@ namespace API.Controllers.SchoolStuff
         }
 
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet] /*POSTMAN OK*/
         public IActionResult Get()
         {
@@ -87,7 +89,7 @@ namespace API.Controllers.SchoolStuff
 
         }
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet("{lunchId}")] /*POSTMAN OK*/
         public IActionResult GetLunchById(int lunchId)
         {
@@ -98,6 +100,7 @@ namespace API.Controllers.SchoolStuff
                 return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpPost]
         [Route("linkToUser")] /*POSTMAN OK*/
         public IActionResult LinkToUser([FromBody] LinkWithEntity link)
@@ -113,7 +116,7 @@ namespace API.Controllers.SchoolStuff
             }
         }
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpDelete]
         [Route("unlinkFromUser")] /*POSTMAN OK*/
         public IActionResult UnlinkFromUser([FromBody] LinkWithEntity link)

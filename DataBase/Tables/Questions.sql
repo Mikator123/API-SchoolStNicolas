@@ -10,6 +10,8 @@
     [SchoolYear] INT NOT NULL, 
     [Trimester] INT NOT NULL, 
     [SchoolYearCategoryId] INT NOT NULL, 
+    [Subject] NVARCHAR(MAX) NOT NULL, 
+    [LastUpdate] DATE NOT NULL, 
     CONSTRAINT [PK_Questions] PRIMARY KEY ([Id]), 
     CONSTRAINT [FK_Questions_Categories] FOREIGN KEY (CategoryId) REFERENCES Categories(Id) ON DELETE SET NULL, 
     CONSTRAINT [CK_Questions_Trimester] CHECK (Trimester BETWEEN 1 AND 3), 

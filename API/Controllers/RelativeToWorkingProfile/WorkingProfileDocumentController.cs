@@ -1,8 +1,10 @@
-﻿using API.Mappers;
+﻿using API.Attributes;
+using API.Mappers;
 using API.Models.Classes;
 using API.Models.DistancialTest;
 using API.Models.Users;
 using API.Models.WorkingProfile;
+using API.Utils.Token.Roles;
 using DAL.Enumerations;
 using DAL.Models.RelativeToClass;
 using DAL.Services.Repositories.RelativeToClass;
@@ -25,6 +27,7 @@ namespace API.Controllers.RelativeToWorkingProfile
             _workDocRepo = workDocRepo;
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor)]
         [HttpPost]/*POSTMAN OK*/
         public IActionResult Create([FromBody] WorkingProfileDocument doc )
         {
@@ -45,6 +48,7 @@ namespace API.Controllers.RelativeToWorkingProfile
             }
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor)]
         [HttpPut]/*POSTMAN OK*/
         public IActionResult Update([FromBody] WorkingProfileDocument doc)
         {
@@ -64,6 +68,8 @@ namespace API.Controllers.RelativeToWorkingProfile
                     return Problem("?", statusCode: (int)HttpStatusCode.NotFound);
             }
         }
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor)]
         [HttpDelete("{Id}")]/*POSTMAN OK*/
         public IActionResult Delete(int Id)
         {
@@ -71,6 +77,7 @@ namespace API.Controllers.RelativeToWorkingProfile
             return Ok();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet]/*POSTMAN OK*/
         public IActionResult Get()
         {
@@ -81,6 +88,7 @@ namespace API.Controllers.RelativeToWorkingProfile
                 return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet("{Id}")]/*POSTMAN OK*/
         public IActionResult GetById(int Id)
         {

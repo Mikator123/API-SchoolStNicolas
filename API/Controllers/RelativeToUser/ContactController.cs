@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using API.Attributes;
 using API.Mappers;
 using API.Models.Commons;
 using API.Models.Contacts;
+using API.Utils.Token.Roles;
 using DAL.Enumerations;
 using DAL.Services.Repositories.RelativeToUser;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +24,7 @@ namespace API.Controllers.RelativeToUser
             _userRepo = userRepo;
         }
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPost] /*POSTMAN OK*/
         public IActionResult Create([FromBody] Contact contact)
         {
@@ -39,7 +41,7 @@ namespace API.Controllers.RelativeToUser
             }
         }
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPut] /*POSTMAN OK*/
         public IActionResult Update([FromBody] Contact contact)
         {
@@ -56,6 +58,8 @@ namespace API.Controllers.RelativeToUser
             }
         }
 
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpDelete("{Id}")] /*POSTMAN OK*/
         public IActionResult Delete(int Id)
         {
@@ -65,7 +69,7 @@ namespace API.Controllers.RelativeToUser
         }
 
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet] /*POSTMAN OK*/
         public IActionResult Get()
         {
@@ -84,7 +88,7 @@ namespace API.Controllers.RelativeToUser
                 return NotFound();
         }
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet("{Id}")] /*POSTMAN OK*/
         public IActionResult GetbyId(int Id)
         {
@@ -100,6 +104,7 @@ namespace API.Controllers.RelativeToUser
                 return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPost]
         [Route("linkToUser")] /*POSTMAN OK*/
         public IActionResult LinkToUser([FromBody] LinkWithEntity link)
@@ -115,6 +120,7 @@ namespace API.Controllers.RelativeToUser
             }
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpDelete]
         [Route("unlinkFromUser")] /*POSTMAN OK*/
         public IActionResult UnlinkFromUser([FromBody] LinkWithEntity link)

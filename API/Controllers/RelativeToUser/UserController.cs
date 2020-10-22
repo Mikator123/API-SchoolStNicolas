@@ -22,7 +22,6 @@ namespace API.Controllers.RelativeToUser
 
     [Route("api/[controller]")]
     [ApiController]
-    //[AuthRequired(RoleName.Admin + "|" + RoleName.Professor)]
     public class UserController : Controller
     {
         private UserRepository _userRepo;
@@ -39,7 +38,7 @@ namespace API.Controllers.RelativeToUser
             _trimestrialRepo = trimestrialRepo;
         }
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPost] /*POSTMAN OK*/
         public IActionResult Create([FromBody] UserDetailed user)
         {
@@ -93,6 +92,8 @@ namespace API.Controllers.RelativeToUser
             }
         }
 
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPut] /*POSTMAN OK*/
         public IActionResult Update([FromBody] UserDetailed user)
         {
@@ -150,6 +151,7 @@ namespace API.Controllers.RelativeToUser
         }
 
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpDelete("{Id}")]  /*POSTMAN OK*/
         public IActionResult Delete(int Id)
         {
@@ -162,7 +164,7 @@ namespace API.Controllers.RelativeToUser
         }
 
 
-        
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpGet]
         public IActionResult Get() /*POSTMAN OK*/
         {
@@ -184,9 +186,9 @@ namespace API.Controllers.RelativeToUser
                 return NotFound();
         }
 
-        
 
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Professor + "|" + RoleName.Manager + "|" + RoleName.Student)]
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id) /*POSTMAN OK*/
         {
@@ -206,10 +208,9 @@ namespace API.Controllers.RelativeToUser
 
         }
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpGet]
         [Route("getByStatusId/{Id}")]
-
         public IActionResult GetByStatusId(int Id) /*POSTMAN OK*/
         {
             List<UserDetailed> userList = _userRepo.GetAllByStatusId(Id).Select(x => x.DalToDetailedUserApi()).ToList();
@@ -231,9 +232,9 @@ namespace API.Controllers.RelativeToUser
         }
 
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Professor + "|" + RoleName.Manager + "|" + RoleName.Student)]
         [HttpGet]
         [Route("getByClassId/{Id}")]
-
         public IActionResult GetByClassId(int Id) /*POSTMAN OK*/
         {
             List<UserDetailed> userList = _userRepo.GetAllByClassId(Id).Select(x => x.DalToDetailedUserApi()).ToList();
@@ -255,6 +256,7 @@ namespace API.Controllers.RelativeToUser
                 return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Professor + "|" + RoleName.Manager + "|" + RoleName.Student)]
         [HttpGet]
         [Route("getMails/{classId}")] /*POSTMAN OK*/
 

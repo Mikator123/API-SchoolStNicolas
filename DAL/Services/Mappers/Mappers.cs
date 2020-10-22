@@ -151,6 +151,8 @@ namespace DAL.Services.Mappers
             return new WorkingProfileQuestion()
             {
                 Id = (int)r["Id"],
+                Subject = r["Subject"].ToString(),
+                LastUpdate = (DateTime)r["LastUpdate"],
                 Question = r["Question"].ToString(),
                 Correction = r["Correction"].ToString(),
                 Explanation = r["Explanation"].ToString(),

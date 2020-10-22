@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using API.Attributes;
+using API.Utils.Token.Roles;
 using DAL.Enumerations;
 using DAL.Models.RelativeToUser;
 using DAL.Services.Repositories.RelativeToClass;
@@ -11,6 +13,7 @@ namespace API.Controllers.RelativeToUser
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class TrimestrialInfoController : ControllerBase
     {
         private TrimestrialInfoRepository _trimRepo;
@@ -19,6 +22,8 @@ namespace API.Controllers.RelativeToUser
             _trimRepo = trimRepo;
         }
 
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Professor + "|" + RoleName.Manager)]
         [HttpPost] /*POSTMAN OK*/
         public IActionResult Create([FromBody] TrimestrialInfo info)
         {
@@ -37,6 +42,8 @@ namespace API.Controllers.RelativeToUser
             }
         }
 
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Professor + "|" + RoleName.Manager)]
         [HttpPut] /*POSTMAN OK*/
         public IActionResult Update([FromBody] TrimestrialInfo info)
         {
@@ -56,6 +63,7 @@ namespace API.Controllers.RelativeToUser
         }
 
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Professor + "|" + RoleName.Manager)]
         [HttpDelete("{Id}")] /*POSTMAN OK*/
         public IActionResult Delete(int Id)
         {
@@ -63,6 +71,8 @@ namespace API.Controllers.RelativeToUser
             return Ok();
         }
 
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Professor + "|" + RoleName.Manager + "|" + RoleName.Student)]
         [HttpGet("{Id}")] /*POSTMAN OK*/
         public IActionResult GetById(int Id)
         {
@@ -73,6 +83,8 @@ namespace API.Controllers.RelativeToUser
                 return NotFound();
         }
 
+
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Professor + "|" + RoleName.Manager + "|" + RoleName.Student)]
         [Route("GetbyuserId/{Id}")] /*POSTMAN OK*/
         public IActionResult GetByUserId(int Id)
         {

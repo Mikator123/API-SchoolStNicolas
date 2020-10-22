@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using API.Attributes;
+using API.Utils.Token.Roles;
 using DAL.Models.RelativeToClass;
 using DAL.Services.Repositories.RelativeToClass;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +17,7 @@ namespace API.Controllers.RelativeToClass
             _yearCatRepo = yearCatRepo;
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet] /*POSTMAN OK*/
         public IActionResult Get()
         {
@@ -25,6 +28,7 @@ namespace API.Controllers.RelativeToClass
                 return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet("{Id}")] /*POSTMAN OK*/
         public IActionResult GetById(int Id)
         {

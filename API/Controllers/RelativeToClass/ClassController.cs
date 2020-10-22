@@ -1,6 +1,8 @@
-﻿using API.Mappers;
+﻿using API.Attributes;
+using API.Mappers;
 using API.Models.Classes;
 using API.Models.Users;
+using API.Utils.Token.Roles;
 using DAL.Enumerations;
 using DAL.Services.Repositories.RelativeToClass;
 using DAL.Services.Repositories.RelativeToUser;
@@ -24,7 +26,7 @@ namespace API.Controllers.RelativeToClass
             _userRepo = userRepo;
         }
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPost] /*POSTMAN OK*/
         public IActionResult Create([FromBody] Class studentClass)
         {
@@ -43,6 +45,7 @@ namespace API.Controllers.RelativeToClass
             }
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpPut] /*POSTMAN OK*/
         public IActionResult Update([FromBody] Class studentClass)
         {
@@ -61,6 +64,7 @@ namespace API.Controllers.RelativeToClass
             }
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpDelete("{Id}")]  /*POSTMAN OK*/
         public IActionResult Delete(int Id)
         {
@@ -68,6 +72,7 @@ namespace API.Controllers.RelativeToClass
             return Ok();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet] /*POSTMAN OK*/
         public IActionResult Get()
         {
@@ -86,6 +91,7 @@ namespace API.Controllers.RelativeToClass
                 return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [HttpGet("{Id}")] /*POSTMAN OK*/
         public IActionResult GetById(int Id)
         {
@@ -101,7 +107,7 @@ namespace API.Controllers.RelativeToClass
                 return NotFound();
         }
 
-
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager + "|" + RoleName.Professor + "|" + RoleName.Student)]
         [Route("byCategoryId/{Id}")] /*POSTMAN OK*/
         public IActionResult GetByCategoryId (int Id)
         {

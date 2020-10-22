@@ -26,6 +26,7 @@ namespace DAL.Services.Repositories.RelativeToWorkingProfile
         {
             Command cmd = new Command("CreateQuestion", true);
             cmd.AddParameter("question", entity.Question);
+            cmd.AddParameter("subject", entity.Subject);
             cmd.AddParameter("correction", entity.Correction);
             cmd.AddParameter("explanation", entity.Explanation);
             cmd.AddParameter("firstHint", entity.FirstHint);
@@ -93,6 +94,7 @@ namespace DAL.Services.Repositories.RelativeToWorkingProfile
             cmd.AddParameter("categoryId", entity.CategoryId);
             cmd.AddParameter("trimester", entity.Trimester);
             cmd.AddParameter("schoolYearCategoryId", entity.SchoolYearCategoryId);
+            cmd.AddParameter("subject", entity.Subject);
             try
             {
                 _connection.ExecuteNonQuery(cmd);

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using API.Attributes;
+using API.Utils.Token.Roles;
 using DAL.Models.RelativeToUser;
 using DAL.Services.Repositories.RelativeToUser;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +18,7 @@ namespace API.Controllers.RelativeToUser
             _statusRepo = statusRepo;
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpGet] /*POSTMAN OK*/
         public IActionResult Get()
         {
@@ -26,6 +29,7 @@ namespace API.Controllers.RelativeToUser
                 return NotFound();
         }
 
+        [AuthRequired(RoleName.Admin + "|" + RoleName.Manager)]
         [HttpGet("{Id}")] /*POSTMAN OK*/
         public IActionResult GetById(int Id)
         {

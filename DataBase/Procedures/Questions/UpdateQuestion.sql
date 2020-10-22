@@ -8,7 +8,8 @@
 	@schoolYear int,
 	@categoryId int,
 	@trimester int,
-	@schoolYearCategoryId int
+	@schoolYearCategoryId int,
+	@subject nvarchar(MAX)
 AS
 BEGIN
 	UPDATE Questions SET
@@ -20,6 +21,8 @@ BEGIN
 		SchoolYear = @schoolYear,
 		CategoryId = @categoryId,
 		Trimester = @trimester,
-		SchoolYearCategoryId = @schoolYearCategoryId
+		SchoolYearCategoryId = @schoolYearCategoryId,
+		[Subject] = @subject,
+		LastUpdate = GETDATE()
 	WHERE Id = @id
 END

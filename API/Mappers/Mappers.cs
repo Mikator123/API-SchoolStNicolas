@@ -276,6 +276,8 @@ namespace API.Mappers
             return new WorkingProfileQuestion()
             {
                 Id = t.Id,
+                LastUpdate = t.LastUpdate,
+                Subject = t.Subject,
                 Question = t.Question,
                 Correction = t.Correction,
                 Explanation = t.Explanation,
@@ -292,6 +294,8 @@ namespace API.Mappers
             return new DalWProfile.WorkingProfileQuestion()
             {
                 Id = t.Id,
+                Subject = t.Subject,
+                LastUpdate = t.LastUpdate,
                 Question = t.Question,
                 Correction = t.Correction,
                 Explanation = t.Explanation,
