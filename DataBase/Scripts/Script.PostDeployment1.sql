@@ -179,11 +179,10 @@ L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reprodui
 /*INSERT LUNCHES*/
 
 
-EXEC dbo.CreateLunch 'CHoux','avec son accompagnement de pomme de terre bio !','2020-10-19';
+EXEC dbo.CreateLunch 'Choux','avec son accompagnement de pomme de terre bio !','2020-10-19';
 EXEC dbo.CreateLunch 'Boulette sauce tomate','avec son accompagnement de pomme de terre bio !','2020-10-20';
 EXEC dbo.CreateLunch 'Poulet mariné','avec son accompagnement de frites bio !','2020-10-22';
 EXEC dbo.CreateLunch 'Spaggetti bolognaise','Sans accompagnement','2020-10-23';
-EXEC dbo.CreateUserLunch 7,1;
 EXEC dbo.CreateUserLunch 7,2;
 EXEC dbo.CreateUserLunch 7,3;
 EXEC dbo.CreateUserLunch 7,4;

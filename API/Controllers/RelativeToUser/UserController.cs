@@ -155,7 +155,6 @@ namespace API.Controllers.RelativeToUser
         [HttpDelete("{Id}")]  /*POSTMAN OK*/
         public IActionResult Delete(int Id)
         {
-            
             _userRepo.UnlinkUserFromContacts(Id);
             _userRepo.UnlinkUserFromLunches(Id);
             _userRepo.UnlinkUserFromStatus(Id);
