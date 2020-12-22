@@ -12,7 +12,7 @@ namespace API.Controllers.RelativeToUser
     [ApiController]
     public class StatusController : ControllerBase
     {
-        private UserStatusRepository _statusRepo;
+        private readonly UserStatusRepository _statusRepo;
         public StatusController(UserStatusRepository statusRepo)
         {
             _statusRepo = statusRepo;

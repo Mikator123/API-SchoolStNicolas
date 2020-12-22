@@ -16,7 +16,7 @@ namespace DAL.Services.Repositories.RelativeToUser
 {
     public class UserRepository : IUserRepository<User>
     {
-        private Connection _connection;
+        private readonly Connection _connection;
 
         public UserRepository(Connection connection)
         {

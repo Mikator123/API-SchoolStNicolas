@@ -15,7 +15,7 @@ namespace DAL.Services.Repositories.RelativeToUser
 {
     public class TrimestrialInfoRepository : ICRUDRepository<TrimestrialInfo, DBErrors>
     {
-        private Connection _connection;
+        private readonly Connection _connection;
         public TrimestrialInfoRepository(Connection connection)
         {
             _connection = connection;

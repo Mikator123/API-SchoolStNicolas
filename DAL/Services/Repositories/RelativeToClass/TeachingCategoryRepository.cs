@@ -14,7 +14,7 @@ namespace DAL.Services.Repositories.RelativeToClass
 {
     public class TeachingCategoryRepository : ICRUDRepository<TeachingCategory, DBErrors>
     {
-        private Connection _connection;
+        private readonly Connection _connection;
         public TeachingCategoryRepository(Connection connection)
         {
             _connection = connection;

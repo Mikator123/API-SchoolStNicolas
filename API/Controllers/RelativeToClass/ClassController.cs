@@ -17,8 +17,8 @@ namespace API.Controllers.RelativeToClass
     [ApiController]
     public class ClassController : Controller
     {
-        private ClassRepository _classRepo;
-        private UserRepository _userRepo;
+        private readonly ClassRepository _classRepo;
+        private readonly UserRepository _userRepo;
 
         public ClassController(ClassRepository classRepo, UserRepository userRepo)
         {

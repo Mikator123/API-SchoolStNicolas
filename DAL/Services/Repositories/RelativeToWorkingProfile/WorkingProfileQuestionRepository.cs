@@ -16,7 +16,7 @@ namespace DAL.Services.Repositories.RelativeToWorkingProfile
 {
     public class WorkingProfileQuestionRepository : ICRUDRepository<WorkingProfileQuestion, DBErrors>
     {
-        private Connection _connection;
+        private readonly Connection _connection;
 
         public WorkingProfileQuestionRepository(Connection connection)
         {

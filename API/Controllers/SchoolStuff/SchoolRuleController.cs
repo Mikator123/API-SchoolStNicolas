@@ -13,7 +13,7 @@ namespace API.Controllers.SchoolStuff
     [ApiController]
     public class SchoolRuleController : ControllerBase
     {
-        private SchoolRuleRepository _ruleRepo;
+        private readonly SchoolRuleRepository _ruleRepo;
         public SchoolRuleController(SchoolRuleRepository ruleRepo)
         {
             _ruleRepo = ruleRepo;

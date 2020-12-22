@@ -14,7 +14,7 @@ namespace DAL.Services.Repositories.RelativeToClass
 {
     public class TestResultRepository : ICRUDRepository<TestResult, DBErrors>
     {
-        private Connection _connection;
+        private readonly Connection _connection;
         public TestResultRepository(Connection connection)
         {
             _connection = connection;

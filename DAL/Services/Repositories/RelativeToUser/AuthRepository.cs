@@ -11,7 +11,7 @@ namespace DAL.Services.Repositories.RelativeToUser
 {
     public class AuthRepository
     {
-        private Connection _connection;
+        private readonly Connection _connection;
         public AuthRepository(Connection connection)
         {
             _connection = connection;

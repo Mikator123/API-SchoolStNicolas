@@ -13,7 +13,7 @@ namespace API.Controllers.RelativeToClass
     [ApiController]
     public class TeachingCategoryController : ControllerBase
     {
-        private TeachingCategoryRepository _categoryRepo;
+        private readonly TeachingCategoryRepository _categoryRepo;
         public TeachingCategoryController(TeachingCategoryRepository categoryRepo)
         {
             _categoryRepo = categoryRepo;

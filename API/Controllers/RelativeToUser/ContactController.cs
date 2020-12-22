@@ -16,8 +16,8 @@ namespace API.Controllers.RelativeToUser
     [ApiController]
     public class ContactController : ControllerBase
     {
-        private ContactRepository _contactRepo;
-        private UserRepository _userRepo;
+        private readonly ContactRepository _contactRepo;
+        private readonly UserRepository _userRepo;
         public ContactController(ContactRepository contactRepo, UserRepository userRepo)
         {
             _contactRepo = contactRepo;

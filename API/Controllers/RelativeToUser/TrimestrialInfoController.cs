@@ -16,7 +16,7 @@ namespace API.Controllers.RelativeToUser
 
     public class TrimestrialInfoController : ControllerBase
     {
-        private TrimestrialInfoRepository _trimRepo;
+        private readonly TrimestrialInfoRepository _trimRepo;
         public TrimestrialInfoController(TrimestrialInfoRepository trimRepo)
         {
             _trimRepo = trimRepo;

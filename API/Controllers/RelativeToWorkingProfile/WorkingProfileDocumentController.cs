@@ -21,7 +21,7 @@ namespace API.Controllers.RelativeToWorkingProfile
     [ApiController]
     public class WorkingProfileDocumentController : ControllerBase
     {
-        private WorkingProfileDocumentRepository _workDocRepo;
+        private readonly WorkingProfileDocumentRepository _workDocRepo;
         public WorkingProfileDocumentController(WorkingProfileDocumentRepository workDocRepo)
         {
             _workDocRepo = workDocRepo;

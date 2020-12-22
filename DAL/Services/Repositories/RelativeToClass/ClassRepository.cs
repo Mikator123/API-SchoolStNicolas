@@ -15,7 +15,7 @@ namespace DAL.Services.Repositories.RelativeToClass
 {
     public class ClassRepository : ICRUDRepository<Class, DBErrors>
     {
-        private Connection _connection;
+        private readonly Connection _connection;
 
         public ClassRepository(Connection connection)
         {

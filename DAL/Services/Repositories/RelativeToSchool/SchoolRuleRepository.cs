@@ -15,7 +15,7 @@ namespace DAL.Services.Repositories.RelativeToSchool
 
     public class SchoolRuleRepository : ICRUDRepository<SchoolRule, DBErrors>
     {
-        private Connection _connection;
+        private readonly Connection _connection;
         public SchoolRuleRepository(Connection connection)
         {
             _connection = connection;

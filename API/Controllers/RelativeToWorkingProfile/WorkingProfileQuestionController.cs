@@ -20,7 +20,7 @@ namespace API.Controllers.RelativeToWorkingProfile
 
     public class WorkingProfileQuestionController : ControllerBase
     {
-        private WorkingProfileQuestionRepository _testRepo;
+        private readonly WorkingProfileQuestionRepository _testRepo;
         public WorkingProfileQuestionController(WorkingProfileQuestionRepository testRepo)
         {
             _testRepo = testRepo;

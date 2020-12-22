@@ -151,7 +151,6 @@ namespace API.Mappers
                 Id = c.Id,
                 FullName = c.LastName + ' ' + c.FirstName,
                 Email = c.Email,
-
             };
         }
         public static ContactDetailed DalToDetailedApi(this DalUser.Contact c)

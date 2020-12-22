@@ -17,9 +17,9 @@ namespace API.Controllers.RelativeToUser
     public class AuthController : ControllerBase
     {
         private ITokenService _token;
-        private Decrypting _decrypting = new Decrypting();
-        private KeyGenerator _key;
-        private AuthRepository _authRepo;
+        private readonly Decrypting _decrypting = new Decrypting();
+        private readonly KeyGenerator _key;
+        private readonly AuthRepository _authRepo;
 
         public AuthController(ITokenService token, KeyGenerator key, AuthRepository authRepo)
         {

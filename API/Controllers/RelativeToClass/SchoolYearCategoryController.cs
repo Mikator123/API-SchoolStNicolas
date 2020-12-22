@@ -11,7 +11,7 @@ namespace API.Controllers.RelativeToClass
     [ApiController]
     public class SchoolYearCategoryController : ControllerBase
     {
-        private SchoolYearCategoryRepository _yearCatRepo;
+        private readonly SchoolYearCategoryRepository _yearCatRepo;
         public SchoolYearCategoryController(SchoolYearCategoryRepository yearCatRepo)
         {
             _yearCatRepo = yearCatRepo;

@@ -14,7 +14,7 @@ namespace DAL.Services.Repositories.RelativeToSchool
 {
     public class LunchRepository : ICRUDRepository<Lunch, DBErrors>, IManyToManyRepository<DBErrors>
     {
-        private Connection _connection;
+        private readonly Connection _connection;
 
         public LunchRepository(Connection connection)
         {

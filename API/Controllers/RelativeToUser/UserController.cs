@@ -24,11 +24,11 @@ namespace API.Controllers.RelativeToUser
     [ApiController]
     public class UserController : Controller
     {
-        private UserRepository _userRepo;
-        private ContactRepository _contactRepo;
-        private UserStatusRepository _statusRepo;
-        private LunchRepository _lunchRepo;
-        private TrimestrialInfoRepository _trimestrialRepo;
+        private readonly UserRepository _userRepo;
+        private readonly ContactRepository _contactRepo;
+        private readonly UserStatusRepository _statusRepo;
+        private readonly LunchRepository _lunchRepo;
+        private readonly TrimestrialInfoRepository _trimestrialRepo;
         public UserController( TrimestrialInfoRepository trimestrialRepo, UserRepository userRepo, ContactRepository contactRepo, UserStatusRepository statusRepo, LunchRepository lunchRepo, ITokenService token)
         {
             _userRepo = userRepo;

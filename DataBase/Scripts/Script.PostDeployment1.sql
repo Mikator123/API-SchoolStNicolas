@@ -182,10 +182,18 @@ L''extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reprodui
 EXEC dbo.CreateLunch 'Choux','avec son accompagnement de pomme de terre bio !','2020-10-19';
 EXEC dbo.CreateLunch 'Boulette sauce tomate','avec son accompagnement de pomme de terre bio !','2020-10-20';
 EXEC dbo.CreateLunch 'Poulet mariné','avec son accompagnement de frites bio !','2020-10-22';
-EXEC dbo.CreateLunch 'Spaggetti bolognaise','Sans accompagnement','2020-10-23';
+EXEC dbo.CreateLunch 'Spaghetti bolognaise','Sans accompagnement','2020-10-23';
+EXEC dbo.CreateLunch 'Salade','avec son accompagnement de poulet roti!','2020-10-27';
+EXEC dbo.CreateLunch 'Boulette chasseur','avec son accompagnement de frittes sauce samouraï !','2020-10-28';
+EXEC dbo.CreateLunch 'Poulet Thaï','avec son riz à l''eau !','2020-10-30';
+EXEC dbo.CreateLunch 'Spaghetti bolognaise','Sans accompagnement','2020-10-31';
+EXEC dbo.CreateLunch 'Aubergine grillée','Sur un lit de truffe','2020-11-03';
+EXEC dbo.CreateLunch 'Chipolatas maison','avec son accompagnement de pomme de terre bio !','2020-11-04';
+EXEC dbo.CreateLunch 'Steak de boeuf','avec son accompagnement de frites bio !','2020-11-06';
+EXEC dbo.CreateLunch 'Spaghetti bolognaise','Sans accompagnement','2020-11-07';
 EXEC dbo.CreateUserLunch 7,2;
 EXEC dbo.CreateUserLunch 7,3;
-EXEC dbo.CreateUserLunch 7,4;
+EXEC dbo.CreateUserLunch 7,8;
 EXEC dbo.CreateUserLunch 8,1;
 EXEC dbo.CreateUserLunch 8,2;
 EXEC dbo.CreateUserLunch 8,3;
@@ -194,6 +202,9 @@ EXEC dbo.CreateUserLunch 9,1;
 EXEC dbo.CreateUserLunch 9,2;
 EXEC dbo.CreateUserLunch 9,3;
 EXEC dbo.CreateUserLunch 9,4;
+EXEC dbo.CreateUserLunch 1,6;
+EXEC dbo.CreateUserLunch 1,9;
+EXEC dbo.CreateUserLunch 1,3;
 
 /*INSERT CATEGORIES*/
 

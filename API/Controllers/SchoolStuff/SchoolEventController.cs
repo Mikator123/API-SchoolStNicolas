@@ -13,7 +13,7 @@ namespace API.Controllers.SchoolStuff
     [ApiController]
     public class SchoolEventController : ControllerBase
     {
-        private SchoolEventRepository _eventRepo;
+        private readonly SchoolEventRepository _eventRepo;
         public SchoolEventController(SchoolEventRepository eventRepo)
         {
             _eventRepo = eventRepo;

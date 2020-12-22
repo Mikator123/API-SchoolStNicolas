@@ -13,7 +13,7 @@ namespace DAL.Services.Repositories.RelativeToUser
 {
     public class UserStatusRepository : ICRUDRepository<Status, DBErrors> , IManyToManyRepository<DBErrors>
     {
-        private Connection _connection;
+        private readonly Connection _connection;
         public UserStatusRepository(Connection connection)
         {
             _connection = connection;

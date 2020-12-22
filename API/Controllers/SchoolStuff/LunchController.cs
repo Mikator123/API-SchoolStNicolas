@@ -18,8 +18,8 @@ namespace API.Controllers.SchoolStuff
     [ApiController]
     public class LunchController : Controller
     {
-        private LunchRepository _lunchRepo;
-        private UserRepository _userRepo;
+        private readonly LunchRepository _lunchRepo;
+        private readonly UserRepository _userRepo;
 
         public LunchController(LunchRepository lunchRepo, UserRepository userRepo)
         {

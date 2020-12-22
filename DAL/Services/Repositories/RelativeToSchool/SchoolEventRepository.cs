@@ -14,7 +14,7 @@ namespace DAL.Services.Repositories.RelativeToSchool
 {
     public class SchoolEventRepository : ICRUDRepository<SchoolEvent, DBErrors>
     {
-        private Connection _connection;
+        private readonly Connection _connection;
         public SchoolEventRepository(Connection connection)
         {
             _connection = connection;

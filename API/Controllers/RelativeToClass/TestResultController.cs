@@ -13,7 +13,7 @@ namespace API.Controllers.RelativeToClass
     [ApiController]
     public class TestResultController : ControllerBase
     {
-        private TestResultRepository _testRepo;
+        private readonly TestResultRepository _testRepo;
         public TestResultController(TestResultRepository testRepo)
         {
             _testRepo = testRepo;
